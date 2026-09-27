@@ -1,0 +1,37 @@
+.farm-panel{display:flex;flex-direction:column;gap:6px;font-size:13px}
+.farm-panel h3{margin:8px 0 2px;font-size:12px;letter-spacing:.04em;opacity:.75}
+.farm-notices{display:flex;flex-wrap:wrap;gap:4px}
+.farm-notice{padding:2px 8px;border-radius:999px;background:#f2b84b;color:#1d1a12;font-weight:600;font-size:12px}
+.farm-caption{margin:0;opacity:.8;font-size:12px}
+.farm-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.farm-row{display:flex;align-items:center;gap:6px;padding:2px 4px;border-radius:6px}
+.farm-row.is-highlighted{outline:2px solid #ffd166}
+.farm-label{flex:1}
+.farm-crop{font-size:12px;opacity:.8}
+.farm-notification{display:flex;flex-direction:column;gap:2px;padding:4px;border-radius:6px;background:rgba(127,127,127,.08)}
+.farm-button{min-height:44px;min-width:44px;padding:0 10px;border-radius:8px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer}
+.farm-layers{display:flex;flex-wrap:wrap;gap:4px 12px}
+.farm-toggle{display:flex;align-items:center;gap:8px;min-height:44px}
+.farm-toggle input{width:22px;height:22px;margin:0}
+.farm-status,.farm-selection{display:block;opacity:.85}
+.farm-provenance{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin:4px 0}
+.farm-provenance dt{opacity:.7}.farm-provenance dd{margin:0;word-break:break-all}
+.farm-provenance a{color:inherit}
+.farm-panel{overscroll-behavior:contain}
+.panel-body:has(>.farm-panel),.farm-list{overscroll-behavior:contain}
+/* Map data credit: a 44 px ⓘ in the map's top-left corner that expands to the notices. */
+.farm-map-holder{position:relative}
+.farm-credit{position:absolute;left:8px;top:8px;z-index:5;display:flex;flex-direction:column;align-items:flex-start;gap:6px;max-width:calc(100% - 16px);font-size:12px}
+.farm-credit-toggle{width:44px;height:44px;border-radius:22px;border:1px solid #607080;background:rgba(18,32,43,.94);color:#fff;font-size:20px;line-height:1;cursor:pointer}
+.farm-credit-full{padding:10px 12px;border-radius:10px;background:rgba(18,32,43,.96);color:#fff;border:1px solid #607080;max-width:340px}
+.farm-credit-full ul{margin:6px 0;padding-left:18px}.farm-credit-full li{margin:4px 0}
+.farm-credit-full a{color:#cfe8ff}
+.farm-credit-close{min-height:44px;min-width:44px;padding:0 12px;border-radius:8px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer}
+/* Static build: no AI endpoint, so no per-panel AI UI and no API token field. */
+html[data-farm-deployment=static] .panel-ai,html[data-farm-deployment=static] .app-settings label:has(input[type=password]){display:none!important}
+@media (max-width:767px){
+ .farm-panel{font-size:14px}
+ .farm-panel input:not([type=checkbox]):not([type=range]),.farm-panel select,.panel-core-app select,.panel-core-app input:not([type=checkbox]):not([type=range]){font-size:16px}
+ .farm-row{flex-wrap:wrap}
+ .farm-toggle input{width:24px;height:24px}
+}
