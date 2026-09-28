@@ -27,6 +27,19 @@ function texture(THREE, stop) {
 
 export default function setup(api) {
   const {THREE} = api;
+  // Patrol-only presentation choice: 2026-09-29-farm-patrol-map-focus.md.
+  // Keep background place names from covering the numbered stops, including
+  // deferred labels and later layer commands from the existing navigation panel.
+  const placeLabels = new Map();
+  const hidePlaceLabels = () => {
+    for (const root of api.scene.children) {
+      if (root.userData?.context_role !== 'supported-labels') continue;
+      if (!placeLabels.has(root)) placeLabels.set(root, root.visible);
+      root.visible = false;
+    }
+  };
+  hidePlaceLabels();
+  const stopHidingLabels = api.onFrame(hidePlaceLabels);
   const group = new THREE.Group();
   group.name = 'farm-patrol-pins';
   api.scene.add(group);
@@ -61,7 +74,11 @@ export default function setup(api) {
       owned.push({object: pin, unregister, dispose: () => { map.dispose(); material.dispose(); stemGeometry.dispose(); stemMaterial.dispose(); }});
     }
   };
-  api.onDispose(() => { clear(); api.scene.remove(group); });
+  api.onDispose(() => {
+    clear(); api.scene.remove(group);
+    stopHidingLabels();
+    for (const [root, visible] of placeLabels) root.visible = visible;
+  });
   api.onAppCommand((name, payload) => { if (name === COMMAND) draw(Array.isArray(payload?.stops) ? payload.stops : []); });
   // The host sends the current stops when it hears this (commands sent before now are not kept).
   api.appEvent(READY, {});

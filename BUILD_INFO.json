@@ -1,8 +1,8 @@
 {
-  "built_at": "2026-09-28T07:27:09+00:00",
-  "build": "877e9242ac5c85f6",
+  "built_at": "2026-09-28T18:21:01+00:00",
+  "build": "b1c8abd7cda3d3ed",
   "dt_base": "dt/13c109a4f69b0461/",
-  "farm_commit": "b9f9976d974fa3ac7be6e24fd36396762800ae9b",
+  "farm_commit": "4de4f1d7129fa6bb1b569901dae11d0e92e333ae",
   "farm_panel_dirty": false,
   "dt_generation": {
     "name": "embed-6f2652b3-farm-b9f9976-20260929",
@@ -4510,9 +4510,9 @@
   },
   "precached": 100,
   "files": 482,
-  "bytes": 37371321,
+  "bytes": 37372278,
   "gzip": {
     "files": 465,
-    "bytes": 11421597
+    "bytes": 11422006
   }
 }

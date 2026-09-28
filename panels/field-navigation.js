@@ -1,7 +1,7 @@
 // 田區導覽: drives the map over panel-core.map (flyTo, highlight, setLayers)
 // and relays the map's own selection. It sends commands and repeats what the
 // map reports; it never derives frame state.
-import {claimHighlight, el, managedFaces, noticeBar} from './farm-data.js';
+import {SCENARIO, claimHighlight, el, managedFaces, noticeBar} from './farm-data.js';
 
 export const fieldNavigationPanel = {
   id: 'field-navigation', title: '田區導覽', icon: '⌖', defaultSize: {w: 4, h: 7},
@@ -67,6 +67,9 @@ export const fieldNavigationPanel = {
       visible = new Set(list.filter(l => l.visible !== false).map(l => l.id));
       layers.replaceChildren();
       for (const layer of list) {
+        // Patrol hides these through its map extension. Omit the ineffective
+        // control, but retain the saved choice for the other scenarios.
+        if (SCENARIO?.id === 'patrol' && layer.id === 'root-supported-labels') continue;
         const label = el('label', null, 'farm-toggle'), box = el('input');
         box.type = 'checkbox';
         box.checked = visible.has(layer.id);
