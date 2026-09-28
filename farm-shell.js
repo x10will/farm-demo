@@ -2,8 +2,11 @@
 // - the static-build flag (set by deployment-config.js, which only the static build writes);
 // - the map data credit (OSM and 政府資料開放授權條款), a compact ⓘ that expands;
 // - in the static build, telling the service worker which viewer files this page already
-//   loaded, so the ones fetched before it took control are cached for an offline visit.
+//   loaded, so the ones fetched before it took control are cached for an offline visit, and
+//   every scenario's map page, so switching scenario offline works.
 // Nothing here reads or changes canonical frames or runtime state.
+import {mapUrl} from './manifest.js';
+import {SCENARIOS} from './panels/scenario.js';
 
 export const deployment = globalThis.FARM_DEPLOYMENT || null;
 export const isStatic = deployment?.static === true;
@@ -67,9 +70,17 @@ function loadedUrls(frame) {
   return [...urls].filter(url => url.startsWith(new URL('./', document.baseURI).href));
 }
 
+// The map iframe URL of every declared scenario, exactly as manifest.js builds it for that
+// scenario's page. The worker caches DT files by their full URL, query included, so a scenario
+// switched to for the first time while offline finds its viewer page only if it was warmed here.
+// Gate review of #112, 2026-09-28, Major 3: overview loaded, offline, switch to pest: no map.
+export function scenarioMapUrls() {
+  return SCENARIOS.map(s => mapUrl(s.param ? `?scenario=${encodeURIComponent(s.param)}` : ''));
+}
+
 function warm(frame) {
   const worker = navigator.serviceWorker?.controller;
-  if (worker) worker.postMessage({type: 'FARM_WARM', urls: loadedUrls(frame)});
+  if (worker) worker.postMessage({type: 'FARM_WARM', urls: [...loadedUrls(frame), ...scenarioMapUrls()]});
 }
 
 // Map frames this page has attached; one controllerchange listener serves them all.

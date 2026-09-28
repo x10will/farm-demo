@@ -37,7 +37,11 @@ export const provenancePanel = {
         const m = manifest.value;
         row('候選資料', `composed ${short(m.composed_revision)} · snapshot ${short(m.snapshot_revision)}`, CANONICAL_BASE + 'manifest.json');
         for (const [name, file] of [['作物階段呈現裁示', 'crop-health-presentation-decision.md'],
-          ['作物階段裁示', 'crop-health-decision.md'], ['擴散裁示', 'pest-spread-decision.md']]) {
+          ['作物階段裁示', 'crop-health-decision.md'], ['擴散裁示', 'pest-spread-decision.md'],
+          ['巡田路線裁示', 'patrol-route-decision.md'], ['情境裁示', 'scenario-decision.md'],
+          ['跨農場擴散情境裁示', 'spread-scenario-decision.md'], ['蟲害警示裁示', 'pest-alert-decision.md'],
+          ['巡田站點裁示', 'patrol-stops-decision.md'], ['巡田觀察文字裁示', 'patrol-observation-decision.md'],
+          ['巡田步道網裁示', 'patrol-network-decision.md'], ['情境文字', 'scenario-narration.json']]) {
           if ((m.files || []).some(f => f.path === file)) row(name, file, CANONICAL_BASE + file);
         }
       } else failed('候選資料', manifest.reason);

@@ -35,3 +35,29 @@ html[data-farm-deployment=static] .panel-ai,html[data-farm-deployment=static] .a
  .farm-row{flex-wrap:wrap}
  .farm-toggle input{width:24px;height:24px}
 }
+/* 情境: scenario selector and the active scenario's card. */
+.farm-scenarios{display:flex;gap:4px;padding:3px;border-radius:12px;background:rgba(127,127,127,.14)}
+.farm-scenario-choice{flex:1;display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 8px;border-radius:9px;color:inherit;text-decoration:none;font-weight:600;text-align:center}
+.farm-scenario-choice.is-current{background:#6fae5b;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.farm-scenario-card{display:flex;flex-direction:column;gap:8px}
+.farm-beat{margin:0 0 4px;font-size:15px;font-weight:600}
+.farm-scenario-card h4{margin:4px 0 2px;font-size:13px}
+.farm-scenario-card a{color:inherit}
+.farm-scenario-sources{display:flex;flex-wrap:wrap;gap:2px 8px}.farm-scenario-sources a{color:inherit;word-break:break-all}
+.farm-alert{display:flex;flex-direction:column;gap:4px;padding:8px 10px;border-radius:10px;border-left:4px solid #d9822b;background:rgba(217,130,43,.1)}
+.farm-facts{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin:0}
+.farm-facts dt{opacity:.7}.farm-facts dd{margin:0;display:flex;flex-direction:column;gap:2px;word-break:break-word}
+.farm-risk{display:flex;flex-direction:column;gap:1px}
+.farm-alert-notice{margin:4px 0 0;padding:6px 8px;border-radius:8px;background:#f2b84b;color:#1d1a12;font-weight:600}
+.farm-refusal{margin:0;padding:8px 10px;border-radius:8px;background:#b3261e;color:#fff;font-weight:600}
+.farm-stops{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.farm-stop{display:flex;flex-direction:column;gap:2px;padding:6px 8px;border-radius:10px;background:rgba(127,127,127,.08)}
+.farm-stop.is-visited{background:rgba(47,143,70,.14)}
+.farm-stop-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.farm-stop-number{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:13px;border:3px solid #d9822b;background:#fff;color:#1d1a12;font-weight:700}
+.farm-stop.is-visited .farm-stop-number{border-color:#fff;background:#2f8f46;color:#fff}
+.farm-badge{padding:1px 8px;border-radius:999px;background:#f2b84b;color:#1d1a12;font-size:12px;font-weight:600}
+.farm-stop-tick{margin-left:auto;font-size:12px;font-weight:600}
+.farm-observation{font-size:12px;padding:4px 6px;border-radius:6px;background:rgba(47,143,70,.12)}
+.farm-worklog{padding:8px 10px;border-radius:10px;border-left:4px solid #2f8f46;background:rgba(47,143,70,.1)}
+.farm-worklog p{margin:0}

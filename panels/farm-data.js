@@ -1,5 +1,6 @@
 // Shared farm data access for the farm panels. Every value comes from a file
 // served same-origin beside the app; nothing here derives runtime state.
+import {current} from './scenario.js';
 
 // The app's own directory: the DT tree sits beside it, at whatever base path the app is
 // served: dt/ under run.py's gateway, dt/<id>/ in the static build, whose deployment-config.js
@@ -7,8 +8,14 @@
 export const APP_BASE = new URL('../', import.meta.url).href;
 export const DT_BASE = new URL(globalThis.FARM_DEPLOYMENT?.dtBase || 'dt/', APP_BASE).href;
 
-// Canonical candidate data exported by farm.
-export const CANONICAL_BASE = new URL('data/farm-canonical/', DT_BASE).href;
+// Canonical candidate data exported by farm: the mount of the scenario this page plays
+// (data/farm-canonical/ for 總覽, data/farm-canonical-<id>/ for the others; see scenario.js).
+// For a refused ?scenario= value no candidate is read at all: every request under this base
+// fails with the refusal, so no panel can show another scenario's data in its place.
+export const SCENARIO = current.scenario || null;
+export const SCENARIO_ERROR = current.error || null;
+export const canonicalBaseFor = scenario => new URL(`data/${scenario ? scenario.mount : 'farm-canonical-refused'}/`, DT_BASE).href;
+export const CANONICAL_BASE = canonicalBaseFor(SCENARIO);
 
 // Simulation notices. Same strings as NOTICE_LABELS in
 // packages/farm-player/src/viewer/farm-canonical-adapter.mjs, which exports
@@ -28,6 +35,7 @@ export function ownsHighlight(owner) { return highlightOwner === owner; }
 // down twice (about 4.4 MB each time). Under run.py the gateway answers no-store itself.
 const cache = new Map();
 export function loadJSON(url) {
+  if (SCENARIO_ERROR && String(url).startsWith(CANONICAL_BASE)) return Promise.reject(new Error(SCENARIO_ERROR));
   if (!cache.has(url)) {
     cache.set(url, fetch(url).then(r => {
       if (!r.ok) throw new Error(`${url}: HTTP ${r.status}`);
