@@ -58,6 +58,21 @@ manifest.panelTypes[sheetPanel] = {...panel,
   },
   dispose(view) { sheet.untrack(view); panel.dispose(view); },
 };
+const selection = manifest.panelTypes.selection;
+manifest.panelTypes.selection = {...selection,
+  render(home, ctx) {
+    const view = selection.render(sheet.target(home, 'selection'), ctx);
+    view.clearSelection = () => window.app.select(null);
+    sheet.track(view, home, 'selection');
+    view.ready.then(() => sheet.setSelection(view.phoneSummary));
+    return view;
+  },
+  update(view, snapshot) {
+    selection.update(view, snapshot);
+    sheet.setSelection(view.phoneSummary);
+  },
+  dispose(view) { sheet.untrack(view); selection.dispose(view); },
+};
 if (bootstrapError) {
  const refused = new URL(manifest.mapUrl);
  refused.searchParams.set('scenario', 'farm-refused-candidate');

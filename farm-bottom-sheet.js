@@ -41,14 +41,22 @@ export function createFarmBottomSheet(container, active) {
   const body = make('div', null, 'farm-sheet-body');
   body.dataset.sheetBody = '';
   body.tabIndex = -1;
+  const selectionSlot = make('div', null, 'farm-sheet-selection');
+  selectionSlot.hidden = true;
   const content = make('div', null, 'farm-sheet-content');
   const footer = make('div', null, 'farm-sheet-footer');
-  body.append(content, footer);
+  body.append(selectionSlot, content, footer);
   sheet.append(head, body);
   container.append(sheet);
 
   let expanded = false;
+  let baseSummary = '載入模擬資料…';
+  let selectedSummary = null;
   const tracked = new Map();
+  const refreshSummary = () => {
+    const copy = phoneCopy(selectedSummary || baseSummary);
+    if (summary.textContent !== copy) summary.textContent = copy;
+  };
   function setExpanded(value) {
     expanded = media.matches && value;
     if (!expanded && media.matches && body.contains(document.activeElement)) toggle.focus({preventScroll: true});
@@ -56,6 +64,7 @@ export function createFarmBottomSheet(container, active) {
     toggle.setAttribute('aria-expanded', String(expanded));
     toggle.setAttribute('aria-label', expanded ? '收合操作面板' : '展開操作面板');
     body.inert = media.matches && !expanded;
+    if (expanded && selectedSummary) body.scrollTop = 0;
   }
   const onEscape = event => {
     if (event.key === 'Escape' && expanded) {
@@ -66,14 +75,15 @@ export function createFarmBottomSheet(container, active) {
   toggle.onclick = () => setExpanded(!expanded);
   document.addEventListener('keydown', onEscape);
   media.addEventListener('change', () => {
-    for (const [view, home] of tracked) (media.matches ? content : home).append(view.root);
+    for (const [view, {home, slot}] of tracked)
+      (media.matches ? slot === 'selection' ? selectionSlot : content : home).append(view.root);
     setExpanded(false);
   });
   setExpanded(false);
   return {
     isPhone: () => media.matches,
-    target: home => media.matches ? content : home,
-    track: (view, home) => tracked.set(view, home),
+    target: (home, slot) => media.matches ? slot === 'selection' ? selectionSlot : content : home,
+    track: (view, home, slot) => tracked.set(view, {home, slot}),
     untrack: view => tracked.delete(view),
     clockSlot,
     footer,
@@ -83,7 +93,13 @@ export function createFarmBottomSheet(container, active) {
       }, {capture: true});
     },
     collapse: () => setExpanded(false),
-    setSummary: value => { const copy = phoneCopy(value); if (summary.textContent !== copy) summary.textContent = copy; },
+    setSummary: value => { baseSummary = value; refreshSummary(); },
+    setSelection: value => {
+      selectedSummary = value;
+      selectionSlot.hidden = !value;
+      if (value && media.matches) body.scrollTop = 0;
+      refreshSummary();
+    },
   };
 }
 
