@@ -1,9 +1,9 @@
 {
-  "built_at": "2026-09-30T15:20:23+00:00",
-  "build": "41f9cdc1327724f6",
+  "built_at": "2026-09-30T16:52:31+00:00",
+  "build": "b7f5a1037629723a",
   "dt_base": "dt/30e3f4b553c4fa2c/",
-  "label": "phone-drilldown-r4-24157ed",
-  "farm_commit": "24157edf005d7affdfe713de91a20401538380ff",
+  "label": "phone-drilldown-r5-42b9529",
+  "farm_commit": "42b952947337f63644acd6118994020a6f651c7d",
   "farm_panel_dirty": false,
   "dt_generation": {
     "name": "embed-6f2652b3-farm-b9f9976-20260929",
@@ -4511,9 +4511,15 @@
   },
   "precached": 93,
   "files": 474,
-  "bytes": 37135534,
+  "bytes": 37140389,
+  "dt_reuse": {
+    "farm_commit": "24157edf005d7affdfe713de91a20401538380ff",
+    "build": "41f9cdc1327724f6",
+    "dt_base": "dt/30e3f4b553c4fa2c/",
+    "dt_tree_sha256": "ec84d75676f554fadc36b64dbc2527eafd5f457e50cce7deebb8b06352c797ca"
+  },
   "gzip": {
     "files": 459,
-    "bytes": 11396361
+    "bytes": 11397909
   }
 }

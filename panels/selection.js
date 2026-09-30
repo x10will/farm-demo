@@ -45,7 +45,9 @@ export function createSelectionPanel({load = () => canonicalAdapter(),
       if (!entity) { view.body.append(el('p', '尚未選取田區或植株', 'farm-caption')); return; }
       const records = view.candidate?.artifacts['static-snapshot.json'].static_merge.merged_topology_artifact.records || [];
       const record = records.find(r => r['@id'] === entity.id);
-      const name = record?.display_label || entity.label || entity.id;
+      const humanLabel = label => label && !/^urn(?::|npust)/i.test(label) ? label : null;
+      const name = record?.display_label || (phone()
+        ? humanLabel(entity.label) || '模擬項目' : entity.label || entity.id);
       const treeNumber = record?.node_kind === 'planting-point' ? name.match(/第\s*(\d+)\s*株/)?.[1] : null;
       if (treeNumber && record.in_face) view.treeFaceId = record.in_face;
       const title = el('div', null, 'farm-selection-title');
@@ -56,8 +58,7 @@ export function createSelectionPanel({load = () => canonicalAdapter(),
       clear.onclick = () => view.clearSelection?.();
       title.append(clear);
       view.body.append(title);
-      const id = el('p', entity.id, 'farm-caption farm-selection-id');
-      view.body.append(id);
+      if (!phone()) view.body.append(el('p', entity.id, 'farm-caption farm-selection-id'));
       view.phoneSummary = name.replace(/\s*（[^）]*明確模擬[^）]*）/g, '');
       if (view.error) { view.body.append(el('p', `無法載入作物資料：${view.error.message}`, 'farm-status')); return; }
       if (!view.candidate) { view.body.append(el('p', '載入作物資料…', 'farm-status')); return; }

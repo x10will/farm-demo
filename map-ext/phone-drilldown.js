@@ -1,45 +1,69 @@
-// Phone-only presentation picking. The host supplies IDs from its verified
-// static snapshot; the rendered Face meshes define the on-screen tap region.
+// Phone-only presentation picking. The host supplies accepted Face rings from
+// its verified static snapshot; this only chooses what the phone sheet shows.
 // This never reads canonical frames or changes the viewer's runtime state.
 const COMMAND = 'farm-phone-drilldown';
 const READY = 'farm-phone-drilldown-ready';
 const FIELD_TAP = 'farm-phone-field-tap';
 const TREE_TAP = 'farm-phone-tree-tap';
 const NEAR_TREE_PX = 22;
+const FIELD_EDGE_PX = 22; // the rendered crop canopy extends past its ground ring
+const TAP_MOVE_PX = 8;
+
+function inRing(x, y, ring) {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [ax, ay] = ring[j], [bx, by] = ring[i];
+    const cross = (x - ax) * (by - ay) - (y - ay) * (bx - ax);
+    if (Math.abs(cross) < 1e-7 && x >= Math.min(ax, bx) && x <= Math.max(ax, bx)
+      && y >= Math.min(ay, by) && y <= Math.max(ay, by)) return true;
+    if ((ay > y) !== (by > y) && x < (bx - ax) * (y - ay) / (by - ay) + ax) inside = !inside;
+  }
+  return inside;
+}
+
+function distanceToRingSquared(x, y, ring) {
+  let best = Infinity;
+  for (let i = 1; i < ring.length; i++) {
+    const [ax, ay] = ring[i - 1], [bx, by] = ring[i];
+    const dx = bx - ax, dy = by - ay;
+    const t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / (dx * dx + dy * dy || 1)));
+    best = Math.min(best, (x - ax - t * dx) ** 2 + (y - ay - t * dy) ** 2);
+  }
+  return best;
+}
 
 export default function install(api) {
   const {THREE, scene, camera} = api;
   const ray = new THREE.Raycaster();
   const ndc = new THREE.Vector2();
   const point = new THREE.Vector3();
-  let faces = new Set();
+  const ground = new THREE.Vector3();
+  let fields = new Map();
   let treeToFace = new Map();
   let selectedFieldId = null;
-  let faceMeshes = [];
   let treeMeshes = new Map();
   let lastTap = null;
+  let pointerDown = null;
+  let ignoreViewerPickUntil = 0;
 
   const collect = () => {
-    faceMeshes = [];
     treeMeshes = new Map();
     scene.traverse(object => {
       if (!object.isMesh) return;
       const id = object.userData?.propId;
-      if (faces.has(id)) faceMeshes.push(object);
       if (treeToFace.has(id)) treeMeshes.set(id, object);
     });
   };
   const onCommand = (name, payload) => {
-    if (name !== COMMAND || !Array.isArray(payload?.faces) || !Array.isArray(payload?.trees)) return;
-    faces = new Set(payload.faces.filter(id => typeof id === 'string'));
-    treeToFace = new Map(payload.trees.filter(row => typeof row?.id === 'string' && faces.has(row.faceId))
+    if (name !== COMMAND || !Array.isArray(payload?.fields) || !Array.isArray(payload?.trees)) return;
+    fields = new Map(payload.fields.filter(row => typeof row?.id === 'string' && Array.isArray(row.ring)
+      && row.ring.length >= 4 && row.ring.every(vertex => Array.isArray(vertex) && vertex.length >= 3
+        && vertex.every(Number.isFinite)))
+      .map(row => [row.id, row.ring]));
+    treeToFace = new Map(payload.trees.filter(row => typeof row?.id === 'string' && fields.has(row.faceId))
       .map(row => [row.id, row.faceId]));
-    selectedFieldId = faces.has(payload.selectedFieldId) ? payload.selectedFieldId : null;
+    selectedFieldId = fields.has(payload.selectedFieldId) ? payload.selectedFieldId : null;
     collect();
-  };
-  const onPointerUp = event => {
-    if (event.target !== document.querySelector('#canvas-container canvas')) return;
-    lastTap = {x: event.clientX, y: event.clientY, at: performance.now()};
   };
   const faceAt = (x, y) => {
     const rect = document.querySelector('#canvas-container canvas')?.getBoundingClientRect();
@@ -47,7 +71,52 @@ export default function install(api) {
     camera.updateMatrixWorld(true);
     ndc.set((x - rect.left) / rect.width * 2 - 1, 1 - (y - rect.top) / rect.height * 2);
     ray.setFromCamera(ndc, camera);
-    return ray.intersectObjects(faceMeshes, false).find(hit => hit.object.visible)?.object.userData.propId || null;
+    let nearest = null, nearestDistance = FIELD_EDGE_PX ** 2;
+    for (const [id, ring] of fields) {
+      const elevation = ring.reduce((sum, vertex) => sum + vertex[2], 0) / ring.length;
+      const along = (elevation - ray.ray.origin.z) / ray.ray.direction.z;
+      if (along <= 0) continue;
+      ray.ray.at(along, ground);
+      if (inRing(ground.x, ground.y, ring)) return id;
+      const screenRing = ring.map(vertex => {
+        const projected = point.set(...vertex).project(camera);
+        return [rect.left + (projected.x + 1) * rect.width / 2,
+          rect.top + (1 - projected.y) * rect.height / 2];
+      });
+      const distance = distanceToRingSquared(x, y, screenRing);
+      if (distance < nearestDistance) { nearest = id; nearestDistance = distance; }
+    }
+    return nearest;
+  };
+  const onPointerDown = event => {
+    pointerDown = event.target === document.querySelector('#canvas-container canvas')
+      ? {x: event.clientX, y: event.clientY, id: event.pointerId} : null;
+  };
+  const onPointerUp = event => {
+    if (event.target !== document.querySelector('#canvas-container canvas')) return;
+    const start = pointerDown;
+    pointerDown = null;
+    if (start && (start.id !== event.pointerId
+      || Math.hypot(event.clientX - start.x, event.clientY - start.y) > TAP_MOVE_PX)) return;
+    lastTap = {x: event.clientX, y: event.clientY, at: performance.now(), level1: !selectedFieldId};
+    if (lastTap.level1) {
+      ignoreViewerPickUntil = lastTap.at + 900;
+      const id = faceAt(lastTap.x, lastTap.y);
+      if (id) api.appEvent(FIELD_TAP, {id});
+    }
+  };
+  const onClick = event => {
+    if (event.target !== document.querySelector('#canvas-container canvas')) return;
+    if (lastTap?.level1 && performance.now() - lastTap.at < 900) {
+      // Pointer-up already resolved the field, including an empty viewer pick.
+      lastTap = null;
+      event.stopImmediatePropagation();
+    } else if (!selectedFieldId) {
+      // Also cover a programmatic click with no preceding pointer event.
+      const id = faceAt(event.clientX, event.clientY);
+      if (id) api.appEvent(FIELD_TAP, {id});
+      event.stopImmediatePropagation();
+    }
   };
   const nearbyTree = (x, y, faceId) => {
     const rect = document.querySelector('#canvas-container canvas')?.getBoundingClientRect();
@@ -68,18 +137,18 @@ export default function install(api) {
     return best;
   };
   const onSelect = event => {
-    if (!faces.size || !lastTap || performance.now() - lastTap.at > 900) return;
-    const {x, y} = lastTap;
-    lastTap = null;
-    if (!faceMeshes.length) collect();
-    const nativeTreeFace = treeToFace.get(event.detail?.id);
-    const hitFace = faceAt(x, y) || nativeTreeFace || null;
-    if (!selectedFieldId) {
-      if (!hitFace) return;
+    if (!selectedFieldId || performance.now() < ignoreViewerPickUntil) {
+      // Level 1 accepts only our static Face test. A touch pick can arrive
+      // after the compatibility click, so keep it blocked for that tap too.
       event.stopImmediatePropagation();
-      api.appEvent(FIELD_TAP, {id: hitFace});
       return;
     }
+    if (!fields.size) return;
+    if (!lastTap || performance.now() - lastTap.at > 900) return;
+    const {x, y} = lastTap;
+    lastTap = null;
+    const nativeTreeFace = treeToFace.get(event.detail?.id);
+    const hitFace = nativeTreeFace || faceAt(x, y);
     if (nativeTreeFace === selectedFieldId) return;
     if (hitFace === selectedFieldId) {
       const nearest = nearbyTree(x, y, selectedFieldId);
@@ -92,12 +161,16 @@ export default function install(api) {
   };
 
   api.onAppCommand(onCommand);
+  window.addEventListener('pointerdown', onPointerDown, true);
   window.addEventListener('pointerup', onPointerUp, true);
+  window.addEventListener('click', onClick, true);
   window.addEventListener('dt:select', onSelect, true);
   window.addEventListener('dt:details-loaded', collect);
   api.appEvent(READY, {});
   return () => {
+    window.removeEventListener('pointerdown', onPointerDown, true);
     window.removeEventListener('pointerup', onPointerUp, true);
+    window.removeEventListener('click', onClick, true);
     window.removeEventListener('dt:select', onSelect, true);
     window.removeEventListener('dt:details-loaded', collect);
   };
