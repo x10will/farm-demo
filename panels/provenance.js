@@ -1,6 +1,6 @@
 // 模擬與出處: the simulation notices plus where every loaded byte came from.
 // Each value is read from the file the app actually loaded.
-import {APP_BASE, CANONICAL_BASE, DT_BASE, el, loadJSON, noticeBar} from './farm-data.js';
+import {APP_BASE, CANONICAL_BASE, DT_BASE, canonicalAdapter, el, loadJSON, noticeBar} from './farm-data.js';
 
 // The static build carries its deployment record in deployment-config.js
 // (window.FARM_DEPLOYMENT); run.py writes the same fields to runtime.local.json.
@@ -30,21 +30,28 @@ export const provenancePanel = {
     const failed = (term, error) => row(term, `無法讀取（${error.message}）`);
 
     (async () => {
-      const [runtime, manifest] = await Promise.allSettled([
-        deploymentRecord(), loadJSON(CANONICAL_BASE + 'manifest.json'),
+      const [runtime, candidate] = await Promise.allSettled([
+        deploymentRecord(), canonicalAdapter(),
       ]);
-      if (manifest.status === 'fulfilled') {
-        const m = manifest.value;
+      if (candidate.status === 'fulfilled') {
+        const m = candidate.value.manifest;
         row('候選資料', `composed ${short(m.composed_revision)} · snapshot ${short(m.snapshot_revision)}`, CANONICAL_BASE + 'manifest.json');
         for (const [name, file] of [['作物階段呈現裁示', 'crop-health-presentation-decision.md'],
           ['作物階段裁示', 'crop-health-decision.md'], ['擴散裁示', 'pest-spread-decision.md'],
           ['巡田路線裁示', 'patrol-route-decision.md'], ['情境裁示', 'scenario-decision.md'],
           ['跨農場擴散情境裁示', 'spread-scenario-decision.md'], ['蟲害警示裁示', 'pest-alert-decision.md'],
           ['巡田站點裁示', 'patrol-stops-decision.md'], ['巡田觀察文字裁示', 'patrol-observation-decision.md'],
-          ['巡田步道網裁示', 'patrol-network-decision.md'], ['情境文字', 'scenario-narration.json']]) {
-          if ((m.files || []).some(f => f.path === file)) row(name, file, CANONICAL_BASE + file);
+          ['巡田步道網裁示', 'patrol-network-decision.md'], ['情境文字', 'scenario-narration.json'],
+          ['逐日影格', 'daily-frames.json'], ['逐日世界', 'daily-world.json'],
+          ['巡田裁示', 'patrol-decision.md'], ['巡田狀態聲明', 'patrol-status-declaration.json'],
+          ['巡田歷史來源', 'patrol-history-source.json'],
+          ['排程與規則來源', 'patrol-profile-source.json'],
+          ['建議依據', 'patrol-plan-basis.json'], ['休巡組合索引', 'patrol-days-off-outcomes.json'],
+          ['日曆方向', 'patrol-calendar-direction.md']]) {
+          if ((m.files || []).some(f => f.path === file))
+            row(name, file, CANONICAL_BASE + file);
         }
-      } else failed('候選資料', manifest.reason);
+      } else failed('候選資料', candidate.reason);
 
       const generation = runtime.status === 'fulfilled' ? runtime.value : null;
       if (generation) {

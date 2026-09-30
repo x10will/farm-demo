@@ -1,0 +1,65 @@
+{
+  "catalogue_version": 1,
+  "use_cases": [
+    {
+      "use_case_id": "overview",
+      "title": "總覽",
+      "default_variant_id": "overview"
+    },
+    {
+      "use_case_id": "patrol",
+      "title": "巡田",
+      "default_variant_id": "patrol-calendar"
+    },
+    {
+      "use_case_id": "pest",
+      "title": "病蟲害擴散",
+      "default_variant_id": "pest"
+    }
+  ],
+  "variants": [
+    {
+      "use_case_id": "overview",
+      "variant_id": "overview",
+      "title": "總覽",
+      "role": "overview",
+      "view_kind": "overview",
+      "canonical_id": "overview",
+      "mount": "farm-canonical",
+      "manifest": {
+        "path": "farm-canonical/manifest.json",
+        "byte_count": 5749,
+        "sha256": "8a377a0deebfbf4f4a1cdca08679ce08ad90207d8cb8e05f876d9b2c3827f5cc"
+      }
+    },
+    {
+      "use_case_id": "patrol",
+      "variant_id": "patrol-calendar",
+      "title": "巡田",
+      "role": "calendar",
+      "view_kind": "patrol-calendar",
+      "canonical_id": "patrol-calendar",
+      "mount": "farm-canonical-patrol-calendar",
+      "manifest": {
+        "path": "farm-canonical-patrol-calendar/manifest.json",
+        "byte_count": 4401,
+        "sha256": "008fe8e37cb30833f9b0c92f12df486ae0c6fa21f2d3c06dbd8604537a0b1c93"
+      }
+    },
+    {
+      "use_case_id": "pest",
+      "variant_id": "pest",
+      "title": "病蟲害擴散",
+      "role": "pest",
+      "view_kind": "pest",
+      "canonical_id": "pest",
+      "mount": "farm-canonical-pest",
+      "manifest": {
+        "path": "farm-canonical-pest/manifest.json",
+        "byte_count": 6645,
+        "sha256": "e35545aece9bc44bd9e5261faac2cbd1d58e7bb5b6deb0eac33d0c89ae4eb379"
+      }
+    }
+  ],
+  "unavailable": []
+}

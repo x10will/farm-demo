@@ -1,0 +1,147 @@
+{
+  "schema": "farm-patrol-history/v2",
+  "reference_date": "2026-09-29",
+  "days": [
+    {
+      "date": "2026-09-23",
+      "day_id": "patrol-day:2026-09-23",
+      "recorded_face_ids": [
+        "urn:npust:smart-agriculture-management-platform:face:field-eta",
+        "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-b"
+      ],
+      "route_member_ids": [],
+      "runs": [
+        {
+          "run_id": "recorded-run:2026-09-23",
+          "visits": [
+            {
+              "visit_id": "recorded-visit:2026-09-23:A",
+              "face_id": "urn:npust:smart-agriculture-management-platform:face:field-eta",
+              "target_ids": [
+                "urn:npust:smart-agriculture-management-platform:face:field-eta"
+              ]
+            },
+            {
+              "visit_id": "recorded-visit:2026-09-23:GB",
+              "face_id": "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-b",
+              "target_ids": [
+                "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-b"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-24",
+      "day_id": "patrol-day:2026-09-24",
+      "recorded_face_ids": [
+        "urn:npust:smart-agriculture-management-platform:face:field-theta"
+      ],
+      "route_member_ids": [],
+      "runs": [
+        {
+          "run_id": "recorded-run:2026-09-24",
+          "visits": [
+            {
+              "visit_id": "recorded-visit:2026-09-24:B",
+              "face_id": "urn:npust:smart-agriculture-management-platform:face:field-theta",
+              "target_ids": [
+                "urn:npust:smart-agriculture-management-platform:face:field-theta"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-25",
+      "day_id": "patrol-day:2026-09-25",
+      "recorded_face_ids": [
+        "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-a"
+      ],
+      "route_member_ids": [],
+      "runs": [
+        {
+          "run_id": "recorded-run:2026-09-25",
+          "visits": [
+            {
+              "visit_id": "recorded-visit:2026-09-25:GA",
+              "face_id": "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-a",
+              "target_ids": [
+                "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-a"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-26",
+      "day_id": "patrol-day:2026-09-26",
+      "recorded_face_ids": [],
+      "route_member_ids": [],
+      "runs": []
+    },
+    {
+      "date": "2026-09-27",
+      "day_id": "patrol-day:2026-09-27",
+      "recorded_face_ids": [
+        "urn:npust:smart-agriculture-management-platform:face:field-eta"
+      ],
+      "route_member_ids": [],
+      "runs": [
+        {
+          "run_id": "recorded-run:2026-09-27",
+          "visits": [
+            {
+              "visit_id": "recorded-visit:2026-09-27:A",
+              "face_id": "urn:npust:smart-agriculture-management-platform:face:field-eta",
+              "target_ids": [
+                "urn:npust:smart-agriculture-management-platform:face:field-eta"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-28",
+      "day_id": "patrol-day:2026-09-28",
+      "recorded_face_ids": [
+        "urn:npust:smart-agriculture-management-platform:face:field-alpha",
+        "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-a",
+        "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-b"
+      ],
+      "route_member_ids": [],
+      "runs": [
+        {
+          "run_id": "recorded-run:2026-09-28",
+          "visits": [
+            {
+              "visit_id": "recorded-visit:2026-09-28:C",
+              "face_id": "urn:npust:smart-agriculture-management-platform:face:field-alpha",
+              "target_ids": [
+                "urn:npust:smart-agriculture-management-platform:face:field-alpha"
+              ]
+            },
+            {
+              "visit_id": "recorded-visit:2026-09-28:GA",
+              "face_id": "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-a",
+              "target_ids": [
+                "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-a"
+              ]
+            },
+            {
+              "visit_id": "recorded-visit:2026-09-28:GB",
+              "face_id": "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-b",
+              "target_ids": [
+                "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-b"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

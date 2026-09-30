@@ -1,0 +1,268 @@
+{
+  "schema": "farm-patrol-calendar/v2",
+  "default_variant_id": "patrol-calendar",
+  "reference_date": "2026-09-29",
+  "time_zone": "Asia/Taipei",
+  "step_seconds": 10,
+  "history_input": "tools/product_validation/patrol_daily/history.json",
+  "decision_input": "openspec/changes/separate-patrol-and-pest-simulations/decisions/2026-09-29-two-simulations.md",
+  "direction_input": "openspec/changes/unify-patrol-date-and-calendar/decisions/2026-09-29-preview-correction.md",
+  "in_scope_face_ids": [
+    "urn:npust:smart-agriculture-management-platform:face:field-eta",
+    "urn:npust:smart-agriculture-management-platform:face:field-theta",
+    "urn:npust:smart-agriculture-management-platform:face:field-alpha",
+    "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-a",
+    "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-b"
+  ],
+  "out_of_scope_face_id": "urn:npust:smart-agriculture-management-platform:face:mock-neighbour-field",
+  "seed_last_patrols": [
+    {
+      "seed_id": "seed-last-patrol:A",
+      "face_id": "urn:npust:smart-agriculture-management-platform:face:field-eta",
+      "last_patrol_on": "2026-09-20"
+    },
+    {
+      "seed_id": "seed-last-patrol:B",
+      "face_id": "urn:npust:smart-agriculture-management-platform:face:field-theta",
+      "last_patrol_on": "2026-09-19"
+    },
+    {
+      "seed_id": "seed-last-patrol:C",
+      "face_id": "urn:npust:smart-agriculture-management-platform:face:field-alpha",
+      "last_patrol_on": "2026-09-16"
+    },
+    {
+      "seed_id": "seed-last-patrol:GA",
+      "face_id": "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-a",
+      "last_patrol_on": "2026-09-21"
+    },
+    {
+      "seed_id": "seed-last-patrol:GB",
+      "face_id": "urn:npust:smart-agriculture-management-platform:face:greenhouse-bay-b",
+      "last_patrol_on": "2026-09-18"
+    }
+  ],
+  "plan": {
+    "plan_id": "patrol-plan:2026-09-29",
+    "generation": {
+      "source_type": "mock-authored",
+      "statement": "以模擬資料與規則編寫，未執行模型"
+    },
+    "route": {
+      "source_type": "mock-authored",
+      "statement": "按模擬田區排程，沿已宣告的有向步道安排同日巡視點；非實際農務建議。",
+      "start_node_id": "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-01",
+      "field_anchors": [
+        {
+          "node_id": "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-09",
+          "face_id": "urn:npust:smart-agriculture-management-platform:face:field-eta"
+        },
+        {
+          "node_id": "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-03",
+          "face_id": "urn:npust:smart-agriculture-management-platform:face:field-eta"
+        },
+        {
+          "node_id": "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-05",
+          "face_id": "urn:npust:smart-agriculture-management-platform:face:field-theta"
+        },
+        {
+          "node_id": "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-06",
+          "face_id": "urn:npust:smart-agriculture-management-platform:face:field-theta"
+        }
+      ]
+    },
+    "inputs": [
+      {
+        "input_id": "last-patrol:A",
+        "kind": "last-patrol-date",
+        "face_id": "urn:npust:smart-agriculture-management-platform:face:field-eta",
+        "value": "2026-09-27",
+        "as_of": "2026-09-29",
+        "source": {
+          "day_id": "patrol-day:2026-09-27"
+        }
+      },
+      {
+        "input_id": "last-patrol:B",
+        "kind": "last-patrol-date",
+        "face_id": "urn:npust:smart-agriculture-management-platform:face:field-theta",
+        "value": "2026-09-24",
+        "as_of": "2026-09-29",
+        "source": {
+          "day_id": "patrol-day:2026-09-24"
+        }
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "mock-rule:longest-gap",
+        "text": "依截至模擬今日的上次巡田日期，先排最久未巡的 B；純示範。"
+      },
+      {
+        "rule_id": "mock-rule:fixed-rotation",
+        "text": "固定示範輪巡 A／B，不因休巡重排；非農務建議。"
+      }
+    ],
+    "days": [
+      {
+        "date": "2026-09-29",
+        "planned_face_ids": [
+          "urn:npust:smart-agriculture-management-platform:face:field-theta"
+        ],
+        "preselected_route_member_ids": [
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-01",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-south",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-02",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-west-lower",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-09",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-west-mid",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-03",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-west-upper",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-04",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-north",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-05",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-northeast",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-06"
+        ],
+        "reasons": [
+          {
+            "reason_id": "reason:2026-09-29:B",
+            "face_id": "urn:npust:smart-agriculture-management-platform:face:field-theta",
+            "rule_id": "mock-rule:longest-gap",
+            "input_ids": [
+              "last-patrol:B"
+            ]
+          }
+        ]
+      },
+      {
+        "date": "2026-09-30",
+        "planned_face_ids": [
+          "urn:npust:smart-agriculture-management-platform:face:field-eta"
+        ],
+        "preselected_route_member_ids": [
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-01",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-south",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-02",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-west-lower",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-09",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-west-mid",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-03"
+        ],
+        "reasons": [
+          {
+            "reason_id": "reason:2026-09-30:A",
+            "face_id": "urn:npust:smart-agriculture-management-platform:face:field-eta",
+            "rule_id": "mock-rule:fixed-rotation",
+            "input_ids": [
+              "last-patrol:A"
+            ]
+          }
+        ]
+      },
+      {
+        "date": "2026-10-01",
+        "planned_face_ids": [
+          "urn:npust:smart-agriculture-management-platform:face:field-theta"
+        ],
+        "preselected_route_member_ids": [
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-01",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-south",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-02",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-west-lower",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-09",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-west-mid",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-03",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-west-upper",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-04",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-north",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-05",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-northeast",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-06"
+        ],
+        "reasons": [
+          {
+            "reason_id": "reason:2026-10-01:B",
+            "face_id": "urn:npust:smart-agriculture-management-platform:face:field-theta",
+            "rule_id": "mock-rule:fixed-rotation",
+            "input_ids": [
+              "last-patrol:B"
+            ]
+          }
+        ]
+      },
+      {
+        "date": "2026-10-02",
+        "planned_face_ids": [
+          "urn:npust:smart-agriculture-management-platform:face:field-eta"
+        ],
+        "preselected_route_member_ids": [
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-01",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-south",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-02",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-west-lower",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-09",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-west-mid",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-03"
+        ],
+        "reasons": [
+          {
+            "reason_id": "reason:2026-10-02:A",
+            "face_id": "urn:npust:smart-agriculture-management-platform:face:field-eta",
+            "rule_id": "mock-rule:fixed-rotation",
+            "input_ids": [
+              "last-patrol:A"
+            ]
+          }
+        ]
+      },
+      {
+        "date": "2026-10-03",
+        "planned_face_ids": [
+          "urn:npust:smart-agriculture-management-platform:face:field-eta",
+          "urn:npust:smart-agriculture-management-platform:face:field-theta"
+        ],
+        "preselected_route_member_ids": [
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-01",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-south",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-02",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-west-lower",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-09",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-west-mid",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-03",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-west-upper",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-04",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-north",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-05",
+          "urn:npust:smart-agriculture-management-platform:edge:visitor-path-network-northeast",
+          "urn:npust:smart-agriculture-management-platform:node:visitor-path-network-node-06"
+        ],
+        "reasons": [
+          {
+            "reason_id": "reason:2026-10-03:A",
+            "face_id": "urn:npust:smart-agriculture-management-platform:face:field-eta",
+            "rule_id": "mock-rule:fixed-rotation",
+            "input_ids": [
+              "last-patrol:A"
+            ]
+          },
+          {
+            "reason_id": "reason:2026-10-03:B",
+            "face_id": "urn:npust:smart-agriculture-management-platform:face:field-theta",
+            "rule_id": "mock-rule:fixed-rotation",
+            "input_ids": [
+              "last-patrol:B"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "variants": [
+    {
+      "variant_id": "patrol-calendar",
+      "role": "calendar",
+      "title": "巡田日曆（模擬）"
+    }
+  ]
+}

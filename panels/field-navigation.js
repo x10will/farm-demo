@@ -1,7 +1,7 @@
 // 田區導覽: drives the map over panel-core.map (flyTo, highlight, setLayers)
 // and relays the map's own selection. It sends commands and repeats what the
 // map reports; it never derives frame state.
-import {SCENARIO, claimHighlight, el, managedFaces, noticeBar} from './farm-data.js';
+import {SCENARIO, claimHighlight, el, managedFaces, noticeBar, phoneCopy} from './farm-data.js';
 
 export const fieldNavigationPanel = {
   id: 'field-navigation', title: '田區導覽', icon: '⌖', defaultSize: {w: 4, h: 7},
@@ -14,8 +14,8 @@ export const fieldNavigationPanel = {
     const layers = el('div', null, 'farm-layers');
     const clear = el('button', '清除標示', 'farm-button');
     clear.type = 'button';
-    root.append(noticeBar(), el('h3', '田區'), faces, clear, el('h3', '圖層'), layers,
-      el('h3', '地圖選取'), selection, status);
+    root.append(noticeBar(), el('h3', '田區'), faces, clear, el('h3', '圖層', 'farm-layers-heading'), layers,
+      el('h3', '地圖選取', 'farm-selection-heading'), selection, status);
     container.append(root);
 
     // panel-core queues commands until the map is ready and returns false
@@ -31,13 +31,15 @@ export const fieldNavigationPanel = {
       for (const li of faces.children) li.classList.toggle('is-highlighted', li.dataset.faceId === highlighted);
     };
 
-    managedFaces().then(list => {
+    managedFaces(ctx.loadCandidate).then(list => {
       for (const face of list) {
         const li = el('li', null, 'farm-row');
         li.dataset.faceId = face.id;
         const fly = el('button', '飛到', 'farm-button'), mark = el('button', '標示', 'farm-button');
         const pick = el('button', '選取', 'farm-button');
         fly.type = mark.type = pick.type = 'button';
+        if (globalThis.matchMedia?.('(max-width: 767px)').matches)
+          pick.setAttribute('aria-label', `選取${phoneCopy(face.label)}`);
         fly.onclick = () => send('flyTo', {target: {id: face.id}}, `已送出：飛到 ${face.label}`);
         mark.onclick = () => {
           if (send('highlight', {ids: [face.id]}, `已送出：標示 ${face.label}`)) { highlighted = face.id; markRows(); claimHighlight('field-navigation'); }
@@ -50,7 +52,7 @@ export const fieldNavigationPanel = {
           claimHighlight('field-navigation');
         };
         li.append(fly, mark, pick);
-        li.title = face.id;
+        if (!globalThis.matchMedia?.('(max-width: 767px)').matches) li.title = face.id;
         faces.append(li);
       }
     }).catch(error => { status.textContent = `無法載入田區清單：${error.message}`; });
@@ -69,7 +71,7 @@ export const fieldNavigationPanel = {
       for (const layer of list) {
         // Patrol hides these through its map extension. Omit the ineffective
         // control, but retain the saved choice for the other scenarios.
-        if (SCENARIO?.id === 'patrol' && layer.id === 'root-supported-labels') continue;
+        if (SCENARIO?.useCaseId === 'patrol' && layer.id === 'root-supported-labels') continue;
         const label = el('label', null, 'farm-toggle'), box = el('input');
         box.type = 'checkbox';
         box.checked = visible.has(layer.id);

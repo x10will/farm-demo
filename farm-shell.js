@@ -6,7 +6,8 @@
 //   every scenario's map page, so switching scenario offline works.
 // Nothing here reads or changes canonical frames or runtime state.
 import {mapUrl} from './manifest.js';
-import {SCENARIOS} from './panels/scenario.js';
+import {CANONICAL_BASE, DT_BASE} from './panels/farm-data.js';
+import {scenarioCatalogue} from './panels/scenario.js';
 
 export const deployment = globalThis.FARM_DEPLOYMENT || null;
 export const isStatic = deployment?.static === true;
@@ -26,8 +27,8 @@ function el(tag, text, cls) {
   return n;
 }
 
-// Collapsed: a 44 px ⓘ in the map's top-left corner (the viewer's own controls sit top-right,
-// and on phones panel-core's deck covers the map's lower part). Open: the notices with their links. Tap again, 關閉 or Escape collapses.
+// Collapsed: a 44 px ⓘ in the map's top-left corner. Open: the notices and
+// farm data lineage links. Tap again, 關閉 or Escape collapses.
 export function mapCredit() {
   const root = el('div', null, 'farm-credit');
   root.dataset.creditState = 'collapsed';
@@ -46,6 +47,17 @@ export function mapCredit() {
   const close = el('button', '關閉', 'farm-credit-close');
   close.type = 'button';
   panel.append(el('strong', '地圖資料來源與授權'), list, close);
+  const sources = el('div', null, 'farm-credit-sources');
+  sources.append(el('strong', '模擬與出處'));
+  for (const [label, href] of [
+    ['目前模擬資料與收據', CANONICAL_BASE + 'manifest.json'],
+    ['農場場景資料與收據', new URL('data/farm/manifest.json', DT_BASE).href],
+  ]) {
+    const link = el('a', label);
+    link.href = href; link.target = '_blank'; link.rel = 'noopener';
+    sources.append(link);
+  }
+  panel.insertBefore(sources, close);
   root.append(toggle, panel);
   const set = open => {
     panel.hidden = !open;
@@ -75,12 +87,74 @@ function loadedUrls(frame) {
 // switched to for the first time while offline finds its viewer page only if it was warmed here.
 // Gate review of #112, 2026-09-28, Major 3: overview loaded, offline, switch to pest: no map.
 export function scenarioMapUrls() {
-  return SCENARIOS.map(s => mapUrl(s.param ? `?scenario=${encodeURIComponent(s.param)}` : ''));
+  return scenarioCatalogue().variants.map(variant => {
+    const params = new URLSearchParams();
+    if (variant.use_case_id !== 'overview') params.set('scenario', variant.use_case_id);
+    params.set('variant', variant.variant_id);
+    return mapUrl(`?${params}`);
+  });
 }
 
 function warm(frame) {
   const worker = navigator.serviceWorker?.controller;
   if (worker) worker.postMessage({type: 'FARM_WARM', urls: [...loadedUrls(frame), ...scenarioMapUrls()]});
+}
+
+// The embedded viewer keeps its own reset buttons. Translate their visible copy
+// only at the phone breakpoint; their handlers and desktop labels stay intact.
+const observedResetButtons = new WeakSet();
+const phoneFramed = new WeakSet();
+// Keep the site's authored portrait pose even when an iframe reloads while its
+// sheet is expanded (the shorter canvas would otherwise select the wide pose).
+// A fixed offset then centres the fields. No frame, route or runtime position is
+// read; the viewer still owns camera projection and every resize.
+function viewerPhoneFrame(frame) {
+  try {
+    const viewer = frame.contentWindow?.__dtEmbed;
+    const preset = Object.values(frame.contentWindow?.DT_SITE?.viewpoints || {})[0];
+    if (!viewer?.ready || !preset || typeof viewer.setCameraPose !== 'function'
+        || typeof viewer.translateCameraTarget !== 'function') return;
+    const phone = globalThis.matchMedia?.('(max-width: 767px)').matches ?? false;
+    if (phone && !phoneFramed.has(viewer) && preset.portrait
+        && viewer.setCameraPose(preset.portrait.pos, preset.portrait.target)
+        && viewer.translateCameraTarget(-25, 80, 0)) phoneFramed.add(viewer);
+    else if (!phone && phoneFramed.has(viewer)
+        && viewer.setCameraPose(preset.pos, preset.target)) phoneFramed.delete(viewer);
+  } catch { /* An unloaded iframe cannot be framed yet. */ }
+}
+function viewerPhoneCopy(frame) {
+  try {
+    const doc = frame.contentDocument;
+    if (!doc) return;
+    const phone = globalThis.matchMedia?.('(max-width: 767px)').matches ?? false;
+    // The sheet owns phone controls. The viewer's camera toolbar covers the
+    // numbered field pins when the map has only the space above the sheet.
+    const chrome = doc.getElementById('farm-phone-chrome');
+    if (phone && doc.head && !chrome) {
+      const style = doc.createElement('style');
+      style.id = 'farm-phone-chrome';
+      style.textContent = 'html[data-farm-phone="true"] #dt-embed-navigation{display:none!important}';
+      doc.head.append(style);
+    }
+    if (phone) doc.documentElement.dataset.farmPhone = 'true';
+    else { chrome?.remove(); delete doc.documentElement.dataset.farmPhone; }
+    const reset = doc.querySelector('#btn-reset');
+    if (reset) {
+      const label = phone ? '重設' : 'Reset';
+      if (reset.textContent !== label) reset.textContent = label;
+      if (!observedResetButtons.has(reset)) {
+        observedResetButtons.add(reset);
+        new MutationObserver(() => viewerPhoneCopy(frame))
+          .observe(reset, {childList: true, subtree: true, characterData: true});
+      }
+    }
+    const view = doc.querySelector('#btn-reset-view');
+    if (view) {
+      view.setAttribute('aria-label', phone ? '重設視角' : 'Reset view');
+      const label = view.querySelector('span');
+      if (label && label.textContent !== (phone ? '重設' : 'Reset')) label.textContent = phone ? '重設' : 'Reset';
+    }
+  } catch { /* An unloaded iframe has no controls to label yet. */ }
 }
 
 // Map frames this page has attached; one controllerchange listener serves them all.
@@ -91,6 +165,9 @@ function attach(frame, app) {
   const holder = frame.parentElement;
   holder.classList.add('farm-map-holder');
   if (!holder.querySelector('.farm-credit')) holder.append(mapCredit());
+  frame.addEventListener('load', () => viewerPhoneCopy(frame));
+  app?.map?.subscribe('ready', () => { viewerPhoneCopy(frame); viewerPhoneFrame(frame); });
+  viewerPhoneCopy(frame);
   if (!isStatic || !('serviceWorker' in navigator)) return;
   frames.add(frame);
   if (!listening) {
@@ -113,4 +190,7 @@ export function installFarmShell(container, app) {
   };
   scan();
   new MutationObserver(scan).observe(container, {childList: true, subtree: true});
+  globalThis.matchMedia?.('(max-width: 767px)').addEventListener('change', () => {
+    for (const frame of container.querySelectorAll('iframe.map-frame')) { viewerPhoneCopy(frame); viewerPhoneFrame(frame); }
+  });
 }

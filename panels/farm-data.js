@@ -46,12 +46,10 @@ export function loadJSON(url) {
 }
 
 // Managed field Faces: ids from the canonical manifest, labels from the
-// frozen static snapshot's topology records (joined by stable id only).
-export async function managedFaces() {
-  const [manifest, snapshot] = await Promise.all([
-    loadJSON(CANONICAL_BASE + 'manifest.json'),
-    loadJSON(CANONICAL_BASE + 'static-snapshot.json'),
-  ]);
+// verified static snapshot's topology records (joined by stable id only).
+export async function managedFaces(load = () => canonicalAdapter()) {
+  const {manifest, artifacts} = await load();
+  const snapshot = artifacts['static-snapshot.json'];
   const records = snapshot?.static_merge?.merged_topology_artifact?.records || [];
   const faces = new Map(records.filter(r => r['@type'] === 'Face').map(r => [r['@id'], r]));
   // crop is the snapshot's static, simulated crop name; absent when none is declared.
@@ -59,18 +57,72 @@ export async function managedFaces() {
     crop: faces.get(id)?.crop?.species_name_zh || null}));
 }
 
-// The canonical adapter the viewer runs, loaded from the same candidate
-// directory, so panels show its labels rather than a second copy of them.
-// Only the candidate's JSON artifacts are read; the adapter checks their
-// bindings exactly as it does in the viewer.
-export async function canonicalAdapter(base = CANONICAL_BASE) {
+// The same DT loader used by the map verifies the static-package binding and
+// every candidate receipt before any panel receives its adapter or artifacts.
+// The injection seam lets offline tests supply that same loader and file reads.
+const verifiedCandidates = new Map();
+export function canonicalAdapter(base = CANONICAL_BASE, options) {
   const root = new URL(base, globalThis.location?.href).href;
-  const manifest = await loadJSON(new URL('manifest.json', root).href);
-  const artifacts = Object.fromEntries(await Promise.all((manifest.files || [])
-    .filter(f => f.path.endsWith('.json'))
-    .map(async f => [f.path, await loadJSON(new URL(f.path, root).href)])));
-  const {createAdapter} = await import(new URL(manifest.adapter_entry, root).href);
-  return {adapter: createAdapter({manifest, artifacts, resourceBaseUrl: root}), manifest, artifacts};
+  if (SCENARIO_ERROR && root === CANONICAL_BASE) return Promise.reject(new Error(SCENARIO_ERROR));
+  const expectedManifest = root === CANONICAL_BASE ? SCENARIO?.manifest : null;
+  if (options) return loadVerifiedCandidate(root, {...options, catalogueManifest: options.catalogueManifest ?? expectedManifest});
+  if (!verifiedCandidates.has(root)) {
+    verifiedCandidates.set(root, loadVerifiedCandidate(root, {catalogueManifest: expectedManifest}).catch(error => {
+      verifiedCandidates.delete(root);
+      throw error;
+    }));
+  }
+  return verifiedCandidates.get(root);
+}
+
+async function loadVerifiedCandidate(root, {fetchResource = fetch, loadCandidate,
+  staticManifestUrl = new URL('data/farm/manifest.json', DT_BASE).href, catalogueManifest} = {}) {
+  let manifest, artifacts;
+  try {
+    const response = await fetchResource(staticManifestUrl);
+    if (!response.ok) throw new Error(`${staticManifestUrl}: HTTP ${response.status}`);
+    const staticManifestBytes = await response.arrayBuffer();
+    const manifestUrl = new URL('manifest.json', root).href;
+    let verifiedFetch = fetchResource;
+    if (catalogueManifest) {
+      if (root === CANONICAL_BASE && catalogueManifest.path !== `${SCENARIO.mount}/manifest.json`) {
+        throw new Error('selected manifest path does not match the catalogue mount');
+      }
+      const selected = await fetchResource(manifestUrl);
+      if (!selected.ok) throw new Error(`${manifestUrl}: HTTP ${selected.status}`);
+      const bytes = await selected.arrayBuffer();
+      const digest = [...new Uint8Array(await globalThis.crypto.subtle.digest('SHA-256', bytes))]
+        .map(byte => byte.toString(16).padStart(2, '0')).join('');
+      if (bytes.byteLength !== catalogueManifest.byte_count
+        || digest !== String(catalogueManifest.sha256).replace(/^sha256:/, '')) {
+        throw new Error('selected manifest catalogue receipt mismatch');
+      }
+      // DT must consume exactly the verified bytes, not a second fetch that could change.
+      verifiedFetch = url => String(url) === manifestUrl
+        ? Promise.resolve({ok: true, status: 200, arrayBuffer: async () => bytes,
+          json: async () => JSON.parse(new TextDecoder().decode(bytes))})
+        : fetchResource(url);
+    }
+    const verify = loadCandidate || (await import(new URL('docs/viewer-common/canonical-site-playback.mjs', DT_BASE).href)).loadCanonicalAdapter;
+    const adapter = await verify({manifestUrl, staticManifestBytes,
+      fetchResource: verifiedFetch, importModule: async url => {
+        const module = await import(url);
+        return {createAdapter(input) {
+          ({manifest, artifacts} = input);
+          return module.createAdapter(input);
+        }};
+      }});
+    if (root === CANONICAL_BASE && catalogueManifest
+      && ((manifest.scenario?.id ?? 'overview') !== SCENARIO.id
+        || (manifest.scenario?.use_case_id ?? (manifest.scenario?.id ?? 'overview')) !== SCENARIO.useCaseId
+        || (manifest.scenario?.role ?? SCENARIO.role) !== SCENARIO.role)) {
+      throw new Error('selected candidate identity does not match the catalogue use case and variant');
+    }
+    return {adapter, manifest, artifacts};
+  } catch (error) {
+    throw new Error(`候選資料驗證失敗，影格與情境文字必須來自同一份有收據且綁定靜態套件的候選資料；`
+      + `依據 2026-09-29 use-case review R1，回應 Will「Mock data is fine, so long as we have data lineage and the scenario explanable」：${error.message}`, {cause: error});
+  }
 }
 
 // The canonical frame shown at shell time t (ms): the last frame whose
@@ -81,9 +133,16 @@ export function frameIndexAt(frameTimesSeconds, t) {
   return index;
 }
 
+// A phone-only display label; the verified source strings and IDs remain intact.
+export function phoneCopy(text) {
+  const value = String(text);
+  return globalThis.matchMedia?.('(max-width: 767px)').matches
+    ? value.replaceAll('模擬鄰近農場（mock，非真實農場）', '鄰近農場（模擬）') : value;
+}
+
 export function el(tag, text, cls) {
   const n = document.createElement(tag);
-  if (text != null) n.textContent = String(text);
+  if (text != null) n.textContent = phoneCopy(text);
   if (cls) n.className = cls;
   return n;
 }

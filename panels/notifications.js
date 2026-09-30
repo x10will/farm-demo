@@ -52,8 +52,10 @@ export function createNotificationsPanel({load = () => canonicalAdapter()} = {})
         const index = frameIndexAt(candidate.adapter.frameTimesSeconds, t);
         if (index === shown) return;
         shown = index;
+        const view = candidate.adapter.selectFrame(index);
         const seconds = candidate.adapter.frameTimesSeconds[index];
-        when.textContent = `模擬時間 ${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')} · 第 ${index + 1} 格`;
+        when.textContent = view.date ? `模擬日期 ${view.date} · 第 ${index + 1} 日`
+          : `模擬時間 ${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')} · 第 ${index + 1} 格`;
         const rows = notificationsFor(candidate, index);
         list.replaceChildren();
         if (!rows.length) list.append(el('li', '本影格沒有事件', 'farm-caption'));
