@@ -108,19 +108,23 @@ const phoneFramed = new WeakSet();
 // sheet is expanded (the shorter canvas would otherwise select the wide pose).
 // A fixed offset then centres the fields. No frame, route or runtime position is
 // read; the viewer still owns camera projection and every resize.
-function viewerPhoneFrame(frame) {
+function viewerPhoneFrame(frame, force = false) {
   try {
     const viewer = frame.contentWindow?.__dtEmbed;
     const preset = Object.values(frame.contentWindow?.DT_SITE?.viewpoints || {})[0];
     if (!viewer?.ready || !preset || typeof viewer.setCameraPose !== 'function'
         || typeof viewer.translateCameraTarget !== 'function') return;
     const phone = globalThis.matchMedia?.('(max-width: 767px)').matches ?? false;
-    if (phone && !phoneFramed.has(viewer) && preset.portrait
+    if (phone && (force || !phoneFramed.has(viewer)) && preset.portrait
         && viewer.setCameraPose(preset.portrait.pos, preset.portrait.target)
         && viewer.translateCameraTarget(-25, 80, 0)) phoneFramed.add(viewer);
     else if (!phone && phoneFramed.has(viewer)
         && viewer.setCameraPose(preset.pos, preset.target)) phoneFramed.delete(viewer);
   } catch { /* An unloaded iframe cannot be framed yet. */ }
+}
+export function restorePhoneOverview(container) {
+  const frame = container.querySelector('iframe.map-frame');
+  if (frame) viewerPhoneFrame(frame, true);
 }
 function viewerPhoneCopy(frame) {
   try {

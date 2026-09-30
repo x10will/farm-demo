@@ -13,7 +13,8 @@ export function cropRowsFor({adapter}, id) {
   return CROP_ROW_LABELS.map(label => rows.find(row => row.label === label)).filter(Boolean);
 }
 
-export function createSelectionPanel({load = () => canonicalAdapter()} = {}) {
+export function createSelectionPanel({load = () => canonicalAdapter(),
+  phone = () => globalThis.matchMedia?.('(max-width: 767px)').matches ?? false} = {}) {
   const panel = {
     id: 'selection', title: '選取項目', icon: '◎', defaultSize: {w: 4, h: 5},
 
@@ -40,10 +41,13 @@ export function createSelectionPanel({load = () => canonicalAdapter()} = {}) {
       const entity = view.ctx.getSelectedEntity?.();
       view.body.replaceChildren();
       view.phoneSummary = null;
+      view.treeFaceId = null;
       if (!entity) { view.body.append(el('p', '尚未選取田區或植株', 'farm-caption')); return; }
       const records = view.candidate?.artifacts['static-snapshot.json'].static_merge.merged_topology_artifact.records || [];
       const record = records.find(r => r['@id'] === entity.id);
       const name = record?.display_label || entity.label || entity.id;
+      const treeNumber = record?.node_kind === 'planting-point' ? name.match(/第\s*(\d+)\s*株/)?.[1] : null;
+      if (treeNumber && record.in_face) view.treeFaceId = record.in_face;
       const title = el('div', null, 'farm-selection-title');
       title.append(el('h3', name));
       const clear = el('button', '✕', 'farm-selection-clear');
@@ -54,7 +58,7 @@ export function createSelectionPanel({load = () => canonicalAdapter()} = {}) {
       view.body.append(title);
       const id = el('p', entity.id, 'farm-caption farm-selection-id');
       view.body.append(id);
-      view.phoneSummary = name.replace(/\s*（明確模擬）/g, '');
+      view.phoneSummary = name.replace(/\s*（[^）]*明確模擬[^）]*）/g, '');
       if (view.error) { view.body.append(el('p', `無法載入作物資料：${view.error.message}`, 'farm-status')); return; }
       if (!view.candidate) { view.body.append(el('p', '載入作物資料…', 'farm-status')); return; }
       const rows = cropRowsFor(view.candidate, entity.id);
@@ -67,6 +71,11 @@ export function createSelectionPanel({load = () => canonicalAdapter()} = {}) {
       const crop = rows.find(row => row.label === '模擬作物')?.value;
       if (crop) view.phoneSummary += ` · ${Array.isArray(crop) ? crop[0] : crop}（模擬）`;
       const list = el('dl', null, 'farm-provenance');
+      if (treeNumber && phone()) {
+        const number = el('dd');
+        number.append(el('div', treeNumber));
+        list.append(el('dt', '株號'), number);
+      }
       let disclosure;
       for (const row of rows) {
         const value = Array.isArray(row.value) ? row.value : [row.value];

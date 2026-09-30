@@ -1,12 +1,13 @@
 import {createApp} from 'panel-core';
 import {manifest} from './manifest.js';
-import {installFarmShell} from './farm-shell.js';
+import {installFarmShell, restorePhoneOverview} from './farm-shell.js';
 import {canonicalAdapter, frameIndexAt} from './panels/farm-data.js';
 import {current} from './panels/scenario.js';
 import {createPatrolPanel} from './panels/patrol-panel.js';
 import {createPestController, createPestPanel} from './panels/pest-panel.js';
 import {createPatrolCalendarController} from './panels/patrol-calendar.js';
 import {createFarmBottomSheet, installPhoneClock, installPhoneReset, installPhoneStory} from './farm-bottom-sheet.js';
+import {createPhoneDrilldown} from './phone-drilldown.js';
 
 // Only the active simulation supplies panel-core's clock and map. Its candidate
 // is verified before either is constructed; inactive data is not downloaded.
@@ -48,11 +49,18 @@ manifest.panelTypes['farm-patrol'] = createPatrolPanel({active: active === 'patr
 manifest.panelTypes['farm-pest'] = createPestPanel({active: active === 'pest', controller: pest, error: bootstrapError});
 const container = document.querySelector('#app');
 const sheet = createFarmBottomSheet(container, active || 'overview');
+let phoneDrilldown = null;
+let selectionView = null;
 const sheetPanel = active === 'patrol' ? 'farm-patrol' : active === 'pest' ? 'farm-pest' : 'field-navigation';
 const panel = manifest.panelTypes[sheetPanel];
 manifest.panelTypes[sheetPanel] = {...panel,
   render(home, ctx) {
-    const view = panel.render(sheet.target(home), ctx);
+    const phoneCtx = sheet.isPhone()
+      ? {...ctx, focusEntity: id => {
+        if (!phoneDrilldown) return ctx.focusEntity(id);
+        void phoneDrilldown.selectField(id).then(selected => { if (!selected) ctx.focusEntity(id); });
+      }} : ctx;
+    const view = panel.render(sheet.target(home), phoneCtx);
     sheet.track(view, home);
     return view;
   },
@@ -62,16 +70,17 @@ const selection = manifest.panelTypes.selection;
 manifest.panelTypes.selection = {...selection,
   render(home, ctx) {
     const view = selection.render(sheet.target(home, 'selection'), ctx);
-    view.clearSelection = () => window.app.select(null);
+    selectionView = view;
+    view.clearSelection = () => { if (phoneDrilldown) phoneDrilldown.clear(); else window.app.select(null); };
     sheet.track(view, home, 'selection');
-    view.ready.then(() => sheet.setSelection(view.phoneSummary));
+    view.ready.then(() => sheet.setSelection(view.phoneSummary, {tree: !!view.treeFaceId}));
     return view;
   },
   update(view, snapshot) {
     selection.update(view, snapshot);
-    sheet.setSelection(view.phoneSummary);
+    sheet.setSelection(view.phoneSummary, {tree: !!view.treeFaceId});
   },
-  dispose(view) { sheet.untrack(view); selection.dispose(view); },
+  dispose(view) { if (selectionView === view) selectionView = null; sheet.untrack(view); selection.dispose(view); },
 };
 if (bootstrapError) {
  const refused = new URL(manifest.mapUrl);
@@ -80,6 +89,13 @@ if (bootstrapError) {
  manifest.mapUrl = refused.href;
 }
 window.app=createApp(container,manifest);
+if (sheet.isPhone() && !bootstrapError) {
+ phoneDrilldown = createPhoneDrilldown(window.app, {restoreOverview: () => restorePhoneOverview(container)});
+ sheet.onSelectionActions({
+  onBack: () => { if (selectionView?.treeFaceId) void phoneDrilldown.selectField(selectionView.treeFaceId, {fly: false}); },
+  onClear: () => phoneDrilldown.clear(),
+ });
+}
 calendar?.attachClock(window.app.clock);
 pest?.attachClock(window.app.clock);
 if (sheet.isPhone() && active === 'overview') { window.app.clock.pause(); window.app.clock.seek(0); }

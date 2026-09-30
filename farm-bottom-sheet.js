@@ -37,7 +37,13 @@ export function createFarmBottomSheet(container, active) {
   const summary = make('span', '載入模擬資料…', 'farm-sheet-summary');
   summary.dataset.sheetSummary = '';
   toggle.append(summary);
-  head.append(top, clockSlot, toggle);
+  const actions = make('div', null, 'farm-sheet-actions');
+  const back = make('button', '← 田區', 'farm-sheet-back');
+  back.type = 'button'; back.hidden = true;
+  const clear = make('button', '✕', 'farm-sheet-clear');
+  clear.type = 'button'; clear.hidden = true; clear.setAttribute('aria-label', '清除選取');
+  actions.append(back, toggle, clear);
+  head.append(top, clockSlot, actions);
   const body = make('div', null, 'farm-sheet-body');
   body.dataset.sheetBody = '';
   body.tabIndex = -1;
@@ -94,9 +100,15 @@ export function createFarmBottomSheet(container, active) {
     },
     collapse: () => setExpanded(false),
     setSummary: value => { baseSummary = value; refreshSummary(); },
-    setSelection: value => {
+    onSelectionActions({onBack, onClear}) {
+      back.onclick = onBack;
+      clear.onclick = onClear;
+    },
+    setSelection: (value, {tree = false} = {}) => {
       selectedSummary = value;
       selectionSlot.hidden = !value;
+      back.hidden = !value || !tree;
+      clear.hidden = !value;
       if (value && media.matches) body.scrollTop = 0;
       refreshSummary();
     },

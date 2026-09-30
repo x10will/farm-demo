@@ -16,6 +16,8 @@ function mapUrl(search = globalThis.location?.search) {
     if (chosen.id !== 'overview') url.searchParams.set('scenario', chosen.canonicalId || chosen.id);
     if (chosen.viewKind === 'patrol-calendar')
       url.searchParams.set('ext', PATROL_PINS_MODULE);
+    if (globalThis.matchMedia?.('(max-width: 767px)').matches)
+      url.searchParams.append('ext', new URL('./map-ext/phone-drilldown.js', import.meta.url).href);
   } else if (requested !== null) {
     // A refused link must also be refused by the viewer, never replaying overview.
     url.searchParams.set('scenario', resolved.kind === 'unknown' && !globalThis.FARM_DEPLOYMENT?.scenarioCatalogue

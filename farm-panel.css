@@ -108,6 +108,12 @@ html[data-farm-deployment=static] .panel-ai,html[data-farm-deployment=static] .a
  .farm-phone-sheet .replay-controls input[type=range]{width:100%;min-width:0;min-height:44px;padding:0}
  .farm-phone-sheet .farm-phone-clock-label{display:block;grid-column:auto;min-width:48px;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
  .farm-sheet-toggle{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;width:100%;min-height:44px;padding:2px 7px;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;touch-action:manipulation}
+ .farm-sheet-actions{display:flex;align-items:center;min-height:44px}
+ .farm-sheet-actions .farm-sheet-toggle{flex:1;min-width:0;width:auto}
+ .farm-sheet-back,.farm-sheet-clear{flex:none;min-height:44px;border:0;border-radius:10px;background:#ffffff19;color:inherit;font:inherit;cursor:pointer;touch-action:manipulation}
+ .farm-sheet-back{padding:0 8px;font-size:13px}
+ .farm-sheet-clear{min-width:44px;font-size:20px}
+ .farm-sheet-back[hidden],.farm-sheet-clear[hidden]{display:none}
  .farm-sheet-toggle::before{content:"";display:block;width:36px;height:4px;border-radius:4px;background:#a8c0b5}
  .farm-sheet-summary{display:block;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;font-size:13px;line-height:19px}
  .farm-sheet-body{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:3px 5px 12px}
@@ -123,7 +129,7 @@ html[data-farm-deployment=static] .panel-ai,html[data-farm-deployment=static] .a
  .farm-sheet-selection{padding:0 0 12px;margin:0 0 12px;border-bottom:1px solid #ffffff40}
  .farm-sheet-selection .farm-selection-title{display:flex;align-items:center;gap:8px}
  .farm-sheet-selection .farm-selection-title h3{flex:1;margin:0;font-size:16px;line-height:1.35;letter-spacing:0;opacity:1}
- .farm-sheet-selection .farm-selection-clear{display:block;flex:none;min-width:44px;min-height:44px;border:0;border-radius:10px;background:#ffffff19;color:inherit;font:inherit;font-size:20px;cursor:pointer}
+ .farm-sheet-selection .farm-selection-clear{display:none}
  .farm-sheet-selection .farm-selection-id,.farm-sheet-selection .farm-selection-source-row{display:none}
  .farm-sheet-selection .farm-selection-sources{display:block;margin:9px 0 0;font-size:12px;overflow-wrap:anywhere}
  .farm-sheet-selection .farm-selection-sources summary{min-height:44px;display:flex;align-items:center;cursor:pointer}
