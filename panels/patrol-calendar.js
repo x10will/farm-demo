@@ -1,5 +1,12 @@
 import {frameIndexAt} from './farm-data.js';
 
+// The replay-clock label for a baked patrol frame. Phone shows M/D · 第N日, desktop the full
+// date; both read the frame's own patrol_day, nothing is computed here.
+export function patrolClockLabel(patrolDay, phone) {
+  const {date, day_number: day} = patrolDay;
+  return phone ? `${Number(date.slice(5, 7))}/${Number(date.slice(8, 10))} · 第${day}日` : date;
+}
+
 // The verified schedule supplies dates and clock offsets. The lookup supplies only IDs;
 // all displayed attendance, field statuses and comparisons remain in canonical frames.
 export function createPatrolCalendarController({schedule, lookup, frameTimesSeconds,

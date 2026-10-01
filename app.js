@@ -6,7 +6,7 @@ if (!globalThis.FARM_DEPLOYMENT) {
 }
 const [{manifest}, {installFarmShell, restorePhoneOverview}, {canonicalAdapter, frameIndexAt},
  {current}, {createPatrolPanel}, {createPestController, createPestPanel},
- {createPatrolCalendarController}, {createSelectionPanel},
+ {createPatrolCalendarController, patrolClockLabel}, {createSelectionPanel},
  {createFarmBottomSheet, installPhoneClock, installPhoneReset, installPhoneStory},
  {createPhoneDrilldown}, {siteFrom}] = await Promise.all([
  import('./manifest.js'), import('./farm-shell.js'), import('./panels/farm-data.js'),
@@ -55,9 +55,8 @@ if (!bootstrapError && (active === 'overview' || active === 'patrol' || active =
    manifest.clock = {...manifest.clock, duration: adapter.durationSeconds * 1000,
     step: schedule.step_seconds * 1000,
     labelFormat: t => {
-      const date = frames[frameIndexAt(adapter.frameTimesSeconds, t)].patrol_day.date;
-      return globalThis.matchMedia?.('(max-width: 767px)').matches
-        ? `${Number(date.slice(5, 7))}/${Number(date.slice(8, 10))}` : date;
+      const day = frames[frameIndexAt(adapter.frameTimesSeconds, t)].patrol_day;
+      return patrolClockLabel(day, !!globalThis.matchMedia?.('(max-width: 767px)').matches);
     }};
   } else {
    pest = createPestController({frameTimesSeconds: adapter.frameTimesSeconds});
