@@ -15,10 +15,17 @@ let bootstrapError = current.error || null;
 let calendar = null;
 let pest = null;
 const active = current.scenario?.useCaseId;
-if (!bootstrapError && (active === 'patrol' || active === 'pest')) {
+if (!bootstrapError && (active === 'overview' || active === 'patrol' || active === 'pest')) {
  try {
-  const {adapter, artifacts} = await canonicalAdapter();
-  if (active === 'patrol') {
+  const {adapter, artifacts, manifest: candidateManifest} = await canonicalAdapter();
+  if (active === 'overview') {
+   const frames = artifacts['composed-frames.json']?.canonical_frames;
+   if (candidateManifest.scenario?.profile !== 'farm-overview-daynight/v1'
+     || !frames || frames.length !== 24 || adapter.frameTimesSeconds.length !== frames.length
+     || adapter.durationSeconds !== 600) throw new Error('農場導覽候選缺少逐時晝夜影格');
+   manifest.clock = {...manifest.clock, duration: adapter.durationSeconds * 1000, step: 25000,
+    labelFormat: t => `模擬 ${frames[frameIndexAt(adapter.frameTimesSeconds, t)].environment.time_of_day}`};
+  } else if (active === 'patrol') {
    const schedule = artifacts['daily-frames.json']?.daily_schedule;
    const lookup = artifacts['patrol-days-off-outcomes.json'];
    const frames = artifacts['composed-frames.json']?.canonical_frames;

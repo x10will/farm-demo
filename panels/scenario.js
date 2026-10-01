@@ -3,7 +3,7 @@
 export const SCENARIO_AUTHORITY = '（依據：Will 2026-09-29 指示「不是，這是兩個模擬，你要把蟲害跟巡田分開啊，他本來就不應該一個panel」；本原型以可追溯的模擬資料示範。）';
 
 export const SCENARIOS = [
-  {id: 'overview', param: null, title: '總覽', mount: 'farm-canonical'},
+  {id: 'overview', param: null, title: '農場導覽', mount: 'farm-canonical'},
   {id: 'patrol', param: 'patrol', title: '巡田', mount: 'farm-canonical-patrol-calendar'},
   {id: 'pest', param: 'pest', title: '病蟲害擴散', mount: 'farm-canonical-pest'},
 ];

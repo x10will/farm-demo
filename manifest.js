@@ -49,8 +49,8 @@ export const manifest = {
   // also gives the viewer a refused scenario, never a different candidate.
   // 巡田 loads its status and numbered-stop module through DT's same-origin ?ext= extension.
   mapUrl: mapUrl(),
-  // The ten-minute canonical demonstration.
-  clock: {duration: 600000, rate: phone ? 60 : 1, labelFormat: t => { const s = Math.floor(t / 1000); return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`; }, loop: false, step: 100000, rates: [1, 10, 60]},
+  // The active candidate supplies the final clock labels and frame step in app.js.
+  clock: {duration: 600000, rate: 1, labelFormat: t => { const s = Math.floor(t / 1000); return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`; }, loop: false, step: 100000, rates: [1, 10, 60]},
   streams: {},
   panelTypes: {'farm-patrol': patrolPanel, 'farm-pest': pestPanel,
     'field-navigation': fieldNavigationPanel, 'farm-provenance': provenancePanel, 'farm-notifications': notificationsPanel,

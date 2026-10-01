@@ -149,7 +149,13 @@ export default function install(api) {
     lastTap = null;
     const nativeTreeFace = treeToFace.get(event.detail?.id);
     const hitFace = nativeTreeFace || faceAt(x, y);
-    if (nativeTreeFace === selectedFieldId) return;
+    if (nativeTreeFace === selectedFieldId) {
+      // Use the nearby-tree app event path so the host's flight guard does
+      // not restore the field after a valid native tree pick.
+      event.stopImmediatePropagation();
+      api.appEvent(TREE_TAP, {id: event.detail.id});
+      return;
+    }
     if (hitFace === selectedFieldId) {
       const nearest = nearbyTree(x, y, selectedFieldId);
       event.stopImmediatePropagation();

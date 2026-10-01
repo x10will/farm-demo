@@ -1,27 +1,21 @@
 {
-  "built_at": "2026-09-30T16:52:31+00:00",
-  "build": "b7f5a1037629723a",
-  "dt_base": "dt/30e3f4b553c4fa2c/",
-  "label": "phone-drilldown-r5-42b9529",
-  "farm_commit": "42b952947337f63644acd6118994020a6f651c7d",
+  "built_at": "2026-10-01T07:05:49+00:00",
+  "build": "2a6f30d712a51f39",
+  "dt_base": "dt/b3c6b71a91672bde/",
+  "farm_commit": "3529dfd4d4fbdef167874ab6d98629a01eb6cf75",
   "farm_panel_dirty": false,
   "dt_generation": {
-    "name": "embed-6f2652b3-farm-b9f9976-20260929",
-    "sourceRevision": "6f2652b32d8c2bdd51edbf33232a1e4b86b9b36d",
+    "name": "embed-9723771-farm-3529dfd-20261001",
+    "sourceRevision": "9723771f5ed9a9c897ee8375646eae2cab2297ad",
     "mounts": [
       "farm",
       "farm-canonical",
       "farm-canonical-patrol-calendar",
       "farm-canonical-pest"
     ],
-    "digest": "be8f5dadb38c8ddb780072c951b5157aef35626d696bcfa09342ad40323f4ce5"
+    "digest": "7dc5e37a62ce9c0db49de1d73b08a836960208f45707bf646df14560dcf26188"
   },
-  "staging": {
-    "farm_commit": "b9f9976d974fa3ac7be6e24fd36396762800ae9b (farm main, merge of PR #113); the three candidates were exported from 8664cbd76866eb37395cdf1ac9162696921eebba",
-    "dt_commit": "6f2652b32d8c2bdd51edbf33232a1e4b86b9b36d",
-    "status": "assembled; not activated",
-    "recorded_at": null
-  },
+  "staging": null,
   "panel_core": {
     "sourceCommit": "84fc525548df6d5b38b40cc3db9d0ed53fc5a028",
     "sourceDirty": false,
@@ -29,109 +23,29 @@
     "coreLicense": "UNSET (owner decision pending)"
   },
   "canonical_candidate": {
-    "composed_revision": "sha256:257ce17b0564a8aff31f4acdcd7cf3e1a9169566fd618fde37414e59c6606d9b",
+    "composed_revision": "sha256:49b0cc18b0cc6911997fdebeb2fca28569dc7bbb497f5dbedd753e8a83115f14",
     "snapshot_revision": "sha256:733243ca38fa61cb467e3a7b3e874a29c2dfc4993a703e54242bb72a652e41fc",
-    "frame_set_revision": "sha256:09d3145341cfc2f964bc7e318a17f6d233baffb3e3e7d5f10f70bad22abe4a96",
+    "frame_set_revision": "sha256:49b0cc18b0cc6911997fdebeb2fca28569dc7bbb497f5dbedd753e8a83115f14",
     "files": [
       {
-        "byte_count": 513337,
+        "byte_count": 20593,
         "path": "composed-frames.json",
-        "sha256": "d261f2a95dd19e4dd9d504cb342adb3c7a1552a02b261089229cbdaaf0e62683"
+        "sha256": "d03e2d2593f3c79a8bf62b8aa3d64794ec55f39f409996393811b7a1229473aa"
       },
       {
-        "byte_count": 4037,
-        "path": "crop-health-decision.md",
-        "sha256": "666ebac3279a4be49fdb0d7b6c994ec2edbe1e6e2a54626339dbd33684246e64"
+        "byte_count": 8301,
+        "path": "modules/farm-overview-adapter.mjs",
+        "sha256": "9fb0462ceb5e07d69c99bec29a25a22d1720545d98d62aae2180674b7a7fb899"
       },
       {
-        "byte_count": 2266,
-        "path": "crop-health-declaration.json",
-        "sha256": "3afe32518de6e62e684b5d9677f9ed2d41ec50f7bfd0824cb76ae170a08dbd5b"
+        "byte_count": 2468,
+        "path": "overview-daynight-decision.md",
+        "sha256": "fde60be0a69d6971e7bccd3cf1d49517112364e8b83e3eb156849f6c163a9155"
       },
       {
-        "byte_count": 8633,
-        "path": "crop-health-presentation-decision.md",
-        "sha256": "8fc29a441666ba5128586ec7cfbe5c80615de425f462474b13ff011189d52b83"
-      },
-      {
-        "byte_count": 3820,
-        "path": "crop-health-presentation.json",
-        "sha256": "9dc7e78bac03453258f8f27e218159b9ce150e4c937f12e3af6122b66fd3cf48"
-      },
-      {
-        "byte_count": 39901,
-        "path": "crop-health-report.json",
-        "sha256": "1ec514427a679cb1a6206b3709f80333440e091f58a1b4de2e2137e3c4feb55c"
-      },
-      {
-        "byte_count": 11497,
-        "path": "crop-health-stage-sequence.json",
-        "sha256": "b7337a308b376e3238c3502fed2b742c1d674023cf67c87a09d84fb84dfe6699"
-      },
-      {
-        "byte_count": 28479,
-        "path": "four-beat-frames.json",
-        "sha256": "5f00a2fe196fd8b46533b69298cbc61c65c74e884c6e6b03cc5ea0d0f489b774"
-      },
-      {
-        "byte_count": 22762,
-        "path": "modules/farm-canonical-adapter.mjs",
-        "sha256": "059f81c2a69a541543d5fe08c0401d426f16b8711f994a649c30db388f8728e2"
-      },
-      {
-        "byte_count": 8350,
-        "path": "modules/non-shipping-crop-health-stage-presentation.mjs",
-        "sha256": "c3828d76392084ad775deaa99ec0320343948f2936c9563f6a5a91638681e6de"
-      },
-      {
-        "byte_count": 5491,
-        "path": "modules/non-shipping-crop-health-stage-projection.mjs",
-        "sha256": "d6e4993a08e2c6993e8abf6856d6403b324f38029dcdc37177ec3d1691ead8c3"
-      },
-      {
-        "byte_count": 7988,
-        "path": "modules/non-shipping-pest-spread-projection.mjs",
-        "sha256": "b1977888b2c2d81c0d96a65f84489fc0c749cc3d21bfc9a2db76a0794aa0c199"
-      },
-      {
-        "byte_count": 5582,
-        "path": "patrol-route-decision.md",
-        "sha256": "9a7dfd18d932185786f40864005821aa349d3ee5bdb18c5df601b3f62c81f6c5"
-      },
-      {
-        "byte_count": 18044,
-        "path": "patrol-route-report.json",
-        "sha256": "eaa4eb35ab9aa0646be7b605b1b0a8caf69467e647a4126b0e48b234b35ed773"
-      },
-      {
-        "byte_count": 321,
-        "path": "per-plant-spread-report.json",
-        "sha256": "50b50f090bdcd667031bd687fb508b89ad8fb1d098daacbe19efce87cefe2e63"
-      },
-      {
-        "byte_count": 6063,
-        "path": "pest-spread-chain.json",
-        "sha256": "4ba729d89155c09ad4ddeded5635340e7b532352e1561d9a797f270405de02a5"
-      },
-      {
-        "byte_count": 12463,
-        "path": "pest-spread-decision.md",
-        "sha256": "8093c074be67e3f6f4f0b64609b59d0fae2127c9f2e69ee4a383dcc94ef80c9e"
-      },
-      {
-        "byte_count": 1828,
-        "path": "pest-spread-declaration.json",
-        "sha256": "0ec1adeddb77784e18b388addc11192733df5f7d4751d1c7576085e12b92921e"
-      },
-      {
-        "byte_count": 7558,
-        "path": "pest-spread-report.json",
-        "sha256": "f2250e49540fc5d479c80362bb6bac4c05a96ddf37f73692b6fa4850f011bc5e"
-      },
-      {
-        "byte_count": 32523,
-        "path": "scenario-inputs.json",
-        "sha256": "1ee9f63ceb9ebba7377d89d2ba9121e76d0627bc48f428c9870ad98547dd9423"
+        "byte_count": 878,
+        "path": "overview-daynight-inputs.json",
+        "sha256": "a36e74c2a0e34ec95f008bc4c72a4f2ed0fb3d6f2b43646e7bf71e08db43a272"
       },
       {
         "byte_count": 3661741,
@@ -151,14 +65,14 @@
     "panel-core: licence UNSET by owner decision; GridStack (MIT): vendor/panel-core/GRIDSTACK_LICENSE.txt"
   ],
   "transforms": [
-    "dt/30e3f4b553c4fa2c/docs/viewer-common/site-layer-consumer.js: machine-local source comment removed"
+    "dt/b3c6b71a91672bde/docs/viewer-common/site-layer-consumer.js: machine-local source comment removed"
   ],
   "leak_scan_not_scanned": "GLB BIN chunks (vertex data, where short path patterns match by chance); each GLB JSON chunk is scanned",
   "meshopt": {
     "tool": "DT-Tourism scripts/terrain/meshopt_glb.mjs",
-    "tool_commit": "73c2cfd6312b84ce0c319a3e5983ec325c3d6db9",
+    "tool_commit": "9723771f5ed9a9c897ee8375646eae2cab2297ad",
     "tool_dirty": false,
-    "tool_sha256": "5c083f7e9d6a2ffc162ca9e317d9b6a2078363ad6b23b98bf55befe02f6b9ccd",
+    "tool_sha256": "ba96ac76cbfac71f3356f2b928a96123fdfd506591064aa105dbb8f4bff55ee1",
     "encoder": "meshoptimizer",
     "encoder_version": "0.24.0",
     "settings": "the script has no options; as for penghu: every bufferView packed with EXT_meshopt_compression, positions and all other views exact, normals octahedral-quantised at most 2 degrees, fallback buffer kept",
@@ -168,7 +82,7 @@
     ],
     "files": [
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/meshes/context-buildings.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/meshes/context-buildings.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -182,7 +96,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/meshes/context-roads.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/meshes/context-roads.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -196,7 +110,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/meshes/edges.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/meshes/edges.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -210,7 +124,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/meshes/farm-field-ridges.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/meshes/farm-field-ridges.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -224,7 +138,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/meshes/nodes.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/meshes/nodes.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -238,7 +152,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/meshes/river-ribbon.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/meshes/river-ribbon.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -252,7 +166,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/meshes/terrain.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/meshes/terrain.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -266,7 +180,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/meshes/trees.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/meshes/trees.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -280,7 +194,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/meshes/visitor-corridor.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/meshes/visitor-corridor.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -294,7 +208,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/buildings/sha256-4a46a823dc1c80e2a34cbbada40bf239fa1dbc2427041e449b215ef9c354529b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/buildings/sha256-4a46a823dc1c80e2a34cbbada40bf239fa1dbc2427041e449b215ef9c354529b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -308,7 +222,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/buildings/sha256-50b1ffd0ec2e272cd25fd430193e8e3fe55f5bbfa7f2f00ec775a5f5e5ec0da4.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/buildings/sha256-50b1ffd0ec2e272cd25fd430193e8e3fe55f5bbfa7f2f00ec775a5f5e5ec0da4.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -322,7 +236,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/context/sha256-40b7617024a25a8d97692420d903014ce622146b94066eb23562d5d737d4396d.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/context/sha256-40b7617024a25a8d97692420d903014ce622146b94066eb23562d5d737d4396d.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -336,7 +250,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/faces/sha256-039663f20887cd590a94dc412c10c8d11b35c276a468d2434f9fa940d91cd9b3.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/faces/sha256-039663f20887cd590a94dc412c10c8d11b35c276a468d2434f9fa940d91cd9b3.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -350,7 +264,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/faces/sha256-11a7858e58713962eecbaf019516a2083a79893545239337ab8fa03a46be04c9.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/faces/sha256-11a7858e58713962eecbaf019516a2083a79893545239337ab8fa03a46be04c9.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -364,7 +278,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/faces/sha256-22dda1b2ffdc081ad22c17d44bb1900d19b5dec1fca05eb0808279474f340b9d.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/faces/sha256-22dda1b2ffdc081ad22c17d44bb1900d19b5dec1fca05eb0808279474f340b9d.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -378,7 +292,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/faces/sha256-2b452b7d25f8cb7e5fa62dc7410cae8c7b9745c595d2a008844fda56f00b92c1.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/faces/sha256-2b452b7d25f8cb7e5fa62dc7410cae8c7b9745c595d2a008844fda56f00b92c1.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -392,7 +306,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/faces/sha256-7ede008cec2d9390053806064f9261999687c28af73c732a9a6742bbea2f2dd2.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/faces/sha256-7ede008cec2d9390053806064f9261999687c28af73c732a9a6742bbea2f2dd2.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -406,7 +320,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/faces/sha256-856ca1292a7150a667f8acbf9621c41f605b1493483cab2be147e9196fa13de9.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/faces/sha256-856ca1292a7150a667f8acbf9621c41f605b1493483cab2be147e9196fa13de9.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -420,7 +334,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/faces/sha256-aba6b698b589b561e01b53a42e3f790fcd13ac96204a68957317b97cd4dc0b0f.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/faces/sha256-aba6b698b589b561e01b53a42e3f790fcd13ac96204a68957317b97cd4dc0b0f.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -434,7 +348,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/faces/sha256-ebf37449f80091efdeb4e2d242d0c9159b53035a15f0c8c5e0010bb36aeaae00.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/faces/sha256-ebf37449f80091efdeb4e2d242d0c9159b53035a15f0c8c5e0010bb36aeaae00.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -448,7 +362,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-00679617679c3c6c3a03f0e54051b0da30c7ac33c0351cb94751cee28290d985.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-00679617679c3c6c3a03f0e54051b0da30c7ac33c0351cb94751cee28290d985.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -462,7 +376,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-00b486da6391d5c4c43c4a3ede08b4166faddf314ff836ac5f14912a34e0bf9b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-00b486da6391d5c4c43c4a3ede08b4166faddf314ff836ac5f14912a34e0bf9b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -476,7 +390,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-017865ec7394498b4227b6d1ae1ec2895b0d4cca1134234f91144748b5056789.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-017865ec7394498b4227b6d1ae1ec2895b0d4cca1134234f91144748b5056789.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -490,7 +404,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-02639bb45ce5004729504d1faf582ccc6d5cec8eda1c40645e5e84ab7673c603.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-02639bb45ce5004729504d1faf582ccc6d5cec8eda1c40645e5e84ab7673c603.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -504,7 +418,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-027a08335b806f0e888c5e637529d48caeba7bfce4e3a69aca46d573f8adc089.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-027a08335b806f0e888c5e637529d48caeba7bfce4e3a69aca46d573f8adc089.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -518,7 +432,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-03f597bebf3de9aa9ed15b30e823c0fd24ea445a5ab0030c4a7f2fe72714c87b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-03f597bebf3de9aa9ed15b30e823c0fd24ea445a5ab0030c4a7f2fe72714c87b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -532,7 +446,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-04401233079e2309afd1eba45dc3a1d536dfe27f12bb2735688b000a6f145d4e.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-04401233079e2309afd1eba45dc3a1d536dfe27f12bb2735688b000a6f145d4e.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -546,7 +460,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-06d50a8ea191b9206ab9cdfbee9e4fc1f73049db24455455b219c151c4ba29ab.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-06d50a8ea191b9206ab9cdfbee9e4fc1f73049db24455455b219c151c4ba29ab.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -560,7 +474,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-0774c1c77b032acc972af20ce9d3486d67e10176b96b84f2c1daa552f9e22bec.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-0774c1c77b032acc972af20ce9d3486d67e10176b96b84f2c1daa552f9e22bec.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -574,7 +488,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-07fa9038b38923232cc7906ebd037f65f4674309df89c1e7362f5097f6adb3d3.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-07fa9038b38923232cc7906ebd037f65f4674309df89c1e7362f5097f6adb3d3.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -588,7 +502,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-087001ea4319c454bb9c1dc272da6b4addcbd8a2e5a721565d150c82224b1a09.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-087001ea4319c454bb9c1dc272da6b4addcbd8a2e5a721565d150c82224b1a09.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -602,7 +516,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-08e199d0f40efbd23ff5b57d3220f6dab240d2f0b3a4002d8a2c95b879ed06b3.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-08e199d0f40efbd23ff5b57d3220f6dab240d2f0b3a4002d8a2c95b879ed06b3.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -616,7 +530,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-091a7a58a98b4afa6b7c855f9bc9d8d51460b8c1eccb7627da9a75a133968a1c.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-091a7a58a98b4afa6b7c855f9bc9d8d51460b8c1eccb7627da9a75a133968a1c.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -630,7 +544,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-09273fd14c32dcc3e5a7444698ffd7964dad6c252250624f10a5140c780e12c0.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-09273fd14c32dcc3e5a7444698ffd7964dad6c252250624f10a5140c780e12c0.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -644,7 +558,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-0aa4d9cea8c9837b8ec8156d7f8d2fd1a490c892729731e15939398e92efe0ab.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-0aa4d9cea8c9837b8ec8156d7f8d2fd1a490c892729731e15939398e92efe0ab.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -658,7 +572,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-0c162caa687874374f1bf8a5745cefd307e6d358e34a790e288b2fde1de64db5.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-0c162caa687874374f1bf8a5745cefd307e6d358e34a790e288b2fde1de64db5.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -672,7 +586,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-0e01f81f5a5609c2b42a89ef28c273ca6d8c428c59a05b80dcd438bab36a11b5.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-0e01f81f5a5609c2b42a89ef28c273ca6d8c428c59a05b80dcd438bab36a11b5.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -686,7 +600,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-0e4f8e9d88e77ab15a7417cd297600e3af39791ed5187854a5eb0c6c87b5f28c.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-0e4f8e9d88e77ab15a7417cd297600e3af39791ed5187854a5eb0c6c87b5f28c.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -700,7 +614,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-1012f1f4c53e63f84a5b4ad2d12d0b354537e4c4534ae3d3b0e9a254d1a72851.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-1012f1f4c53e63f84a5b4ad2d12d0b354537e4c4534ae3d3b0e9a254d1a72851.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -714,7 +628,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-111301922bdf5e4e71b5deba9b802dddc1567f0c88ebc62328b754caedf59793.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-111301922bdf5e4e71b5deba9b802dddc1567f0c88ebc62328b754caedf59793.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -728,7 +642,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-114ede08e7b874b338e24e10cdde214953e58065be7fe3778a2f9cda7099b226.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-114ede08e7b874b338e24e10cdde214953e58065be7fe3778a2f9cda7099b226.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -742,7 +656,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-11516dd8cdb123ba8b5c838dc4d161e18038c43aafcc16d5e88b9cd80fae77ad.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-11516dd8cdb123ba8b5c838dc4d161e18038c43aafcc16d5e88b9cd80fae77ad.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -756,7 +670,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-117c49272493647eaa22fee4eaa9c80e54050db0cb5c78ff30bc2b9062555bb7.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-117c49272493647eaa22fee4eaa9c80e54050db0cb5c78ff30bc2b9062555bb7.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -770,7 +684,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-12278df22b8d97d143438f51145adae233aeecc419b37adb2ab71a3326213800.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-12278df22b8d97d143438f51145adae233aeecc419b37adb2ab71a3326213800.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -784,7 +698,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-13e8eb0f980a2eb8b512d763528b0e660066202871eb818f73c7e7e6388ccb00.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-13e8eb0f980a2eb8b512d763528b0e660066202871eb818f73c7e7e6388ccb00.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -798,7 +712,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-140d1e5c384e99bf7e54eff1798b6b71573d8935433f898a5f8248c0d8c29904.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-140d1e5c384e99bf7e54eff1798b6b71573d8935433f898a5f8248c0d8c29904.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -812,7 +726,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-15462bb114cd568381aa03057619dffca695f58012f702515545b0dbaadf0321.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-15462bb114cd568381aa03057619dffca695f58012f702515545b0dbaadf0321.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -826,7 +740,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-15a506b42fc4cf26d7a359e3adfcf1f92c4ff7185d0186f25f3cd36db40fea1d.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-15a506b42fc4cf26d7a359e3adfcf1f92c4ff7185d0186f25f3cd36db40fea1d.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -840,7 +754,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-1619be399574d7f7103629d89b45c72552a4c22d7363dc4193099e40c4728984.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-1619be399574d7f7103629d89b45c72552a4c22d7363dc4193099e40c4728984.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -854,7 +768,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-162f327790b5c9f6e91307b68ac46fad5465b7bb0a70c09ba6138095117b0255.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-162f327790b5c9f6e91307b68ac46fad5465b7bb0a70c09ba6138095117b0255.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -868,7 +782,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-166c99def35902dea5647cff8f84cedf681b8dd4204132ca1b8fb65eecbfb72f.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-166c99def35902dea5647cff8f84cedf681b8dd4204132ca1b8fb65eecbfb72f.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -882,7 +796,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-16c249b9c4ee1929d42ad2b10963da6140d241c3a5792346642ac7997a823888.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-16c249b9c4ee1929d42ad2b10963da6140d241c3a5792346642ac7997a823888.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -896,7 +810,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-16db88210c36ece8f3ab3f4f86b1062639132cac0e8a1fc32cc54fa62370edc5.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-16db88210c36ece8f3ab3f4f86b1062639132cac0e8a1fc32cc54fa62370edc5.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -910,7 +824,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-16faf75f98568d4241f1434fbbfeb05582e065d6c3f4579eb6911de93d830a18.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-16faf75f98568d4241f1434fbbfeb05582e065d6c3f4579eb6911de93d830a18.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -924,7 +838,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-16fc8695fd5aed8ca109b90cf3e7a320a183d8fac13433ba7b249b8ddc382956.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-16fc8695fd5aed8ca109b90cf3e7a320a183d8fac13433ba7b249b8ddc382956.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -938,7 +852,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-17689ece6cee7251adba4d716a394138a5be281e4e89a5fb7bfab7b6ecd43b5f.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-17689ece6cee7251adba4d716a394138a5be281e4e89a5fb7bfab7b6ecd43b5f.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -952,7 +866,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-186742b5bebe1ebe503610b5e167e25f9cc1183a80406ce47e5a9bb072675891.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-186742b5bebe1ebe503610b5e167e25f9cc1183a80406ce47e5a9bb072675891.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -966,7 +880,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-18db029a0a31b1fae4426bde584b097bce2e763d93d97fbc8ccdff0064465231.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-18db029a0a31b1fae4426bde584b097bce2e763d93d97fbc8ccdff0064465231.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -980,7 +894,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-190940da0854aafdd1ddb35125716de769c105c4b7f997c81d93e9a27f7d92af.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-190940da0854aafdd1ddb35125716de769c105c4b7f997c81d93e9a27f7d92af.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -994,7 +908,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-1965fdc53cfe7e680092febebc6d1450915a47d4bbc9b284cabc32fb4e87955e.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-1965fdc53cfe7e680092febebc6d1450915a47d4bbc9b284cabc32fb4e87955e.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1008,7 +922,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-19a35227cfdffbf730af4d4ecfe213b5928ecb7e5825795dac9e292415827ffe.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-19a35227cfdffbf730af4d4ecfe213b5928ecb7e5825795dac9e292415827ffe.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1022,7 +936,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-19e54c8faa14e82fd533c16666dbcd9aec4526bad412f03699659a6716948103.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-19e54c8faa14e82fd533c16666dbcd9aec4526bad412f03699659a6716948103.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1036,7 +950,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-1b58aa1db41af27b72bf9498f8cad8e95f666eec4a68185ce3f09217dbadf1c2.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-1b58aa1db41af27b72bf9498f8cad8e95f666eec4a68185ce3f09217dbadf1c2.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1050,7 +964,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-1b83129924f950c43786ae26640e88529262dce1d4cc79a1cd42063d507b18c8.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-1b83129924f950c43786ae26640e88529262dce1d4cc79a1cd42063d507b18c8.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1064,7 +978,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-1ba3180573a9f5ce3961ef678b64ede74628af6591f783a0661d64eac0e531ae.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-1ba3180573a9f5ce3961ef678b64ede74628af6591f783a0661d64eac0e531ae.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1078,7 +992,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-1c8dde126aa4e7f472f709881eef49fda69ab2f7158edd9b0d68a8dec6b18161.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-1c8dde126aa4e7f472f709881eef49fda69ab2f7158edd9b0d68a8dec6b18161.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1092,7 +1006,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-1c96fcb9e8a4d658dcd99349f94ac81bffacce625be5dc4931c218d0eb7eedb7.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-1c96fcb9e8a4d658dcd99349f94ac81bffacce625be5dc4931c218d0eb7eedb7.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1106,7 +1020,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-1d21bfb046cce77937980254f2b939963251af7dfa16c94d4bacea3d101054d2.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-1d21bfb046cce77937980254f2b939963251af7dfa16c94d4bacea3d101054d2.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1120,7 +1034,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-1e58da1897102d75687391a06f9da174c014f20578887f836b3bf050e5908395.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-1e58da1897102d75687391a06f9da174c014f20578887f836b3bf050e5908395.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1134,7 +1048,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-1e77967cdc67f96e49767d81c8f2f4aa385f5ee51642da0f1870a5ecff44538e.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-1e77967cdc67f96e49767d81c8f2f4aa385f5ee51642da0f1870a5ecff44538e.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1148,7 +1062,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-1ef443a2d4116c4e5c8417f2fcfb159b85e76e2d8a541047bf2b3323876ee60a.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-1ef443a2d4116c4e5c8417f2fcfb159b85e76e2d8a541047bf2b3323876ee60a.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1162,7 +1076,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-21c02c99fbbf9b01a0a19b1b9f8e381a2644f317ee33c8d6fe5ea1910daf3435.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-21c02c99fbbf9b01a0a19b1b9f8e381a2644f317ee33c8d6fe5ea1910daf3435.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1176,7 +1090,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-24e9be0438f17b8e6799e8da45212c6f390e534f280e0ad35da0f52e224f9df3.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-24e9be0438f17b8e6799e8da45212c6f390e534f280e0ad35da0f52e224f9df3.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1190,7 +1104,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-24f33d0358ef8d555c8a4351a4e8114dd317ddb6699c0d846e4c71832b78f1c4.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-24f33d0358ef8d555c8a4351a4e8114dd317ddb6699c0d846e4c71832b78f1c4.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1204,7 +1118,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-25136a0c8c6267abaad9ee3a6d48282416aea57d2c03f6eb2e4c867def37ad6d.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-25136a0c8c6267abaad9ee3a6d48282416aea57d2c03f6eb2e4c867def37ad6d.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1218,7 +1132,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-25b0a8121bed5dadebf96a0f0ea288bfa280950e7303d527326107921fca0b13.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-25b0a8121bed5dadebf96a0f0ea288bfa280950e7303d527326107921fca0b13.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1232,7 +1146,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-25b25c43e35ebfda94951f50c5007a9652d28211162ca762d4320653a17f8290.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-25b25c43e35ebfda94951f50c5007a9652d28211162ca762d4320653a17f8290.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1246,7 +1160,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-269c75de534b67e9fb7d9de089a1ed6e7ea61b44f0cc58a1e3a921094d84e4f4.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-269c75de534b67e9fb7d9de089a1ed6e7ea61b44f0cc58a1e3a921094d84e4f4.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1260,7 +1174,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-27f7846e40bd853eb0ba77e38ee0b4f9a57d7b002e8ef6cc7a668a7b787aa295.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-27f7846e40bd853eb0ba77e38ee0b4f9a57d7b002e8ef6cc7a668a7b787aa295.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1274,7 +1188,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-2836701757c5d95ed1a5342a687fbe84d554d3c9ce1686dcb784699308a073e0.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-2836701757c5d95ed1a5342a687fbe84d554d3c9ce1686dcb784699308a073e0.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1288,7 +1202,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-297067c263d06c950d37e3bc88d1fb5829f99c8481a0756c4a904f195a134fba.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-297067c263d06c950d37e3bc88d1fb5829f99c8481a0756c4a904f195a134fba.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1302,7 +1216,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-29afbaa650767a6be3f2c9b8005fbb40fd3b2c836f56aaad24582e2b24946ba1.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-29afbaa650767a6be3f2c9b8005fbb40fd3b2c836f56aaad24582e2b24946ba1.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1316,7 +1230,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-2b333f1200b98e02da2051f2c4b154b4633b25425efd1c5a85e79c02c3432653.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-2b333f1200b98e02da2051f2c4b154b4633b25425efd1c5a85e79c02c3432653.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1330,7 +1244,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-2cac5a05fc85874eca7f165e989d249de4d91302dfaeabb690e31b50617e64db.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-2cac5a05fc85874eca7f165e989d249de4d91302dfaeabb690e31b50617e64db.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1344,7 +1258,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-2cbf18abf9daa9f5e0e42b9576fc745d0e245683abf3a0391be9f9ca81560b06.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-2cbf18abf9daa9f5e0e42b9576fc745d0e245683abf3a0391be9f9ca81560b06.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1358,7 +1272,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-2cf9a4663cc69a2da6c066ddba2d89f644a9475ae09f7213f87deb7a352bc247.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-2cf9a4663cc69a2da6c066ddba2d89f644a9475ae09f7213f87deb7a352bc247.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1372,7 +1286,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-2e0f9eaec82c677ef38c5d928132d787c1cd09dc739753e21f021f5be7720030.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-2e0f9eaec82c677ef38c5d928132d787c1cd09dc739753e21f021f5be7720030.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1386,7 +1300,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-2f3d87539e0a9eb3885e77248f1bb7d104a8e792dd28b8e29d919f03c3f33927.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-2f3d87539e0a9eb3885e77248f1bb7d104a8e792dd28b8e29d919f03c3f33927.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1400,7 +1314,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-2f7c0791ae58286db6634191d5c7cf2819af5fcc9b9a1b652e2c7fddc379e631.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-2f7c0791ae58286db6634191d5c7cf2819af5fcc9b9a1b652e2c7fddc379e631.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1414,7 +1328,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-2fc26ee6dac4b09dbbb406661d43c934832499a376003cbc40798b4f8cc82ef8.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-2fc26ee6dac4b09dbbb406661d43c934832499a376003cbc40798b4f8cc82ef8.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1428,7 +1342,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-3076e365b38933137324025b668cc1d424c33c34fb98ba8af717646f70f14fbf.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-3076e365b38933137324025b668cc1d424c33c34fb98ba8af717646f70f14fbf.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1442,7 +1356,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-30bf489e190ef84b1238d91b00a8d4d1614ee652541e2cee06f1720abd5af88f.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-30bf489e190ef84b1238d91b00a8d4d1614ee652541e2cee06f1720abd5af88f.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1456,7 +1370,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-317b1232f5b2610b93f0c08fffd9c856c20aeaccfa45fb75a8fe58e4e7f6c1ea.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-317b1232f5b2610b93f0c08fffd9c856c20aeaccfa45fb75a8fe58e4e7f6c1ea.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1470,7 +1384,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-31c42595f1303336e2429e3b03aea0aa8d157502f1010a8fb5042464e8e0bd9b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-31c42595f1303336e2429e3b03aea0aa8d157502f1010a8fb5042464e8e0bd9b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1484,7 +1398,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-3334a76e1de466bf6b67c65f6d9aba295a9c73a430d54e18d2ef46228ccef8b1.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-3334a76e1de466bf6b67c65f6d9aba295a9c73a430d54e18d2ef46228ccef8b1.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1498,7 +1412,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-34ce53af52ba3fac2d35b1473c262ba1ff48853385192f6d4ba2e7eef1e1e83b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-34ce53af52ba3fac2d35b1473c262ba1ff48853385192f6d4ba2e7eef1e1e83b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1512,7 +1426,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-362302a10ec4bd52177b894afa3295d6b73758fd0ec9e58464cced1df09b57b1.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-362302a10ec4bd52177b894afa3295d6b73758fd0ec9e58464cced1df09b57b1.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1526,7 +1440,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-36d4b33e5d5bdda42f8f2d258ffd96830f45a379de85088407887a01285aa593.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-36d4b33e5d5bdda42f8f2d258ffd96830f45a379de85088407887a01285aa593.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1540,7 +1454,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-372dcf9745eb822cdc84a1a96552299407acab576ad8053ee1ec484f71ae4424.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-372dcf9745eb822cdc84a1a96552299407acab576ad8053ee1ec484f71ae4424.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1554,7 +1468,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-38cf81930bcea5a10a442ff53b583acd6a22c25d00ca4dcf3a2e72ed1ce523d4.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-38cf81930bcea5a10a442ff53b583acd6a22c25d00ca4dcf3a2e72ed1ce523d4.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1568,7 +1482,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-3921717c8dd1548fad29205b67df2df4aeb467f9eaaa3cabdd9062d3b8802bfd.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-3921717c8dd1548fad29205b67df2df4aeb467f9eaaa3cabdd9062d3b8802bfd.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1582,7 +1496,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-39ee2b41ae45cb0ea6a36443c082a1ed5106f67e86e084b5c21b494d899f2621.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-39ee2b41ae45cb0ea6a36443c082a1ed5106f67e86e084b5c21b494d899f2621.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1596,7 +1510,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-3ab22b229054f88d27e4a8bf9bedef95cc2d1e04b2072d15c6170a9d5b800b5b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-3ab22b229054f88d27e4a8bf9bedef95cc2d1e04b2072d15c6170a9d5b800b5b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1610,7 +1524,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-3b33058f16439ab7e9836e1428114a23bc7056aca10b5f519312c9769f49e938.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-3b33058f16439ab7e9836e1428114a23bc7056aca10b5f519312c9769f49e938.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1624,7 +1538,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-3b51c94f4ba99e19f5ceacd28efc41325a528adc1dc01af9e9aea155407a9d3c.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-3b51c94f4ba99e19f5ceacd28efc41325a528adc1dc01af9e9aea155407a9d3c.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1638,7 +1552,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-3c1ad02cdb6dbea86401fe040adb61610460301f2c83bc2d42e3a120f03d8bb2.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-3c1ad02cdb6dbea86401fe040adb61610460301f2c83bc2d42e3a120f03d8bb2.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1652,7 +1566,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-3c6acae9efe817fa5b64a6f6a78748cef58cd04f9ab1507f0dbadd28926192f9.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-3c6acae9efe817fa5b64a6f6a78748cef58cd04f9ab1507f0dbadd28926192f9.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1666,7 +1580,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-3e2a6184888c620d8731423d1b76f286297aba5045ef4ec80c4baff16815d2da.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-3e2a6184888c620d8731423d1b76f286297aba5045ef4ec80c4baff16815d2da.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1680,7 +1594,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-3ef9e8fbbc46e2d408de8357f078bd8ea711d5dd13e20135c1f4960b85f39fc6.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-3ef9e8fbbc46e2d408de8357f078bd8ea711d5dd13e20135c1f4960b85f39fc6.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1694,7 +1608,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-3f088fbf745b899fa2463b27f56d898dcb17f7d55dfc473da2d82470b24ef64a.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-3f088fbf745b899fa2463b27f56d898dcb17f7d55dfc473da2d82470b24ef64a.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1708,7 +1622,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-401a0edaf33bf9023fe6c3b566cd103d8983d7cc8ee7232cd015ab88fcd9daa2.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-401a0edaf33bf9023fe6c3b566cd103d8983d7cc8ee7232cd015ab88fcd9daa2.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1722,7 +1636,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-409d9b8645c5fe38808ee6ccf504be7684b02d5d35cd8c46559757853987bc72.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-409d9b8645c5fe38808ee6ccf504be7684b02d5d35cd8c46559757853987bc72.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1736,7 +1650,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-4251a63bcbee6b3bfb73a02d352afcd5b2a9fdadd152b4c5f2ac64ab5a6387ae.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-4251a63bcbee6b3bfb73a02d352afcd5b2a9fdadd152b4c5f2ac64ab5a6387ae.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1750,7 +1664,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-4497971a66175c8966928c134d0750c0d3b8956132fe47a963e4e1568b4b7092.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-4497971a66175c8966928c134d0750c0d3b8956132fe47a963e4e1568b4b7092.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1764,7 +1678,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-44c55025d6938e39409a0c668a76ce3cbcc47b43453ec39f4d633b02e05f023c.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-44c55025d6938e39409a0c668a76ce3cbcc47b43453ec39f4d633b02e05f023c.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1778,7 +1692,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-44dc7d332b6e9eb4f6adf0e855d4ceabc8fbdf64b0f6e42e49233e6883cfb7c8.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-44dc7d332b6e9eb4f6adf0e855d4ceabc8fbdf64b0f6e42e49233e6883cfb7c8.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1792,7 +1706,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-45391aca0944b4f18392194f42fd20816e4f711f3f8d561756756e20a97c84e7.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-45391aca0944b4f18392194f42fd20816e4f711f3f8d561756756e20a97c84e7.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1806,7 +1720,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-4688e4fd9056c985f92e3acdf9602ca1f255bcbafe94bd169d67d5d7f2b19f6f.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-4688e4fd9056c985f92e3acdf9602ca1f255bcbafe94bd169d67d5d7f2b19f6f.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1820,7 +1734,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-470bd7c21f2c1bed1eb0ebc70dd115da7eb7a0ae5ecc6276396ad699bcbbb9df.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-470bd7c21f2c1bed1eb0ebc70dd115da7eb7a0ae5ecc6276396ad699bcbbb9df.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1834,7 +1748,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-47cc7c91eb471baaf1c1abd4d9dc08a9c9f64c4ca71a40ad7f665728ef6cd122.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-47cc7c91eb471baaf1c1abd4d9dc08a9c9f64c4ca71a40ad7f665728ef6cd122.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1848,7 +1762,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-4a34cf1321cfdf288f8cc0a0b161333482c695a1274f0544ee9cf6f09827d695.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-4a34cf1321cfdf288f8cc0a0b161333482c695a1274f0544ee9cf6f09827d695.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1862,7 +1776,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-4cbfe4deda6fd64d50d063856da79337a3ac8222db48f08ddfb6cf25424ae086.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-4cbfe4deda6fd64d50d063856da79337a3ac8222db48f08ddfb6cf25424ae086.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1876,7 +1790,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-4e0558aa6dcdbc35c8b0b409da27fdbdc582f82b146e10b06150cbfe16022193.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-4e0558aa6dcdbc35c8b0b409da27fdbdc582f82b146e10b06150cbfe16022193.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1890,7 +1804,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-511cc90ec7eaa36de6b00f5ebb4c3b51b17b3984603dc7ab58562fba6d444c1a.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-511cc90ec7eaa36de6b00f5ebb4c3b51b17b3984603dc7ab58562fba6d444c1a.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1904,7 +1818,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-554b2a30c71e5e3cc7931c8a22be2a3990048578f3b5dc0e238108a3064aadfb.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-554b2a30c71e5e3cc7931c8a22be2a3990048578f3b5dc0e238108a3064aadfb.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1918,7 +1832,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-5584807b599115c65d5255f3701b2c1618994ae6099e012ece42631a3658da6f.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-5584807b599115c65d5255f3701b2c1618994ae6099e012ece42631a3658da6f.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1932,7 +1846,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-558ddfbd151a5806f3f07432165db80393399a72fa5e043b8d666c6a2f54e84b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-558ddfbd151a5806f3f07432165db80393399a72fa5e043b8d666c6a2f54e84b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1946,7 +1860,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-55b34b85ed78a37504c494c5f01f40f5ddaf2a1f563c5f03a8ecfbb45cc8e9b0.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-55b34b85ed78a37504c494c5f01f40f5ddaf2a1f563c5f03a8ecfbb45cc8e9b0.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1960,7 +1874,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-55e6f7b0e32942f5bdb89642f09bbc94de5904d7240ffebcbfc356e96bdcb4ba.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-55e6f7b0e32942f5bdb89642f09bbc94de5904d7240ffebcbfc356e96bdcb4ba.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1974,7 +1888,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-570558ae14dcf2932c87104338d6fa617963ed6bf85f5d46f33d5b89c424f916.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-570558ae14dcf2932c87104338d6fa617963ed6bf85f5d46f33d5b89c424f916.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -1988,7 +1902,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-578ec189ed583ea0fe2f57ca89e0fb4637ecea6b65b726f488c7c9fd3e79977a.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-578ec189ed583ea0fe2f57ca89e0fb4637ecea6b65b726f488c7c9fd3e79977a.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2002,7 +1916,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-58a5f434852aa122ac327292196676af10b7c02f2853d3791bba3a95ea95e12b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-58a5f434852aa122ac327292196676af10b7c02f2853d3791bba3a95ea95e12b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2016,7 +1930,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-59ee393f8025510efdd4ca8b73ddca25ef22a69febe4981e1a614d176a714ed5.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-59ee393f8025510efdd4ca8b73ddca25ef22a69febe4981e1a614d176a714ed5.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2030,7 +1944,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-5baba68f4f46a0f452781de274a25c1e7d5abd83e8d50fb94566da991c0e9e9b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-5baba68f4f46a0f452781de274a25c1e7d5abd83e8d50fb94566da991c0e9e9b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2044,7 +1958,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-5cefd3513e4d844258ce5d82adebb465652f60a4a4875be8c6d0c0f6bb290735.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-5cefd3513e4d844258ce5d82adebb465652f60a4a4875be8c6d0c0f6bb290735.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2058,7 +1972,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-5d0038fdb49755cd01f488dd2325b2de90aefa9b3dabe9c7d284929967aa0891.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-5d0038fdb49755cd01f488dd2325b2de90aefa9b3dabe9c7d284929967aa0891.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2072,7 +1986,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-5e553cca86ccae6b50f90032a09dc050ad1119ec65cd6a1a2189faf0afd02750.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-5e553cca86ccae6b50f90032a09dc050ad1119ec65cd6a1a2189faf0afd02750.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2086,7 +2000,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-5eb3e31a2fd1adfcc1f531b2e062776e29fb46d2c6a3d12ef4f603b8a09d9627.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-5eb3e31a2fd1adfcc1f531b2e062776e29fb46d2c6a3d12ef4f603b8a09d9627.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2100,7 +2014,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-62458a398f4b514551bc581d464a724b3abca375be8ed88741545ce66a95c004.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-62458a398f4b514551bc581d464a724b3abca375be8ed88741545ce66a95c004.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2114,7 +2028,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-6290bc59889d2423fb5fb0d73cb19e7193069f81360e92711e93a6eff3b2de8d.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-6290bc59889d2423fb5fb0d73cb19e7193069f81360e92711e93a6eff3b2de8d.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2128,7 +2042,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-6374c6e4ef8b08c6545638367bc0c8bdec54906cc2d62f18c9e1a5f5b95a3596.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-6374c6e4ef8b08c6545638367bc0c8bdec54906cc2d62f18c9e1a5f5b95a3596.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2142,7 +2056,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-638b89fb30f513d1b37adff752eafcde9302b06139c7bf57afd5195db654becd.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-638b89fb30f513d1b37adff752eafcde9302b06139c7bf57afd5195db654becd.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2156,7 +2070,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-639fb93a9e28b3a4300a1d64deb23735298b8b7172539b306ac019f24f2de46d.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-639fb93a9e28b3a4300a1d64deb23735298b8b7172539b306ac019f24f2de46d.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2170,7 +2084,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-653d6ae506acde69920e8ba1776298ab1c427f3b78a6a51ce360240104edac42.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-653d6ae506acde69920e8ba1776298ab1c427f3b78a6a51ce360240104edac42.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2184,7 +2098,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-6734d4c63ae604148919a3451fa7caa4db11a79fa6e7099186179490d93e038b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-6734d4c63ae604148919a3451fa7caa4db11a79fa6e7099186179490d93e038b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2198,7 +2112,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-674028ecf69542786e461528f07b86166f488121f4be0bd70f70c025f894da93.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-674028ecf69542786e461528f07b86166f488121f4be0bd70f70c025f894da93.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2212,7 +2126,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-67882108f4c18ff92ab8ca22a8a58816aac82a4c4d65fb6b8a22d37fbc88a787.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-67882108f4c18ff92ab8ca22a8a58816aac82a4c4d65fb6b8a22d37fbc88a787.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2226,7 +2140,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-695a96a456065dcd22ede1e637408e7a72da1f310355b0441c698763c76fedd5.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-695a96a456065dcd22ede1e637408e7a72da1f310355b0441c698763c76fedd5.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2240,7 +2154,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-6d213d8de0087ee4f94bb2e477347749eb9f99c65fd093eae5d6b990efac1f9a.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-6d213d8de0087ee4f94bb2e477347749eb9f99c65fd093eae5d6b990efac1f9a.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2254,7 +2168,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-6e98f9a96b91fed0d44d7f42fb8415be5db6708358ab37ca5c228ffd2a4d78b8.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-6e98f9a96b91fed0d44d7f42fb8415be5db6708358ab37ca5c228ffd2a4d78b8.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2268,7 +2182,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-705fd0f09cc7e554556b8c27a5e4162a1819c200b6396deb2e164b9ddc9238f1.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-705fd0f09cc7e554556b8c27a5e4162a1819c200b6396deb2e164b9ddc9238f1.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2282,7 +2196,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-71334d4d7e35476224d31c2e16facaca6c29358d5408e66d88daf933c350cc30.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-71334d4d7e35476224d31c2e16facaca6c29358d5408e66d88daf933c350cc30.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2296,7 +2210,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-715f4ea73ff4bb2dd54b9ef5524d125ce556fbb92609b47d9f0a0db9b84b15de.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-715f4ea73ff4bb2dd54b9ef5524d125ce556fbb92609b47d9f0a0db9b84b15de.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2310,7 +2224,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-7586b8499f9a3f2e238cb35f5f8c80e9865ac0f1b82728daf23fb7288ab48665.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-7586b8499f9a3f2e238cb35f5f8c80e9865ac0f1b82728daf23fb7288ab48665.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2324,7 +2238,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-768fd7585aa225fbc28e80bb3c11562aa53bba401a5f3296cb0183b29f1edaaa.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-768fd7585aa225fbc28e80bb3c11562aa53bba401a5f3296cb0183b29f1edaaa.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2338,7 +2252,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-778166cf312d879d710c210f2a813ec6a289977dcbf9628cd0374710c41f407f.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-778166cf312d879d710c210f2a813ec6a289977dcbf9628cd0374710c41f407f.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2352,7 +2266,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-778a905e3713fae594215b38363124671a3509c89f03ea5d5a9a78ccc530e6e3.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-778a905e3713fae594215b38363124671a3509c89f03ea5d5a9a78ccc530e6e3.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2366,7 +2280,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-785c0a1da3ebaf2b1ba5ff69fb0cea9bfd60ee24dc4f4c2bd63b3401c9a6dd9e.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-785c0a1da3ebaf2b1ba5ff69fb0cea9bfd60ee24dc4f4c2bd63b3401c9a6dd9e.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2380,7 +2294,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-786585b5511ac0f8655d7a74cfadaf86e5cfe49aa98d058f2a46251854a4e688.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-786585b5511ac0f8655d7a74cfadaf86e5cfe49aa98d058f2a46251854a4e688.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2394,7 +2308,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-78f1cb3e2f0b104772f834ffc8f4b56c7acf6ceb8c80af364401af23815efcff.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-78f1cb3e2f0b104772f834ffc8f4b56c7acf6ceb8c80af364401af23815efcff.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2408,7 +2322,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-790c5ead1ffd1e1bf39771a35ab89185474062d2ff5928666771e068bf349ac3.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-790c5ead1ffd1e1bf39771a35ab89185474062d2ff5928666771e068bf349ac3.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2422,7 +2336,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-79cdec71d80e555fb3b6787dd74c05e750e971f7db78a26054dacf72e2e8c942.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-79cdec71d80e555fb3b6787dd74c05e750e971f7db78a26054dacf72e2e8c942.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2436,7 +2350,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-7a9336e6f8f05624f6f7465ea74bb2f98636b071ebf6468e3e7e6a0ea55d052b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-7a9336e6f8f05624f6f7465ea74bb2f98636b071ebf6468e3e7e6a0ea55d052b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2450,7 +2364,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-7e693395fcdd58c3c95f9b4e2e21f158f3a4a9a317822ffe3596452d97ed78b7.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-7e693395fcdd58c3c95f9b4e2e21f158f3a4a9a317822ffe3596452d97ed78b7.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2464,7 +2378,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-7efa745f8b59afd4877fdc079a01c36ea0ea13d83b502103ebdd5c1e8c0eaf4c.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-7efa745f8b59afd4877fdc079a01c36ea0ea13d83b502103ebdd5c1e8c0eaf4c.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2478,7 +2392,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-7fdd4531c00a9f0625a2d28002315eb65cf7d13f30ec270b394a692baeab8211.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-7fdd4531c00a9f0625a2d28002315eb65cf7d13f30ec270b394a692baeab8211.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2492,7 +2406,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-828e22fb7060c0bcd272c194b3a90b40f0f4394b3abeb7b725d445b0e05a3b05.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-828e22fb7060c0bcd272c194b3a90b40f0f4394b3abeb7b725d445b0e05a3b05.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2506,7 +2420,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-8335ed391b4d4f12e53dd934efdf0d750660b2c9c419f0dace8cd75c6a55fbe6.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-8335ed391b4d4f12e53dd934efdf0d750660b2c9c419f0dace8cd75c6a55fbe6.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2520,7 +2434,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-83d533c3b93a0cefed7a0fd3522a254f589cf4da187c1d1f59845acbf3baef21.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-83d533c3b93a0cefed7a0fd3522a254f589cf4da187c1d1f59845acbf3baef21.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2534,7 +2448,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-840a2bf6aa728632612a4a06140dda372a8e58918f08c11e94d178a3e0a16988.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-840a2bf6aa728632612a4a06140dda372a8e58918f08c11e94d178a3e0a16988.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2548,7 +2462,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-84aa0a7d4217536012d31d9773e87008d879815c425cf1d30cd197216cc08d98.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-84aa0a7d4217536012d31d9773e87008d879815c425cf1d30cd197216cc08d98.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2562,7 +2476,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-84c9a4767f704919773b4aabf7cb1ae51ea156a19177089d0fc494bf474bd423.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-84c9a4767f704919773b4aabf7cb1ae51ea156a19177089d0fc494bf474bd423.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2576,7 +2490,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-862eda59531ee9f47cb5d2dfaad8c51d3519781e54920552ce6a4bb466df97f1.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-862eda59531ee9f47cb5d2dfaad8c51d3519781e54920552ce6a4bb466df97f1.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2590,7 +2504,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-8645c4dd7a83b61db4147ddef7c5bfed3e65dfd93e1c2d0d53b5b5bbecad8385.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-8645c4dd7a83b61db4147ddef7c5bfed3e65dfd93e1c2d0d53b5b5bbecad8385.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2604,7 +2518,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-8693811fd2af99000e2bc33c6c8259390ff2ab833e0b7c3008085ef15c615cf4.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-8693811fd2af99000e2bc33c6c8259390ff2ab833e0b7c3008085ef15c615cf4.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2618,7 +2532,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-86d479b941b3be8683ee4be1bace151a70f394188803bd0cb2a42086f573c589.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-86d479b941b3be8683ee4be1bace151a70f394188803bd0cb2a42086f573c589.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2632,7 +2546,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-87fa42e22a61b22244127bae6cbed7e7dbb8fd9dd7ceda0344f2d25eea085f52.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-87fa42e22a61b22244127bae6cbed7e7dbb8fd9dd7ceda0344f2d25eea085f52.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2646,7 +2560,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-893afceeb0c1f864fe17f2a45a25c5eb9519b41be3d14ecaff72a7fa3bc7875f.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-893afceeb0c1f864fe17f2a45a25c5eb9519b41be3d14ecaff72a7fa3bc7875f.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2660,7 +2574,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-8aee35fc97281b66f7d391406e20275195cd8a2e868e7443beb616a82a31ba11.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-8aee35fc97281b66f7d391406e20275195cd8a2e868e7443beb616a82a31ba11.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2674,7 +2588,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-8b7fe987fbbaa61679686f5efda89752aff55f6631c1d22874a8c24a1f6b108b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-8b7fe987fbbaa61679686f5efda89752aff55f6631c1d22874a8c24a1f6b108b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2688,7 +2602,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-8d9393a351da855c3de5d16ece789dcf80f38276b6271c739de50b9914c096fc.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-8d9393a351da855c3de5d16ece789dcf80f38276b6271c739de50b9914c096fc.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2702,7 +2616,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-8d9fdabebe6930c5473c457e66bb794496160aa52d55add5764f0d98f7679a66.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-8d9fdabebe6930c5473c457e66bb794496160aa52d55add5764f0d98f7679a66.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2716,7 +2630,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-8e3d8387fe000ed6c92a24947da48fd6312fc7e6889798dfb386639fe8be38f8.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-8e3d8387fe000ed6c92a24947da48fd6312fc7e6889798dfb386639fe8be38f8.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2730,7 +2644,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-8e7cc526eb41faf47a04f0dc27f096bc6054a610d6e4c28d20298fea4aee7275.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-8e7cc526eb41faf47a04f0dc27f096bc6054a610d6e4c28d20298fea4aee7275.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2744,7 +2658,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-8f623f9bee23c2d369042870000edb37611c6a926b73b10dd57c76f9799c462c.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-8f623f9bee23c2d369042870000edb37611c6a926b73b10dd57c76f9799c462c.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2758,7 +2672,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-906caf9319deda7c09c89bb25e75c61f5bfb5326e89bbcd03f2a1bdcad578c0a.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-906caf9319deda7c09c89bb25e75c61f5bfb5326e89bbcd03f2a1bdcad578c0a.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2772,7 +2686,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-90de0d7d68143ed72320b1846a7a709aed363a401f94d130f7dff6d85273e18b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-90de0d7d68143ed72320b1846a7a709aed363a401f94d130f7dff6d85273e18b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2786,7 +2700,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-919f9e7d12e8a187af1c5d63e05f01fb723d312311a3d0f425d59e1f2c65221d.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-919f9e7d12e8a187af1c5d63e05f01fb723d312311a3d0f425d59e1f2c65221d.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2800,7 +2714,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-91ea192c92903d389aef1f7d83f2d482313afe8a545ddebaf3f601f2aaef4079.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-91ea192c92903d389aef1f7d83f2d482313afe8a545ddebaf3f601f2aaef4079.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2814,7 +2728,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-92cd8339861bf434bd031d83f0b3d7d0965595abf7bed67c197b7adc758b890d.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-92cd8339861bf434bd031d83f0b3d7d0965595abf7bed67c197b7adc758b890d.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2828,7 +2742,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-936de24210c3cb477ce359547c249ce1dd1367e731a1082654d1301556bd89a5.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-936de24210c3cb477ce359547c249ce1dd1367e731a1082654d1301556bd89a5.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2842,7 +2756,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-93fdc1a683d12279e26316ec8efac4bc24de376f5bb5f04fa9ad2333915d6f8c.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-93fdc1a683d12279e26316ec8efac4bc24de376f5bb5f04fa9ad2333915d6f8c.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2856,7 +2770,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-944ccba2ab866c3207163693b8edde9309d267146c46336854f8290fcb596b3b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-944ccba2ab866c3207163693b8edde9309d267146c46336854f8290fcb596b3b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2870,7 +2784,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-948b305801097c0985537d8f84a983bee3ea7f5569e464b77dcd2fffafb54ad4.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-948b305801097c0985537d8f84a983bee3ea7f5569e464b77dcd2fffafb54ad4.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2884,7 +2798,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-954a477dddaa847cdae38c5c7db7cc8ad160881835a37cd488c59d4cc6beb02f.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-954a477dddaa847cdae38c5c7db7cc8ad160881835a37cd488c59d4cc6beb02f.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2898,7 +2812,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-95563d2d4bbb9b1e6941c199a61563c732d4a9c784c71f14a4bb4b3a5c9f597a.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-95563d2d4bbb9b1e6941c199a61563c732d4a9c784c71f14a4bb4b3a5c9f597a.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2912,7 +2826,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-959964c3c73187c0cf7ced2b505b20d640839e355d2afd3a1558db096e5fe9e4.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-959964c3c73187c0cf7ced2b505b20d640839e355d2afd3a1558db096e5fe9e4.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2926,7 +2840,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-96041b088a84f1911a77a7fa29cb4d693e05aa4f073005918d304e5758ddf523.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-96041b088a84f1911a77a7fa29cb4d693e05aa4f073005918d304e5758ddf523.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2940,7 +2854,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-9632f9b7da2eb627f5ccf6f387fa63f058e6a0f8cbbedcfe9330f104e98f1bd4.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-9632f9b7da2eb627f5ccf6f387fa63f058e6a0f8cbbedcfe9330f104e98f1bd4.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2954,7 +2868,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-967619b543bf91473e2cd8c84a64b577e54de1dc38bed5fddf4adce71d717e9b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-967619b543bf91473e2cd8c84a64b577e54de1dc38bed5fddf4adce71d717e9b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2968,7 +2882,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-96821e675e3e194a4bee9143295470081c9a71848c54358580ef52a92e1c5cda.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-96821e675e3e194a4bee9143295470081c9a71848c54358580ef52a92e1c5cda.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2982,7 +2896,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-98a433a8b89fd483dc7b9c94be0476015e5c384b3439553a8e0c05a7c15439bd.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-98a433a8b89fd483dc7b9c94be0476015e5c384b3439553a8e0c05a7c15439bd.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -2996,7 +2910,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-9b3598234129d4b08de63e2d1586806803b657ee9e46565b28110e31e54b81e3.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-9b3598234129d4b08de63e2d1586806803b657ee9e46565b28110e31e54b81e3.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3010,7 +2924,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-9c33c8a9d845e96fce561bbcaa4d76341d95592f460f7b3033a7b8c2f5f5504c.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-9c33c8a9d845e96fce561bbcaa4d76341d95592f460f7b3033a7b8c2f5f5504c.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3024,7 +2938,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-9c5c801f484d628ae161ef39334473602cdb2e89eba335193aad537009f31d67.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-9c5c801f484d628ae161ef39334473602cdb2e89eba335193aad537009f31d67.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3038,7 +2952,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-9eeb22404c526059dc9ea2ceaae5774275bdf14359d57c3fb4584dc2df669ea8.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-9eeb22404c526059dc9ea2ceaae5774275bdf14359d57c3fb4584dc2df669ea8.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3052,7 +2966,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-9f5a57649fcec23a4332a27642ce504ff2693e90b86e46c48601e16976d2e3a5.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-9f5a57649fcec23a4332a27642ce504ff2693e90b86e46c48601e16976d2e3a5.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3066,7 +2980,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-9fddf8b20bab8460f3f14b5b45807a90e035fb319837cbfc3dfe9233652b1e82.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-9fddf8b20bab8460f3f14b5b45807a90e035fb319837cbfc3dfe9233652b1e82.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3080,7 +2994,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-a0f6a42333b10872b9fdf7aa3e8785df04f2a5d18e9d8d78a64c5d139cb35f47.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-a0f6a42333b10872b9fdf7aa3e8785df04f2a5d18e9d8d78a64c5d139cb35f47.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3094,7 +3008,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-a348d849682ef5f006a4587c320876759fba6215d4bed62627bf99110e1e6c3c.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-a348d849682ef5f006a4587c320876759fba6215d4bed62627bf99110e1e6c3c.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3108,7 +3022,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-a522d4e44e9b12824a9e05d4498f2b721f00010385dc0380de04c12e3463a3d7.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-a522d4e44e9b12824a9e05d4498f2b721f00010385dc0380de04c12e3463a3d7.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3122,7 +3036,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-a5871b61d84e74b04c0dc5d5d44a234fdca1d42f501153f7a7c8cfbda6717c40.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-a5871b61d84e74b04c0dc5d5d44a234fdca1d42f501153f7a7c8cfbda6717c40.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3136,7 +3050,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-a5b6bd61e191c5fcbdac85b92212855a6b503dd0f2df91cefe64f474660b2fa9.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-a5b6bd61e191c5fcbdac85b92212855a6b503dd0f2df91cefe64f474660b2fa9.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3150,7 +3064,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-a642c51d2e4f4e997de6e48d9da009f7d115e0a7679bbe800a72b776b6c7fcfa.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-a642c51d2e4f4e997de6e48d9da009f7d115e0a7679bbe800a72b776b6c7fcfa.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3164,7 +3078,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-a67664b13f7edc4c7bac6f78138bf2a6c9cda42cb8d7572c3e85168c1cf113c2.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-a67664b13f7edc4c7bac6f78138bf2a6c9cda42cb8d7572c3e85168c1cf113c2.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3178,7 +3092,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-a6bc2bd9e17cf8f853e758cd7ecb8f97fc5eeba52a3393cd6c71ec22e9fb9695.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-a6bc2bd9e17cf8f853e758cd7ecb8f97fc5eeba52a3393cd6c71ec22e9fb9695.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3192,7 +3106,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-a85b5007cd48003957406ed493a84c082c808fa0cd7ef1f013d117a15f13644c.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-a85b5007cd48003957406ed493a84c082c808fa0cd7ef1f013d117a15f13644c.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3206,7 +3120,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-a88a68537555c288ad37c07f8a58b94a2d0407172ca9bac6f6ac851014250e08.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-a88a68537555c288ad37c07f8a58b94a2d0407172ca9bac6f6ac851014250e08.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3220,7 +3134,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-a8b8912cb164e9744772086b6a967610a0d319d7f48892113b7613ea8e700626.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-a8b8912cb164e9744772086b6a967610a0d319d7f48892113b7613ea8e700626.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3234,7 +3148,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-a8ebf9b703044c04fe1220c563fd1041cbceb5c604fbfb4d10aeb4089cef7861.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-a8ebf9b703044c04fe1220c563fd1041cbceb5c604fbfb4d10aeb4089cef7861.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3248,7 +3162,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-aa57937a9888e557f6caf85cd02db0d4ab0418f841a334090ad5e11d7c4c9e90.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-aa57937a9888e557f6caf85cd02db0d4ab0418f841a334090ad5e11d7c4c9e90.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3262,7 +3176,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-ab0bb7e467acd7e71c24dc11b6b466e59e96fd59e88f07ada0df2e7acec471d6.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-ab0bb7e467acd7e71c24dc11b6b466e59e96fd59e88f07ada0df2e7acec471d6.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3276,7 +3190,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-ac3eaec1a7ef0a47681a1a8db24ebe8b5417d67983c64426dc46c5060d86af9a.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-ac3eaec1a7ef0a47681a1a8db24ebe8b5417d67983c64426dc46c5060d86af9a.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3290,7 +3204,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-accc895621d834936f1b128c1b89af24a24e50c309d4495b2667c2fd101303f5.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-accc895621d834936f1b128c1b89af24a24e50c309d4495b2667c2fd101303f5.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3304,7 +3218,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-ad1d248c2024f1000c674b1e6eda275add01016e1f2a912595295d3057146593.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-ad1d248c2024f1000c674b1e6eda275add01016e1f2a912595295d3057146593.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3318,7 +3232,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-ad6727e34d2fe18cad48e8dc1ac8694ed8cc6809dc7af3f1ef4179db9ad65f07.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-ad6727e34d2fe18cad48e8dc1ac8694ed8cc6809dc7af3f1ef4179db9ad65f07.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3332,7 +3246,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-ae784ad4808cb1be1365fcb747f0f75dcc1c5ab0b2142799cdc57d1559be0a22.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-ae784ad4808cb1be1365fcb747f0f75dcc1c5ab0b2142799cdc57d1559be0a22.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3346,7 +3260,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-afcdaec55f84447f40278f9d33547013b535387bc05ac44bbbb05bd7ee66633b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-afcdaec55f84447f40278f9d33547013b535387bc05ac44bbbb05bd7ee66633b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3360,7 +3274,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-afd80393b4b986c593fc6b2a9b98b7d951d055e72369ee42a91880564eba96bc.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-afd80393b4b986c593fc6b2a9b98b7d951d055e72369ee42a91880564eba96bc.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3374,7 +3288,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-b07654b668a6a72f87de9392c1b5bddc6d9f349389115d5ac07788e7e3289f5f.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-b07654b668a6a72f87de9392c1b5bddc6d9f349389115d5ac07788e7e3289f5f.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3388,7 +3302,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-b244e55ca41f958f861e880084d83546ef08307d8bd3a347b82379d2dd6bfb78.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-b244e55ca41f958f861e880084d83546ef08307d8bd3a347b82379d2dd6bfb78.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3402,7 +3316,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-b289267a97d894121863c5bf6fe7dae326bd1ba0b2c6955917406a511503eeb2.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-b289267a97d894121863c5bf6fe7dae326bd1ba0b2c6955917406a511503eeb2.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3416,7 +3330,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-b553edf1b5516c2bc7452cae716a1e0dcb7f5e175b09b9b5e267bdada286ebc7.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-b553edf1b5516c2bc7452cae716a1e0dcb7f5e175b09b9b5e267bdada286ebc7.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3430,7 +3344,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-b5e97ea656d558921e0e1499e851b9b81b74eb8071879a1c8ede5f5c96669e43.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-b5e97ea656d558921e0e1499e851b9b81b74eb8071879a1c8ede5f5c96669e43.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3444,7 +3358,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-b64127e98ded3123e965b754fda521e68a8ba45019a0f40c9a6efdd45ea356fe.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-b64127e98ded3123e965b754fda521e68a8ba45019a0f40c9a6efdd45ea356fe.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3458,7 +3372,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-b6ed178d5628f06155dfb7b951e49ecd4f4c74218c44d52ec4d19895565d9c4f.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-b6ed178d5628f06155dfb7b951e49ecd4f4c74218c44d52ec4d19895565d9c4f.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3472,7 +3386,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-b82239fc76c129a587414054f7d6bf8f2afab472166ca1190d269d39991cc0fe.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-b82239fc76c129a587414054f7d6bf8f2afab472166ca1190d269d39991cc0fe.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3486,7 +3400,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-b8f95fd58b0d281aeb9ab6acf4dac8d2ddaad4af45d34d879b5b37bffddf817f.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-b8f95fd58b0d281aeb9ab6acf4dac8d2ddaad4af45d34d879b5b37bffddf817f.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3500,7 +3414,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-bc719e14914373b02122d8ac8a3a578ab57bbc5b9a7d4d818b3190094b67874b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-bc719e14914373b02122d8ac8a3a578ab57bbc5b9a7d4d818b3190094b67874b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3514,7 +3428,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-bcf59df0381d7aa5e29075f03ce51e87a0981f6f410e737382a2d254521798a8.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-bcf59df0381d7aa5e29075f03ce51e87a0981f6f410e737382a2d254521798a8.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3528,7 +3442,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-bd0edebc7f9aec5359bec64096623081b56d32a1e6bbd169f0d77763fa13a9b0.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-bd0edebc7f9aec5359bec64096623081b56d32a1e6bbd169f0d77763fa13a9b0.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3542,7 +3456,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-bddc13d686e1445a5c2bbcf7069700f71ab67460122857fa2562e0f17df9b6ec.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-bddc13d686e1445a5c2bbcf7069700f71ab67460122857fa2562e0f17df9b6ec.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3556,7 +3470,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-be549636b20fa82f0a77b04327bcbb126a632d577227ee7019b4315fb458765c.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-be549636b20fa82f0a77b04327bcbb126a632d577227ee7019b4315fb458765c.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3570,7 +3484,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-c07d0f99e5c09083c3beb11d572960310f5e83f2a6d748262d455dac0f27a929.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-c07d0f99e5c09083c3beb11d572960310f5e83f2a6d748262d455dac0f27a929.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3584,7 +3498,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-c35180fc6238e3ffb8aeac8efd0be355b3753b8c08b0053066a082bef394235c.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-c35180fc6238e3ffb8aeac8efd0be355b3753b8c08b0053066a082bef394235c.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3598,7 +3512,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-c56ddd9258cf29252ffa9b0de483f560852c3cd4097eb9678dbc2f4042749652.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-c56ddd9258cf29252ffa9b0de483f560852c3cd4097eb9678dbc2f4042749652.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3612,7 +3526,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-c5e5da73bf93e44e37e6b0968313a8d967d79fa9c705bb48a18bda9e033e6224.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-c5e5da73bf93e44e37e6b0968313a8d967d79fa9c705bb48a18bda9e033e6224.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3626,7 +3540,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-c7573cc01e4113cf9c83a5df6a1d0316b2615eaaa1300db1bf84bf40af893844.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-c7573cc01e4113cf9c83a5df6a1d0316b2615eaaa1300db1bf84bf40af893844.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3640,7 +3554,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-c7cf68cd61e5be95e2ab61c3cc9028b2e9c7a1662557ad7398fa1c7b9aaab43c.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-c7cf68cd61e5be95e2ab61c3cc9028b2e9c7a1662557ad7398fa1c7b9aaab43c.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3654,7 +3568,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-c88432a5cfb482b3083dc5e9e0126b73a90c4810905f38f0cc55272acd6ab613.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-c88432a5cfb482b3083dc5e9e0126b73a90c4810905f38f0cc55272acd6ab613.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3668,7 +3582,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-c8de929a890371c6bf54881569845ffa37071e5e7a8fd7174eb9f35c4c4e91d6.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-c8de929a890371c6bf54881569845ffa37071e5e7a8fd7174eb9f35c4c4e91d6.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3682,7 +3596,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-c918655b2f3fb2cb868ca13d199b76b978e6b8f5312e2b24c9b649e158bd5ec3.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-c918655b2f3fb2cb868ca13d199b76b978e6b8f5312e2b24c9b649e158bd5ec3.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3696,7 +3610,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-c9d85ad4db23d0525e57d1e9c831ebc27a349aced893c9ac57126a7f0347d525.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-c9d85ad4db23d0525e57d1e9c831ebc27a349aced893c9ac57126a7f0347d525.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3710,7 +3624,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-cb1bcab147a92ea775aeeba68f415c850fd67b5446120bccb0445748c65ccb31.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-cb1bcab147a92ea775aeeba68f415c850fd67b5446120bccb0445748c65ccb31.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3724,7 +3638,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-cba107f863ec4cbda16f6c64932dc999d7ef291d3c13beb66401db3f0b0b13b2.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-cba107f863ec4cbda16f6c64932dc999d7ef291d3c13beb66401db3f0b0b13b2.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3738,7 +3652,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-cc30e553ef98d7063d309decda2d188f9322afcad4bea284d677de2e7d7d7cc7.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-cc30e553ef98d7063d309decda2d188f9322afcad4bea284d677de2e7d7d7cc7.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3752,7 +3666,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-ccc2d8bb51db09f876d7b741dab592f009de1275d54913ca8cd2f8abdb9ab16a.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-ccc2d8bb51db09f876d7b741dab592f009de1275d54913ca8cd2f8abdb9ab16a.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3766,7 +3680,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-cdfb45fbade7d15c0a4663427ae88dbdd95ce2c51a76ff029204fb9063f2f628.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-cdfb45fbade7d15c0a4663427ae88dbdd95ce2c51a76ff029204fb9063f2f628.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3780,7 +3694,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-ce70b2d4b1cb04216f95df359661ab684a52c622748feefffc7c51c3c4353bc0.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-ce70b2d4b1cb04216f95df359661ab684a52c622748feefffc7c51c3c4353bc0.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3794,7 +3708,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-cf41a3e60facfacf7ef4fd0da5b7cd1abac0ae2ddca0b3eb33594b4acc08ec27.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-cf41a3e60facfacf7ef4fd0da5b7cd1abac0ae2ddca0b3eb33594b4acc08ec27.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3808,7 +3722,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-cffea24ae5b59d84ba01a7799fcbe325bacd53bbdb3e6875ef3f486a62c9ad61.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-cffea24ae5b59d84ba01a7799fcbe325bacd53bbdb3e6875ef3f486a62c9ad61.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3822,7 +3736,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-d02f3926db84d747081afc7936ff474590704d90c39a6a290b7530d2f923fbab.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-d02f3926db84d747081afc7936ff474590704d90c39a6a290b7530d2f923fbab.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3836,7 +3750,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-d06643704ad1e43734db3fb78cbec2f47c0a0d3d4da94703616272963d487e3a.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-d06643704ad1e43734db3fb78cbec2f47c0a0d3d4da94703616272963d487e3a.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3850,7 +3764,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-d08b068506c006e7c8e732aa48457d7be7bd99e69fb2e01c48c6339a06f10a30.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-d08b068506c006e7c8e732aa48457d7be7bd99e69fb2e01c48c6339a06f10a30.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3864,7 +3778,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-d0ad772389735aa2ee4183a91881a1b704ee27227418a4460e4de95aa5cb7595.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-d0ad772389735aa2ee4183a91881a1b704ee27227418a4460e4de95aa5cb7595.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3878,7 +3792,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-d0d0f6ff590ff661965c483ceb169c1485dc02d9da81c667ed57b0475a6902e3.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-d0d0f6ff590ff661965c483ceb169c1485dc02d9da81c667ed57b0475a6902e3.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3892,7 +3806,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-d22a76fbb33d73818920e950b737c6d9377be366834043dd4d9edfa61608a306.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-d22a76fbb33d73818920e950b737c6d9377be366834043dd4d9edfa61608a306.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3906,7 +3820,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-d3ed38c3c8ca2cdbbcb5ca1b49b8748df638f66831b524a100ae327b40adc434.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-d3ed38c3c8ca2cdbbcb5ca1b49b8748df638f66831b524a100ae327b40adc434.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3920,7 +3834,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-d4b0ffb2c52397e2a55ef0eb92ba99219ebfce058462b64a1279501ef2ce56d5.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-d4b0ffb2c52397e2a55ef0eb92ba99219ebfce058462b64a1279501ef2ce56d5.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3934,7 +3848,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-d6c1530fb55ee402fde68c801d6188188c36dd579f8c4a22e48da42fc1c65333.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-d6c1530fb55ee402fde68c801d6188188c36dd579f8c4a22e48da42fc1c65333.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3948,7 +3862,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-d83b7b4d7dfff6e0ff9b0977faa316907a83690aff0c4f9bb3949fcbd80d50fe.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-d83b7b4d7dfff6e0ff9b0977faa316907a83690aff0c4f9bb3949fcbd80d50fe.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3962,7 +3876,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-d924f5b82135c3ae2ce9d5e4d628e76f8b7c4dbb060ffb42a62e786e257d2b54.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-d924f5b82135c3ae2ce9d5e4d628e76f8b7c4dbb060ffb42a62e786e257d2b54.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3976,7 +3890,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-d9b36345aab94f52642c962c7c37ee8a1869153eb64c0f3977689f26d0cf770e.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-d9b36345aab94f52642c962c7c37ee8a1869153eb64c0f3977689f26d0cf770e.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -3990,7 +3904,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-da3b56ca3aab6bbe26665c93308ee10b5fff055ee64fbf3be8de12c4f95e5c51.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-da3b56ca3aab6bbe26665c93308ee10b5fff055ee64fbf3be8de12c4f95e5c51.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4004,7 +3918,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-da779b04d23b9106d2ea546bd0c37a247850cfaa7aa16b582748a86e8903e380.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-da779b04d23b9106d2ea546bd0c37a247850cfaa7aa16b582748a86e8903e380.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4018,7 +3932,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-dc2215d7a86640a47016304552317a40d00cac7f4cd5b57ec350fbfc379855c6.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-dc2215d7a86640a47016304552317a40d00cac7f4cd5b57ec350fbfc379855c6.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4032,7 +3946,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-dc48cdecd6322a642ddbfcbe7146c02fdc2e40ffdcfd9b92fb77ed7dd504326f.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-dc48cdecd6322a642ddbfcbe7146c02fdc2e40ffdcfd9b92fb77ed7dd504326f.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4046,7 +3960,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-dcfcf717e7201de73fbf627b56d0c510ae93a47f8f033b1bf5fa974f6827d4f5.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-dcfcf717e7201de73fbf627b56d0c510ae93a47f8f033b1bf5fa974f6827d4f5.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4060,7 +3974,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-dd1328b99c685628bfbab0f3b11da6af92a323f644fb996ae9f300e15e241ed4.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-dd1328b99c685628bfbab0f3b11da6af92a323f644fb996ae9f300e15e241ed4.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4074,7 +3988,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-e002fce82351ffb8b3ebcf2e0b3b84d28aad521550cd9c6bfdff917ffd3e6d28.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-e002fce82351ffb8b3ebcf2e0b3b84d28aad521550cd9c6bfdff917ffd3e6d28.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4088,7 +4002,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-e1107e83c21206c5680e33505d84dd7e488feeda9bbe11047df05f58baad68e4.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-e1107e83c21206c5680e33505d84dd7e488feeda9bbe11047df05f58baad68e4.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4102,7 +4016,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-e33285c575746d2b9bab4634ea9dde467381b739074944dbfb6c6170e45e80e9.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-e33285c575746d2b9bab4634ea9dde467381b739074944dbfb6c6170e45e80e9.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4116,7 +4030,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-e363a51c75fc9bfe367cc00a7a45d254acd1e17c0a4cad1fd61e5083807daadb.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-e363a51c75fc9bfe367cc00a7a45d254acd1e17c0a4cad1fd61e5083807daadb.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4130,7 +4044,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-e3b5223b0da9b46296e16291565d244ee11f71a11d4983341f9e83ce1fc97923.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-e3b5223b0da9b46296e16291565d244ee11f71a11d4983341f9e83ce1fc97923.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4144,7 +4058,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-e467e58e4ffbcada4c3fd0e125b20752c37ae92fac16f41e5a6da8b95a718670.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-e467e58e4ffbcada4c3fd0e125b20752c37ae92fac16f41e5a6da8b95a718670.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4158,7 +4072,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-e4d3c9f31d1d6e8d9f81409117dbe3309684453d861d5dc0834ad3f1e561f85b.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-e4d3c9f31d1d6e8d9f81409117dbe3309684453d861d5dc0834ad3f1e561f85b.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4172,7 +4086,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-e8b15aa3c5e26336c040f15441017597f107c71333219c24c4bbce8b46027d40.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-e8b15aa3c5e26336c040f15441017597f107c71333219c24c4bbce8b46027d40.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4186,7 +4100,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-eb748a67bda56e77511650574a6634507a9c9c0d3f2e194e6624219b8966b0b3.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-eb748a67bda56e77511650574a6634507a9c9c0d3f2e194e6624219b8966b0b3.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4200,7 +4114,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-ec1d115615668e7fd97d8e8dd6f8362e52a63bc19423717a30fdc8bfbef5a888.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-ec1d115615668e7fd97d8e8dd6f8362e52a63bc19423717a30fdc8bfbef5a888.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4214,7 +4128,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-ec2394420013589dc1d84bfdc16f0b5dd083a60e10063d1091d7e54429affcb1.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-ec2394420013589dc1d84bfdc16f0b5dd083a60e10063d1091d7e54429affcb1.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4228,7 +4142,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-ed50fdf232f0db918bdf213164f7826690e73f4de23f21f33ff47885d21f3b6f.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-ed50fdf232f0db918bdf213164f7826690e73f4de23f21f33ff47885d21f3b6f.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4242,7 +4156,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-ee1022b0f52980bfa79d57b5e9cf4d7ab672966e39dbe52aa1e9cdaa08d406ae.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-ee1022b0f52980bfa79d57b5e9cf4d7ab672966e39dbe52aa1e9cdaa08d406ae.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4256,7 +4170,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-f0da28a98535fa8c7503f0268f5671663755b7485b095501c3af59409430a811.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-f0da28a98535fa8c7503f0268f5671663755b7485b095501c3af59409430a811.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4270,7 +4184,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-f128a0290a29367684a8ce1b8fadf1cc9dd17a5e33aff4a71204a922ba234cff.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-f128a0290a29367684a8ce1b8fadf1cc9dd17a5e33aff4a71204a922ba234cff.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4284,7 +4198,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-f13f94203012d3d71df79ec50a85c31f8ae3b822a98062e314896d93e943e9c4.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-f13f94203012d3d71df79ec50a85c31f8ae3b822a98062e314896d93e943e9c4.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4298,7 +4212,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-f401dbdfa37307cfd1a52f92834904f4b06554046d7f0f1234522d31fb0da2c0.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-f401dbdfa37307cfd1a52f92834904f4b06554046d7f0f1234522d31fb0da2c0.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4312,7 +4226,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-f4c43478369ff70937ead5127ccd67bd8e49d22605885e1f901be710e4a8fbea.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-f4c43478369ff70937ead5127ccd67bd8e49d22605885e1f901be710e4a8fbea.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4326,7 +4240,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-f54565c5937c71eaa59ed35cbf78bb786a4e33cf6a6033f9e899daffc78169dd.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-f54565c5937c71eaa59ed35cbf78bb786a4e33cf6a6033f9e899daffc78169dd.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4340,7 +4254,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-f6b54fd6b5e8381e5cfd9f238bacacffed84b5bbf09312befb14c7d2375bfe42.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-f6b54fd6b5e8381e5cfd9f238bacacffed84b5bbf09312befb14c7d2375bfe42.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4354,7 +4268,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-f75b70ee0c2f8edc6a02d9539e29a42e715d561b6844ece402a68df25a7d6f29.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-f75b70ee0c2f8edc6a02d9539e29a42e715d561b6844ece402a68df25a7d6f29.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4368,7 +4282,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-f80852450409414da70035bf103650ae36414ee70a393e33b143044180951168.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-f80852450409414da70035bf103650ae36414ee70a393e33b143044180951168.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4382,7 +4296,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-f85df1ea602aaa161f4c35cc859bbd2aff42283948f69ac4ef1e4b1a32987e90.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-f85df1ea602aaa161f4c35cc859bbd2aff42283948f69ac4ef1e4b1a32987e90.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4396,7 +4310,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-f867cd8bbdb5dcde39cf568b233ad73eed3b8d49d1510ad8d7aeafe16b500e25.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-f867cd8bbdb5dcde39cf568b233ad73eed3b8d49d1510ad8d7aeafe16b500e25.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4410,7 +4324,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-fca818a521fcd16caee1093e72361c6e79dadfa7cce90aa8103c788c9b110680.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-fca818a521fcd16caee1093e72361c6e79dadfa7cce90aa8103c788c9b110680.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4424,7 +4338,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-fdb7d15b38016078a065d097ff2dbd217c73b445bff03c7439ce73ed9bab5aa2.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-fdb7d15b38016078a065d097ff2dbd217c73b445bff03c7439ce73ed9bab5aa2.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4438,7 +4352,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-fecf80214490e94b03f291bb39b18b69ef37c2145759a6ef3ed89bf585276400.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-fecf80214490e94b03f291bb39b18b69ef37c2145759a6ef3ed89bf585276400.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4452,7 +4366,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-fef249a7781e4c8255b5d339754c85c77d44dcf1b4cf9d7c3dbe301b6b4588f6.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-fef249a7781e4c8255b5d339754c85c77d44dcf1b4cf9d7c3dbe301b6b4588f6.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4466,7 +4380,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/instances/sha256-ff4e5ee76a863b53d7777a6b6ff552df5d0f88a49f03defeea07884b3e02a90c.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/instances/sha256-ff4e5ee76a863b53d7777a6b6ff552df5d0f88a49f03defeea07884b3e02a90c.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4480,7 +4394,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/presentations/sha256-80b46e4003954e4707b05f30f5890113158f977d837d14baeb0572e10165c3f3.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/presentations/sha256-80b46e4003954e4707b05f30f5890113158f977d837d14baeb0572e10165c3f3.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4494,7 +4408,7 @@
         "lossless": true
       },
       {
-        "published": "dt/30e3f4b553c4fa2c/data/farm/props/presentations/sha256-afd039c2a9c0bbba615ddded5cd8a8c1fad9108e5e985031f4b2c07d5205e5f2.glb",
+        "published": "dt/b3c6b71a91672bde/data/farm/props/presentations/sha256-afd039c2a9c0bbba615ddded5cd8a8c1fad9108e5e985031f4b2c07d5205e5f2.glb",
         "source": {
           "mount": "farm",
           "mount_folder": "farm-ed2ac6a1-20260926",
@@ -4509,17 +4423,11 @@
       }
     ]
   },
-  "precached": 93,
-  "files": 474,
-  "bytes": 37140389,
-  "dt_reuse": {
-    "farm_commit": "24157edf005d7affdfe713de91a20401538380ff",
-    "build": "41f9cdc1327724f6",
-    "dt_base": "dt/30e3f4b553c4fa2c/",
-    "dt_tree_sha256": "ec84d75676f554fadc36b64dbc2527eafd5f457e50cce7deebb8b06352c797ca"
-  },
+  "precached": 77,
+  "files": 461,
+  "bytes": 36459841,
   "gzip": {
-    "files": 459,
-    "bytes": 11397909
+    "files": 445,
+    "bytes": 11349190
   }
 }

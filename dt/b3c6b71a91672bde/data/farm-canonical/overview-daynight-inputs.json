@@ -1,0 +1,22 @@
+{
+  "schema": "farm-overview-daynight/v1",
+  "scenario_id": "farm.scenario:overview-daynight-20261001",
+  "simulated_date": "2026-10-01",
+  "time_zone": "Asia/Taipei",
+  "utc_offset_hours": 8,
+  "site": {"latitude_deg": 22.6229, "longitude_deg": 120.5991},
+  "start_time": "00:00",
+  "frame_count": 24,
+  "step_seconds": 25,
+  "duration_seconds": 600,
+  "dawn_hour": 6,
+  "dusk_hour": 18,
+  "solar_method": {
+    "id": "noaa-gmd-general-solar-position-fractional-year/v1",
+    "source_url": "https://gml.noaa.gov/grad/solcalc/solareqns.PDF",
+    "elevation": "geometric-no-atmospheric-refraction",
+    "azimuth": "degrees-clockwise-from-north",
+    "angle_precision_decimal_places": 4
+  },
+  "decision_ref": "reference/sources/derived/frame-baker/director-decisions/2026-10-01-farm-overview-daynight.md@sha256:fde60be0a69d6971e7bccd3cf1d49517112364e8b83e3eb156849f6c163a9155"
+}

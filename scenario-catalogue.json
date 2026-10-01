@@ -3,7 +3,7 @@
   "use_cases": [
     {
       "use_case_id": "overview",
-      "title": "總覽",
+      "title": "農場導覽",
       "default_variant_id": "overview"
     },
     {
@@ -21,15 +21,15 @@
     {
       "use_case_id": "overview",
       "variant_id": "overview",
-      "title": "總覽",
+      "title": "農場導覽",
       "role": "overview",
       "view_kind": "overview",
       "canonical_id": "overview",
       "mount": "farm-canonical",
       "manifest": {
         "path": "farm-canonical/manifest.json",
-        "byte_count": 5749,
-        "sha256": "8a377a0deebfbf4f4a1cdca08679ce08ad90207d8cb8e05f876d9b2c3827f5cc"
+        "byte_count": 2769,
+        "sha256": "440a19cfda515ee96b03021735d2d198cce4c6dd61a8557afd5bf4359684a105"
       }
     },
     {
@@ -43,7 +43,7 @@
       "manifest": {
         "path": "farm-canonical-patrol-calendar/manifest.json",
         "byte_count": 4401,
-        "sha256": "008fe8e37cb30833f9b0c92f12df486ae0c6fa21f2d3c06dbd8604537a0b1c93"
+        "sha256": "895092b3e58900e5554428e5aa631650a2f415186fe3b35fba558ddd8ed1b84a"
       }
     },
     {
