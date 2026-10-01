@@ -1,6 +1,6 @@
 // 模擬與出處: the simulation notices plus where every loaded byte came from.
 // Each value is read from the file the app actually loaded.
-import {APP_BASE, CANONICAL_BASE, DT_BASE, canonicalAdapter, el, loadJSON, noticeBar} from './farm-data.js';
+import {APP_BASE, CANONICAL_BASE, DT_BASE, SITE, canonicalAdapter, el, loadJSON, noticeBar} from './farm-data.js';
 
 // The static build carries its deployment record in deployment-config.js
 // (window.FARM_DEPLOYMENT); run.py writes the same fields to runtime.local.json.
@@ -35,7 +35,12 @@ export const provenancePanel = {
       ]);
       if (candidate.status === 'fulfilled') {
         const m = candidate.value.manifest;
-        row('候選資料', `composed ${short(m.composed_revision)} · snapshot ${short(m.snapshot_revision)}`, CANONICAL_BASE + 'manifest.json');
+        const revision = SITE.site_id === 'farm' ? `composed ${short(m.composed_revision)}` : `frames ${short(m.frame_set_revision)}`;
+        row('候選資料', `${revision} · snapshot ${short(m.snapshot_revision)}`, CANONICAL_BASE + 'manifest.json');
+        if (SITE.site_id !== 'farm') {
+          const projection = candidate.value.adapter.project(0);
+          for (const link of projection.provenanceLinks || []) row(link.title, link.title, new URL(link.href, CANONICAL_BASE).href);
+        }
         for (const [name, file] of [['作物階段呈現裁示', 'crop-health-presentation-decision.md'],
           ['作物階段裁示', 'crop-health-decision.md'], ['擴散裁示', 'pest-spread-decision.md'],
           ['巡田路線裁示', 'patrol-route-decision.md'], ['情境裁示', 'scenario-decision.md'],

@@ -1,6 +1,7 @@
 // Phone-only presentation picking. The host supplies accepted Face rings from
 // its verified static snapshot; this only chooses what the phone sheet shows.
-// This never reads canonical frames or changes the viewer's runtime state.
+// The current supplied patrol IDs pass through the native DT picker unchanged.
+// This never derives runtime data or changes the viewer's runtime state.
 const COMMAND = 'farm-phone-drilldown';
 const READY = 'farm-phone-drilldown-ready';
 const FIELD_TAP = 'farm-phone-field-tap';
@@ -40,6 +41,7 @@ export default function install(api) {
   const ground = new THREE.Vector3();
   let fields = new Map();
   let treeToFace = new Map();
+  let patrolStopIds = new Set();
   let selectedFieldId = null;
   let treeMeshes = new Map();
   let lastTap = null;
@@ -55,6 +57,12 @@ export default function install(api) {
     });
   };
   const onCommand = (name, payload) => {
+    if (name === 'farm-patrol-stops') {
+      patrolStopIds = new Set((Array.isArray(payload?.stops) ? payload.stops : [])
+        .filter(row => typeof row?.id === 'string' && row.id.startsWith('patrol-stop:'))
+        .map(row => row.id));
+      return;
+    }
     if (name !== COMMAND || !Array.isArray(payload?.fields) || !Array.isArray(payload?.trees)) return;
     fields = new Map(payload.fields.filter(row => typeof row?.id === 'string' && Array.isArray(row.ring)
       && row.ring.length >= 4 && row.ring.every(vertex => Array.isArray(vertex) && vertex.length >= 3
@@ -99,24 +107,13 @@ export default function install(api) {
     if (start && (start.id !== event.pointerId
       || Math.hypot(event.clientX - start.x, event.clientY - start.y) > TAP_MOVE_PX)) return;
     lastTap = {x: event.clientX, y: event.clientY, at: performance.now(), level1: !selectedFieldId};
-    if (lastTap.level1) {
-      ignoreViewerPickUntil = lastTap.at + 900;
-      const id = faceAt(lastTap.x, lastTap.y);
-      if (id) api.appEvent(FIELD_TAP, {id});
-    }
   };
   const onClick = event => {
     if (event.target !== document.querySelector('#canvas-container canvas')) return;
-    if (lastTap?.level1 && performance.now() - lastTap.at < 900) {
-      // Pointer-up already resolved the field, including an empty viewer pick.
-      lastTap = null;
-      event.stopImmediatePropagation();
-    } else if (!selectedFieldId) {
-      // Also cover a programmatic click with no preceding pointer event.
-      const id = faceAt(event.clientX, event.clientY);
-      if (id) api.appEvent(FIELD_TAP, {id});
-      event.stopImmediatePropagation();
-    }
+    // Leave the click to DT, which gives its registered markers priority.
+    // Retain the static Face fallback for a click without pointer events.
+    if (!lastTap || performance.now() - lastTap.at >= 900)
+      lastTap = {x: event.clientX, y: event.clientY, at: performance.now(), level1: !selectedFieldId};
   };
   const nearbyTree = (x, y, faceId) => {
     const rect = document.querySelector('#canvas-container canvas')?.getBoundingClientRect();
@@ -137,9 +134,22 @@ export default function install(api) {
     return best;
   };
   const onSelect = event => {
+    if (patrolStopIds.has(event.detail?.id)) {
+      lastTap = null;
+      return;
+    }
+    if (lastTap?.level1 && performance.now() - lastTap.at < 900) {
+      // A native stop pick has had first claim. All other level-one taps still
+      // choose only an accepted static Face, including an empty viewer pick.
+      ignoreViewerPickUntil = lastTap.at + 900;
+      const id = faceAt(lastTap.x, lastTap.y);
+      lastTap = null;
+      event.stopImmediatePropagation();
+      if (id) api.appEvent(FIELD_TAP, {id});
+      return;
+    }
     if (!selectedFieldId || performance.now() < ignoreViewerPickUntil) {
-      // Level 1 accepts only our static Face test. A touch pick can arrive
-      // after the compatibility click, so keep it blocked for that tap too.
+      // Delayed ordinary picks during the initial field flight stay blocked.
       event.stopImmediatePropagation();
       return;
     }
@@ -173,6 +183,9 @@ export default function install(api) {
   window.addEventListener('dt:select', onSelect, true);
   window.addEventListener('dt:details-loaded', collect);
   api.appEvent(READY, {});
+  // Extensions can land in either order. Reuse the patrol panel's ready
+  // handshake so this guard receives the current supplied IDs even if late.
+  api.appEvent('farm-patrol-pins-ready', {});
   return () => {
     window.removeEventListener('pointerdown', onPointerDown, true);
     window.removeEventListener('pointerup', onPointerUp, true);

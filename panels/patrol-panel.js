@@ -144,7 +144,10 @@ export function renderPatrolDay({selected, state, schedule, artifacts, labels, c
       const focus = el('button', '查看田區', 'farm-button');
       focus.type = 'button';
       focus.onclick = () => { ctx.focusEntity(stop.face_id); claimHighlight('map-selection'); };
-      li.append(focus);
+      const select = el('button', '選取巡田點', 'farm-button');
+      select.type = 'button';
+      select.onclick = () => { ctx.focusEntity(stop.stop_id); claimHighlight('map-selection'); };
+      li.append(focus, select);
       if (!shownReasons.has(stop.face_id)) {
         const reason = planned.reasons.find(row => row.face_id === stop.face_id);
         const rule = basis.rules.find(row => row.rule_id === reason?.rule_id);

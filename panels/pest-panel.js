@@ -53,6 +53,7 @@ export function pestAlertsFor(narration, frame) {
       since: text.since?.text || null,
       atRisk: (text.at_risk || []).map(row => ({id: row.id, label: row.label, reason: row.reason})),
       sourceFrame: Number.isInteger(text.source?.frame_index) ? text.source.frame_index : null,
+      sourceDay: text.source?.text || null,
       decisionRefs: text.source?.decision_refs || [], notice: text.notice || null}));
 }
 
@@ -74,7 +75,8 @@ export function renderPest(alerts) {
     fact(facts, '什麼', alert.what); fact(facts, '哪裡', alert.where);
     fact(facts, '多少', alert.howMuch); fact(facts, '從何時', alert.since);
     const source = el('dd');
-    source.append(el('span', alert.sourceFrame === null ? '影格 —' : `模擬影格 第 ${alert.sourceFrame + 1} 格`, 'farm-line'));
+    // A dated candidate bakes the day into the source line; the frame number is the undated fallback.
+    source.append(el('span', alert.sourceDay ?? (alert.sourceFrame === null ? '影格 —' : `模擬影格 第 ${alert.sourceFrame + 1} 格`), 'farm-line'));
     for (const ref of alert.decisionRefs) {
       const text = typeof ref === 'string' ? ref : ref?.ref || '';
       const name = text.split('@')[0].split('/').at(-1);
@@ -111,7 +113,7 @@ export function createPestPanel({active = current.scenario?.useCaseId === 'pest'
       const badge = el('span', '地圖顯示中', 'farm-active-badge');
       const when = el('output', '', 'farm-status');
       const body = el('div');
-      root.append(noticeBar(), badge, when, el('p', '病蟲害模擬時間與巡田日期互不相連。', 'farm-caption farm-pest-clock-note'), body);
+      root.append(noticeBar(), badge, when, el('p', '病蟲害模擬日期與巡田日期互不相連。', 'farm-caption farm-pest-clock-note'), body);
       container.append(root);
       if (error || !controller) {
         refusal(body, error || '病蟲害時間軸沒有已驗證的模擬影格。');
@@ -128,7 +130,9 @@ export function createPestPanel({active = current.scenario?.useCaseId === 'pest'
           return;
         }
         const frame = loaded.frames[state.index];
-        when.textContent = `模擬時間 ${clockText(frame.elapsed_seconds)} · 第 ${state.index + 1} 格`;
+        // A dated frame reads as a day, as 巡田 does; the date and day number are baked, not computed here.
+        when.textContent = frame.date ? `模擬日期 ${frame.date} · 第 ${frame.day_number} 日`
+          : `模擬時間 ${clockText(frame.elapsed_seconds)} · 第 ${state.index + 1} 格`;
         const beat = loaded.narration.beats?.[state.index];
         const heading = el('h3', beat?.frame_index === state.index ? beat.text
           : globalThis.matchMedia?.('(max-width: 767px)').matches ? '目前沒有段落標題' : '本影格未提供段落標題', 'farm-beat');

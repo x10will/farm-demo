@@ -56,8 +56,8 @@
       "mount": "farm-canonical-pest",
       "manifest": {
         "path": "farm-canonical-pest/manifest.json",
-        "byte_count": 6645,
-        "sha256": "e35545aece9bc44bd9e5261faac2cbd1d58e7bb5b6deb0eac33d0c89ae4eb379"
+        "byte_count": 7234,
+        "sha256": "fa776abef63ffc0b00a337bd7af9b0a4b38b00489f853f261326488d06bdea4c"
       }
     }
   ],

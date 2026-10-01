@@ -5,10 +5,17 @@ import {selectionPanel} from './panels/selection.js';
 import {PATROL_PINS_MODULE, patrolPanel} from './panels/patrol-panel.js';
 import {pestPanel} from './panels/pest-panel.js';
 import {scenarioFrom} from './panels/scenario.js';
+import {siteFrom} from './site.js';
+import {telemetryPanels} from './panels/telemetry.js';
 
 function mapUrl(search = globalThis.location?.search) {
-  const url = new URL(`./${globalThis.FARM_DEPLOYMENT?.dtBase || 'dt/'}docs/viewer-3d/index.html?site=farm&canonical=1&embed=1&compactNav=1`, import.meta.url);
+  const site = siteFrom(search);
+  const url = new URL(`./${globalThis.FARM_DEPLOYMENT?.dtBase || 'dt/'}docs/viewer-3d/index.html?site=${encodeURIComponent(site.site_id)}&canonical=1&embed=1&compactNav=1`, import.meta.url);
   const requested = new URLSearchParams(search || '').get('scenario');
+  if (site.site_id !== 'farm') {
+    if (requested !== null) url.searchParams.set('scenario', requested);
+    return url.href;
+  }
   const resolved = scenarioFrom(search);
   if (resolved.scenario) {
     const chosen = resolved.scenario;
@@ -79,3 +86,23 @@ export const manifest = {
   layout: {phone: {order: [phonePanel]}},
   theme: {accent: '#6fae5b'},
 };
+
+const site = siteFrom();
+if (site.site_id !== 'farm') {
+  manifest.id = `npust-smart-agriculture-panel-${site.site_id}`;
+  manifest.title = '國立屏東科技大學「智慧化農業管理平台」';
+  manifest.subtitle = site.label;
+  delete manifest.layout;
+  manifest.panelTypes = {...manifest.panelTypes, ...telemetryPanels};
+  manifest.catalogue = [{id: 'map', type: 'map', titleKey: site.label, icon: '⌖', defaultSize: {w: 8, h: 10}},
+    ...Object.values(telemetryPanels).map(panel => ({id: panel.id, type: panel.id, titleKey: panel.title, icon: panel.icon, defaultSize: panel.defaultSize})),
+    ...manifest.catalogue.filter(panel => ['farm-notifications', 'farm-provenance'].includes(panel.id))];
+  manifest.preset = [
+    {id: 'map', type: 'map', x: 0, y: 0, w: 8, h: 10},
+    {id: 'farm-scada', type: 'farm-scada', x: 8, y: 0, w: 4, h: 10},
+    {id: 'farm-water', type: 'farm-water', x: 0, y: 10, w: 8, h: 12},
+    {id: 'farm-weather', type: 'farm-weather', x: 8, y: 10, w: 4, h: 12},
+    {id: 'farm-notifications', type: 'farm-notifications', x: 0, y: 22, w: 8, h: 5},
+    {id: 'farm-provenance', type: 'farm-provenance', x: 8, y: 22, w: 4, h: 5},
+  ];
+}

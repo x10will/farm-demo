@@ -1,12 +1,14 @@
 // Shared farm data access for the farm panels. Every value comes from a file
 // served same-origin beside the app; nothing here derives runtime state.
 import {current} from './scenario.js';
+import {siteFrom, siteNotices} from '../site.js';
 
 // The app's own directory: the DT tree sits beside it, at whatever base path the app is
 // served: dt/ under run.py's gateway, dt/<id>/ in the static build, whose deployment-config.js
 // names it so a page only ever asks for its own build's DT files.
 export const APP_BASE = new URL('../', import.meta.url).href;
 export const DT_BASE = new URL(globalThis.FARM_DEPLOYMENT?.dtBase || 'dt/', APP_BASE).href;
+export const SITE = siteFrom();
 
 // Canonical candidate data exported by farm: the mount of the scenario this page plays
 // (data/farm-canonical/ for 總覽, data/farm-canonical-<id>/ for the others; see scenario.js).
@@ -20,7 +22,7 @@ export const CANONICAL_BASE = canonicalBaseFor(SCENARIO);
 // Simulation notices. Same strings as NOTICE_LABELS in
 // packages/farm-player/src/viewer/farm-canonical-adapter.mjs, which exports
 // no copy of them; keep the two in step.
-export const NOTICES = ['本示範資料皆為模擬', '僅供原型展示，非農場操作建議'];
+export const NOTICES = siteNotices(SITE);
 
 // Who drew the map's current highlight. The map keeps one highlight, so a
 // panel clears it only while it is still the one that drew it.
@@ -76,7 +78,7 @@ export function canonicalAdapter(base = CANONICAL_BASE, options) {
 }
 
 async function loadVerifiedCandidate(root, {fetchResource = fetch, loadCandidate,
-  staticManifestUrl = new URL('data/farm/manifest.json', DT_BASE).href, catalogueManifest} = {}) {
+  staticManifestUrl = new URL(`data/${SITE.static_mount}/manifest.json`, DT_BASE).href, catalogueManifest} = {}) {
   let manifest, artifacts;
   try {
     const response = await fetchResource(staticManifestUrl);
@@ -147,9 +149,9 @@ export function el(tag, text, cls) {
   return n;
 }
 
-export function noticeBar() {
+export function noticeBar(notices = NOTICES) {
   const bar = el('div', null, 'farm-notices');
   bar.setAttribute('role', 'note');
-  for (const text of NOTICES) bar.append(el('span', text, 'farm-notice'));
+  for (const text of notices) bar.append(el('span', text, 'farm-notice'));
   return bar;
 }

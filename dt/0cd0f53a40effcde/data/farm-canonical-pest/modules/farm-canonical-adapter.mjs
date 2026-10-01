@@ -74,7 +74,8 @@ function inspectionPresentationForFrame(records, frame, declaration) {
       title: record.display_label || record.name || '未提供顯示名稱',
       typeLabel: TYPE_LABELS[record['@type']] ?? '未提供可讀類型',
       stateLabel: states.join('；') || '本影格未提供目前狀態',
-      timeLabel: `模擬時間：${Math.floor(frame.elapsed_seconds / 60)} 分 ${frame.elapsed_seconds % 60} 秒`,
+      timeLabel: frame.date ? `模擬日期：${frame.date}（第 ${frame.day_number} 日）`
+        : `模擬時間：${Math.floor(frame.elapsed_seconds / 60)} 分 ${frame.elapsed_seconds % 60} 秒`,
       events: frame.event_occurrences.filter(row => row.affected_twin_ids.includes(id)).map(row => ({
         label: EVENT_LABELS[row.event_kind] ?? '已提供模擬事件，但尚無可讀說明',
       })),
@@ -136,6 +137,13 @@ export function createAdapter({ manifest, artifacts, resourceBaseUrl }) {
       && frame.elapsed_seconds < durationSeconds, 'supplied frame index/time mismatch');
     return frame.elapsed_seconds;
   });
+  // A dated candidate (2026-10-01-farm-pest-spread-days.md) dates every frame, in days; the
+  // panel only shows what is baked, so a partly dated set is refused rather than shown.
+  const datedCount = frames.filter(frame => 'date' in frame || 'day_number' in frame).length;
+  requireBinding(datedCount === 0 || (datedCount === frames.length && frames.every((frame, index) =>
+    /^\d{4}-\d{2}-\d{2}$/.test(frame.date) && Number.isInteger(frame.day_number) && frame.day_number >= 1
+    && (index === 0 || (frame.day_number > frames[index - 1].day_number && frame.date > frames[index - 1].date)))),
+  'dated frames need an ISO date and an increasing day number on every frame');
   const staticFaces = new Map(snapshot.static_merge.merged_topology_artifact.records
     .filter(row => row['@type'] === 'Face').map(row => [row['@id'], row]));
   const staticLinks = new Map(Object.values(snapshot.provenance_catalogs)
@@ -351,6 +359,7 @@ export function createAdapter({ manifest, artifacts, resourceBaseUrl }) {
       return {
         frameIndex: index,
         elapsedSeconds: frame.elapsed_seconds,
+        ...(frame.date ? { date: frame.date, dayNumber: frame.day_number } : {}),
         beatLabel: beats ? beats[index].text
           : BEAT_LABELS[frame.narrative_beat.beat_kind] ?? frame.narrative_beat.beat_kind,
         notices: [NOTICE_LABELS[declaration.simulation_label] ?? declaration.simulation_label,

@@ -7,7 +7,11 @@ const COMMAND = 'farm-phone-drilldown';
 export function createPhoneDrilldown(app, {restoreOverview} = {}) {
   let selectedFieldId = null;
   let fieldFlightUntil = 0;
+  let patrolStopIds = new Set();
   const data = canonicalAdapter().then(({manifest, artifacts}) => {
+    patrolStopIds = new Set((artifacts['composed-frames.json']?.canonical_frames || [])
+      .flatMap(frame => frame.patrol_day?.planned_patrol?.route?.stops || [])
+      .map(stop => stop.stop_id));
     const snapshot = artifacts['static-snapshot.json'];
     const records = snapshot.static_merge.merged_topology_artifact.records;
     const byId = new Map(records.map(record => [record['@id'], record]));
@@ -59,8 +63,16 @@ export function createPhoneDrilldown(app, {restoreOverview} = {}) {
   };
   app.map.subscribe('ready', () => { void configure(); });
   app.map.subscribe('select', ({entity} = {}) => {
+    if (patrolStopIds.has(entity?.id)) {
+      // DT selected a supplied canonical stop. Keep that selection and leave
+      // the field/tree presentation so its flight guard cannot replace it.
+      selectedFieldId = null;
+      fieldFlightUntil = 0;
+      void configure();
+      return;
+    }
     // The viewer may post its own pick before the iframe extension can cancel
-    // it. At level 1 only Farm's polygon tap decides the sheet selection.
+    // it. Other level-one picks still require Farm's accepted polygon tap.
     if (!selectedFieldId) { if (entity) app.select(null); return; }
     if (performance.now() < fieldFlightUntil && entity?.id !== selectedFieldId)
       void selectField(selectedFieldId, {fly: false});

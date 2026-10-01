@@ -6,19 +6,20 @@
 //   every scenario's map page, so switching scenario offline works.
 // Nothing here reads or changes canonical frames or runtime state.
 import {mapUrl} from './manifest.js';
-import {CANONICAL_BASE, DT_BASE} from './panels/farm-data.js';
-import {scenarioCatalogue} from './panels/scenario.js';
+import {CANONICAL_BASE, DT_BASE, SITE} from './panels/farm-data.js';
+import {SCENARIOS, scenarioCatalogue} from './panels/scenario.js';
+import {siteFrom} from './site.js';
 
 export const deployment = globalThis.FARM_DEPLOYMENT || null;
 export const isStatic = deployment?.static === true;
 
 // Notices for the map's context data. notice_ref values in the farm site export:
 // odbl-1.0 (roads, river, buildings) and nlsc-dtm-rights (terrain, dataset 176927).
-export const CREDITS = [
+export const CREDITS = siteFrom().credits || (siteFrom().site_id === 'farm' ? [
   {text: '© OpenStreetMap contributors（ODbL 1.0）：外圍道路、河川與建物脈絡', href: 'https://www.openstreetmap.org/copyright'},
   {text: '地形：內政部 2025 年 20 m 數值地形模型（data.gov.tw 資料集 176927）', href: 'https://data.gov.tw/dataset/176927'},
   {text: '依政府資料開放授權條款－第1版 使用', href: 'https://data.gov.tw/license'},
-];
+] : []);
 
 function el(tag, text, cls) {
   const n = document.createElement(tag);
@@ -41,7 +42,7 @@ export function mapCredit() {
   const list = el('ul');
   for (const credit of CREDITS) {
     const item = el('li'), link = el('a', credit.text);
-    link.href = credit.href; link.target = '_blank'; link.rel = 'noopener';
+    if (credit.href) { link.href = credit.href; link.target = '_blank'; link.rel = 'noopener'; }
     item.append(link); list.append(item);
   }
   const close = el('button', '關閉', 'farm-credit-close');
@@ -51,7 +52,7 @@ export function mapCredit() {
   sources.append(el('strong', '模擬與出處'));
   for (const [label, href] of [
     ['目前模擬資料與收據', CANONICAL_BASE + 'manifest.json'],
-    ['農場場景資料與收據', new URL('data/farm/manifest.json', DT_BASE).href],
+    ['農場場景資料與收據', new URL(`data/${SITE.static_mount}/manifest.json`, DT_BASE).href],
   ]) {
     const link = el('a', label);
     link.href = href; link.target = '_blank'; link.rel = 'noopener';
@@ -87,6 +88,11 @@ function loadedUrls(frame) {
 // switched to for the first time while offline finds its viewer page only if it was warmed here.
 // Gate review of #112, 2026-09-28, Major 3: overview loaded, offline, switch to pest: no map.
 export function scenarioMapUrls() {
+  if (SITE.site_id !== 'farm') return SCENARIOS.map(row => {
+    const params = new URLSearchParams({site: SITE.site_id});
+    if (row.param !== null) params.set('scenario', row.param);
+    return mapUrl(`?${params}`);
+  });
   return scenarioCatalogue().variants.map(variant => {
     const params = new URLSearchParams();
     if (variant.use_case_id !== 'overview') params.set('scenario', variant.use_case_id);
@@ -109,6 +115,7 @@ const phoneFramed = new WeakSet();
 // A fixed offset then centres the fields. No frame, route or runtime position is
 // read; the viewer still owns camera projection and every resize.
 function viewerPhoneFrame(frame, force = false) {
+  if (SITE.site_id !== 'farm') return;
   try {
     const viewer = frame.contentWindow?.__dtEmbed;
     const preset = Object.values(frame.contentWindow?.DT_SITE?.viewpoints || {})[0];
@@ -127,6 +134,7 @@ export function restorePhoneOverview(container) {
   if (frame) viewerPhoneFrame(frame, true);
 }
 function viewerPhoneCopy(frame) {
+  if (SITE.site_id !== 'farm') return;
   try {
     const doc = frame.contentDocument;
     if (!doc) return;
@@ -169,9 +177,21 @@ function attach(frame, app) {
   const holder = frame.parentElement;
   holder.classList.add('farm-map-holder');
   if (!holder.querySelector('.farm-credit')) holder.append(mapCredit());
-  frame.addEventListener('load', () => viewerPhoneCopy(frame));
-  app?.map?.subscribe('ready', () => { viewerPhoneCopy(frame); viewerPhoneFrame(frame); });
-  viewerPhoneCopy(frame);
+  if (siteFrom().site_id !== 'farm') {
+    const controls = frame.closest('article')?.querySelector('.replay-controls');
+    if (controls && !controls.querySelector('.farm-demo-reset')) {
+      const reset = el('button', '重設示範', 'farm-demo-reset');
+      reset.type = 'button';
+      reset.onclick = () => { app.clock.pause(); app.clock.seek(0); };
+      controls.classList.add('farm-site-replay');
+      controls.insertBefore(reset, controls.querySelector('output'));
+    }
+  }
+  if (SITE.site_id === 'farm') {
+    frame.addEventListener('load', () => viewerPhoneCopy(frame));
+    app?.map?.subscribe('ready', () => { viewerPhoneCopy(frame); viewerPhoneFrame(frame); });
+    viewerPhoneCopy(frame);
+  }
   if (!isStatic || !('serviceWorker' in navigator)) return;
   frames.add(frame);
   if (!listening) {

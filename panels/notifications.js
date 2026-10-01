@@ -3,6 +3,7 @@
 // event, label, route and target is read from that frame or the static
 // snapshot, and nothing is computed, repaired or invented here.
 import {canonicalAdapter, claimHighlight, el, frameIndexAt, noticeBar, ownsHighlight} from './farm-data.js';
+import {sampleLabel} from './telemetry.js';
 
 const PATROL_KIND = 'patrol-route-proposal';
 const tail = id => String(id).split(':').at(-1);
@@ -10,7 +11,8 @@ const tail = id => String(id).split(':').at(-1);
 // Plain rows for one frame. `adapter.selectFrame` supplies the label text and
 // the source ids; the frame supplies the patrol block; the snapshot supplies
 // display labels, joined by stable id only.
-export function notificationsFor({adapter, artifacts}, index) {
+export function notificationsFor({adapter, artifacts}, index, elapsedSeconds) {
+  if (adapter.project) return adapter.project(index, elapsedSeconds).notifications;
   const view = adapter.selectFrame(index);
   const frame = artifacts['composed-frames.json'].canonical_frames[index];
   const records = new Map(artifacts['static-snapshot.json'].static_merge.merged_topology_artifact.records
@@ -40,7 +42,8 @@ export function createNotificationsPanel({load = () => canonicalAdapter()} = {})
       const when = el('output', '載入模擬事件…', 'farm-status');
       const list = el('ul', null, 'farm-list');
       const status = el('output', '', 'farm-status');
-      root.append(noticeBar(), when, list, status);
+      const notices = noticeBar();
+      root.append(notices, when, list, status);
       container.append(root);
 
       // A reset to t=0 clears the patrol route this panel drew, so frame 0
@@ -50,20 +53,26 @@ export function createNotificationsPanel({load = () => canonicalAdapter()} = {})
       const show = () => {
         if (!candidate) return;
         const index = frameIndexAt(candidate.adapter.frameTimesSeconds, t);
-        if (index === shown) return;
-        shown = index;
-        const view = candidate.adapter.selectFrame(index);
+        if (!candidate.adapter.project && index === shown) return;
+        const projection = candidate.adapter.project?.(index, t / 1000);
+        const rows = projection?.notifications || notificationsFor(candidate, index, t / 1000);
+        const signature = projection ? JSON.stringify([index, rows]) : index;
+        if (signature === shown) return;
+        shown = signature;
+        const view = projection || candidate.adapter.selectFrame(index);
         const seconds = candidate.adapter.frameTimesSeconds[index];
-        when.textContent = view.date ? `模擬日期 ${view.date} · 第 ${index + 1} 日`
+        when.textContent = view.date ? `模擬日期 ${view.date} · 第 ${view.dayNumber ?? index + 1} 日`
           : `模擬時間 ${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')} · 第 ${index + 1} 格`;
-        const rows = notificationsFor(candidate, index);
+        if (projection) notices.replaceChildren(...projection.notices.map(text => el('span', text, 'farm-notice')));
         list.replaceChildren();
         if (!rows.length) list.append(el('li', '本影格沒有事件', 'farm-caption'));
         for (const row of rows) {
           const li = el('li', null, 'farm-notification');
           li.dataset.occurrenceId = row.id;
           li.title = row.id;
-          li.append(el('strong', row.text), el('span', `出處：${row.sourceIds.map(tail).join('、') || '—'}`, 'farm-caption'));
+          const sourceNames = row.sourceIds.map(ref => tail(row.sampledAt ? ref.split('@sha256:')[0] : ref));
+          li.append(el('strong', row.text), el('span', `出處：${sourceNames.join('、') || '—'}`, 'farm-caption'));
+          if (row.sampledAt) li.append(el('span', sampleLabel(row), 'farm-caption'));
           if (row.patrol) {
             li.append(el('span', `路線：${row.patrol.route.join(' → ')}`, 'farm-caption'),
               el('span', `目標田區：${row.patrol.target}`, 'farm-caption'));

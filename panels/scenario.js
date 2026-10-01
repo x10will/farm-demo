@@ -2,11 +2,15 @@
 // Will's 2026-09-29 correction requires independent patrol and pest simulations.
 export const SCENARIO_AUTHORITY = '（依據：Will 2026-09-29 指示「不是，這是兩個模擬，你要把蟲害跟巡田分開啊，他本來就不應該一個panel」；本原型以可追溯的模擬資料示範。）';
 
-export const SCENARIOS = [
+import {siteFrom} from '../site.js';
+const site = siteFrom();
+export const SCENARIOS = site.scenarios || (site.site_id !== 'farm' ? [
+  {id: 'overview', param: null, title: site.label, mount: site.canonical_mount},
+] : [
   {id: 'overview', param: null, title: '農場導覽', mount: 'farm-canonical'},
   {id: 'patrol', param: 'patrol', title: '巡田', mount: 'farm-canonical-patrol-calendar'},
   {id: 'pest', param: 'pest', title: '病蟲害擴散', mount: 'farm-canonical-pest'},
-];
+]);
 
 export const LEGACY_CATALOGUE = {
   use_cases: SCENARIOS.map(s => ({use_case_id: s.id, title: s.title,
@@ -39,6 +43,14 @@ export function resolveScenario(search, catalogue = scenarioCatalogue()) {
 }
 
 export function scenarioFrom(search, catalogue = scenarioCatalogue()) {
+  const chosenSite = siteFrom(search);
+  if (chosenSite.site_id !== 'farm') {
+    const requested = new URLSearchParams(search || '').get('scenario');
+    const scenarios = chosenSite.scenarios || [{id: 'overview', param: null, title: chosenSite.label, mount: chosenSite.canonical_mount}];
+    const declared = scenarios.find(row => row.param === requested);
+    if (!declared) return {kind: 'unknown', error: `不認得的情境「${requested}」；本頁不載入另一份候選資料。${SCENARIO_AUTHORITY}`};
+    return {scenario: {...declared, useCaseId: declared.id, viewKind: 'telemetry', role: declared.id, canonicalId: declared.id}};
+  }
   const result = resolveScenario(search, catalogue);
   if (result.error) return result;
   const {useCase, variant} = result;

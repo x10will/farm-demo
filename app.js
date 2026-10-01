@@ -1,14 +1,27 @@
 import {createApp} from 'panel-core';
-import {manifest} from './manifest.js';
-import {installFarmShell, restorePhoneOverview} from './farm-shell.js';
-import {canonicalAdapter, frameIndexAt} from './panels/farm-data.js';
-import {current} from './panels/scenario.js';
-import {createPatrolPanel} from './panels/patrol-panel.js';
-import {createPestController, createPestPanel} from './panels/pest-panel.js';
-import {createPatrolCalendarController} from './panels/patrol-calendar.js';
-import {createFarmBottomSheet, installPhoneClock, installPhoneReset, installPhoneStory} from './farm-bottom-sheet.js';
-import {createPhoneDrilldown} from './phone-drilldown.js';
-
+// Load the local site record before evaluating site-dependent panel modules.
+if (!globalThis.FARM_DEPLOYMENT) {
+ try { const response=await fetch(new URL('./runtime.local.json',import.meta.url));
+  if(response.ok)globalThis.FARM_DEPLOYMENT=await response.json(); } catch {}
+}
+const [{manifest}, {installFarmShell, restorePhoneOverview}, {canonicalAdapter, frameIndexAt},
+ {current}, {createPatrolPanel}, {createPestController, createPestPanel},
+ {createPatrolCalendarController}, {createSelectionPanel},
+ {createFarmBottomSheet, installPhoneClock, installPhoneReset, installPhoneStory},
+ {createPhoneDrilldown}, {siteFrom}] = await Promise.all([
+ import('./manifest.js'), import('./farm-shell.js'), import('./panels/farm-data.js'),
+ import('./panels/scenario.js'), import('./panels/patrol-panel.js'), import('./panels/pest-panel.js'),
+ import('./panels/patrol-calendar.js'), import('./panels/selection.js'), import('./farm-bottom-sheet.js'),
+ import('./phone-drilldown.js'), import('./site.js'),
+]);
+const site = siteFrom();
+document.documentElement.dataset.farmSite = site.site_id;
+if (site.site_id !== 'farm') {
+ window.app=createApp(document.querySelector('#app'),manifest);
+ window.app.clock.pause();
+ window.app.clock.seek(0);
+ installFarmShell(document.querySelector('#app'),window.app);
+} else {
 // Only the active simulation supplies panel-core's clock and map. Its candidate
 // is verified before either is constructed; inactive data is not downloaded.
 let bootstrapError = current.error || null;
@@ -49,11 +62,23 @@ if (!bootstrapError && (active === 'overview' || active === 'patrol' || active =
   } else {
    pest = createPestController({frameTimesSeconds: adapter.frameTimesSeconds});
    manifest.clock = {...manifest.clock, duration: adapter.durationSeconds * 1000};
+   // A dated candidate (2026-10-01-farm-pest-spread-days.md) labels the replay clock by baked day,
+   // as 巡田 does; an undated one keeps the demo clock.
+   const frames = artifacts['composed-frames.json']?.canonical_frames;
+   if (frames?.length && frames.every(frame => frame.date)) {
+    manifest.clock.labelFormat = t => {
+     const frame = frames[frameIndexAt(adapter.frameTimesSeconds, t)];
+     return globalThis.matchMedia?.('(max-width: 767px)').matches
+       ? `${Number(frame.date.slice(5, 7))}/${Number(frame.date.slice(8, 10))} · 第${frame.day_number}日`
+       : `${frame.date} · 第 ${frame.day_number} 日`;
+    };
+   }
   }
  } catch (error) { bootstrapError = `無法載入模擬資料：${error.message}`; }
 }
 manifest.panelTypes['farm-patrol'] = createPatrolPanel({active: active === 'patrol', controller: calendar, error: bootstrapError});
 manifest.panelTypes['farm-pest'] = createPestPanel({active: active === 'pest', controller: pest, error: bootstrapError});
+manifest.panelTypes.selection = createSelectionPanel({controller: calendar});
 const container = document.querySelector('#app');
 const sheet = createFarmBottomSheet(container, active || 'overview');
 let phoneDrilldown = null;
@@ -112,6 +137,7 @@ installPhoneReset(container,sheet,window.app,calendar,pest);
 installPhoneStory(sheet,window.app,active || 'overview',calendar,pest);
 if (!sheet.isPhone() && active === 'patrol') window.app.focus('farm-patrol');
 else if (!sheet.isPhone() && active === 'pest') window.app.focus('farm-pest');
+}
 if('serviceWorker' in navigator){
  // One build per tab (gate review of #109, 2026-09-27, Major 2): whenever a worker takes this
  // tab, ask for its build; a tab whose own build differs saves its layout and reloads, so no tab

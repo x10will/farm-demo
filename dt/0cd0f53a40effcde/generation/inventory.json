@@ -6,12 +6,12 @@
     "@mkkellogg/gaussian-splats-3d": "0.4.7"
   },
   "files": {
-    "config.json": "1cf6559e8daa520f195210da94788138527edbbba00ed41336052252d1a3049b",
+    "config.json": "09029ae2a55e8d615ea0d208fc0f2786293c4ae3bb1d5769089737d0458626b6",
     "runtime/docs/viewer-3d/actor-models.js": "0bdb2a2835ce707e3cfa63b20418f408370388b4fc64d99d86b1af8051098391",
     "runtime/docs/viewer-3d/base.html": "c8c47de555373901e226bb0af7ce085cc97668b7c5e37510815e9be6e7c51232",
     "runtime/docs/viewer-3d/base.js": "d89cb41fefa3d7df922c21dcadaec3b3a7a848805224d185c77d829b217ab695",
     "runtime/docs/viewer-3d/controls-base.js": "276a65e66f3916e03b70eea9dd2c7423e422018edbc375bf22fbc734715d5266",
-    "runtime/docs/viewer-3d/deployment-config.js": "b7c57b2f43e732ad440f2364c0c8502122c9c5da25f8d4289882ee509957e55f",
+    "runtime/docs/viewer-3d/deployment-config.js": "0495cb200d5d9e9c309d1a31a4895d730bd31b21caa0b38f9886368826631232",
     "runtime/docs/viewer-3d/edge-labels.mjs": "f0e7a236cc073f7126ae9aa808213fab160a9650d597abd495eca1dfad32a140",
     "runtime/docs/viewer-3d/embed-adapter.js": "e583e285cf7b3b50726d9eaed92c01b8bc1d810679c68f7556ab1f0b13b8b745",
     "runtime/docs/viewer-3d/embed-extensions.js": "f44adf8a544bae1261ab35bd767efd7253c921cd172655eb3c28b01b29b01f69",
