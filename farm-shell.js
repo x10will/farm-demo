@@ -7,6 +7,7 @@
 // Nothing here reads or changes canonical frames or runtime state.
 import {mapUrl} from './manifest.js';
 import {CANONICAL_BASE, DT_BASE, SITE} from './panels/farm-data.js';
+import {mapLayers} from './panels/map-layers.js';
 import {SCENARIOS, scenarioCatalogue} from './panels/scenario.js';
 import {siteFrom} from './site.js';
 
@@ -71,6 +72,58 @@ export function mapCredit() {
   return root;
 }
 
+// Phone only: the viewer's own camera toolbar is hidden there, so the map's top-right corner
+// holds a 44 px layers button that mirrors the ⓘ. It opens a small card of switches over the
+// shared map-layers store (the desktop 圖層 list in 田區導覽 is the other view of it).
+export function mapLayersControl() {
+  const root = el('div', null, 'farm-layers-control');
+  const toggle = el('button', null, 'farm-layers-button');
+  toggle.type = 'button';
+  toggle.setAttribute('aria-label', '地圖圖層');
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3 2.5 8 12 13l9.5-5L12 3Z"/><path d="m2.5 12 9.5 5 9.5-5"/><path d="m2.5 16 9.5 5 9.5-5"/></svg>';
+  const card = el('div', null, 'farm-layers-card');
+  card.hidden = true;
+  card.setAttribute('role', 'group');
+  card.setAttribute('aria-label', '地圖圖層');
+  const head = el('div', null, 'farm-layers-card-head');
+  const close = el('button', '完成', 'farm-layers-done');
+  close.type = 'button';
+  head.append(el('strong', '地圖圖層'), close);
+  const list = el('div', null, 'farm-layers-card-list');
+  card.append(head, list);
+  const render = () => {
+    list.replaceChildren();
+    for (const layer of mapLayers.list()) {
+      if (layer.developer) continue;
+      const row = el('label', null, 'farm-switch-row'), box = el('input');
+      box.type = 'checkbox';
+      box.setAttribute('role', 'switch');
+      box.checked = layer.visible;
+      box.dataset.layerId = layer.id;
+      box.onchange = () => { if (!mapLayers.set(layer.id, box.checked)) box.checked = !box.checked; };
+      row.append(el('span', layer.label), box);
+      list.append(row);
+    }
+    if (!list.children.length) list.append(el('p', '地圖載入後可切換圖層', 'farm-layers-empty'));
+  };
+  mapLayers.subscribe(render);
+  render();
+  const set = open => {
+    card.hidden = !open;
+    root.dataset.open = String(open);
+    toggle.setAttribute('aria-expanded', String(open));
+  };
+  toggle.onclick = () => set(card.hidden);
+  close.onclick = () => { set(false); toggle.focus({preventScroll: true}); };
+  root.addEventListener('keydown', event => { if (event.key === 'Escape' && !card.hidden) { set(false); toggle.focus({preventScroll: true}); } });
+  document.addEventListener('pointerdown', event => { if (!card.hidden && !root.contains(event.target)) set(false); });
+  // A tap on the map lands in the iframe, which takes focus from this window.
+  window.addEventListener('blur', () => { if (!card.hidden && document.activeElement?.tagName === 'IFRAME') set(false); });
+  root.append(toggle, card);
+  return root;
+}
+
 // Same-origin URLs this page and the map iframe have loaded, for the service worker.
 function loadedUrls(frame) {
   const urls = new Set();
@@ -106,8 +159,8 @@ function warm(frame) {
   if (worker) worker.postMessage({type: 'FARM_WARM', urls: [...loadedUrls(frame), ...scenarioMapUrls()]});
 }
 
-// The embedded viewer keeps its own reset buttons. Translate their visible copy
-// only at the phone breakpoint; their handlers and desktop labels stay intact.
+// The embedded viewer keeps its own reset buttons. Translate their visible copy so the page
+// has no English controls (Will, 2026-10-03, named the "Reset" button); handlers stay intact.
 const observedResetButtons = new WeakSet();
 const phoneFramed = new WeakSet();
 // Keep the site's authored portrait pose even when an iframe reloads while its
@@ -152,7 +205,7 @@ function viewerPhoneCopy(frame) {
     else { chrome?.remove(); delete doc.documentElement.dataset.farmPhone; }
     const reset = doc.querySelector('#btn-reset');
     if (reset) {
-      const label = phone ? '重設' : 'Reset';
+      const label = '重設';
       if (reset.textContent !== label) reset.textContent = label;
       if (!observedResetButtons.has(reset)) {
         observedResetButtons.add(reset);
@@ -162,9 +215,9 @@ function viewerPhoneCopy(frame) {
     }
     const view = doc.querySelector('#btn-reset-view');
     if (view) {
-      view.setAttribute('aria-label', phone ? '重設視角' : 'Reset view');
+      view.setAttribute('aria-label', '重設視角');
       const label = view.querySelector('span');
-      if (label && label.textContent !== (phone ? '重設' : 'Reset')) label.textContent = phone ? '重設' : 'Reset';
+      if (label && label.textContent !== '重設') label.textContent = '重設';
     }
   } catch { /* An unloaded iframe has no controls to label yet. */ }
 }
@@ -177,6 +230,7 @@ function attach(frame, app) {
   const holder = frame.parentElement;
   holder.classList.add('farm-map-holder');
   if (!holder.querySelector('.farm-credit')) holder.append(mapCredit());
+  if (SITE.site_id === 'farm' && !holder.querySelector('.farm-layers-control')) holder.append(mapLayersControl());
   if (siteFrom().site_id !== 'farm') {
     const controls = frame.closest('article')?.querySelector('.replay-controls');
     if (controls && !controls.querySelector('.farm-demo-reset')) {

@@ -8,11 +8,11 @@ const [{manifest}, {installFarmShell, restorePhoneOverview}, {canonicalAdapter, 
  {current}, {createPatrolPanel}, {createPestController, createPestPanel},
  {createPatrolCalendarController, patrolClockLabel}, {createSelectionPanel},
  {createFarmBottomSheet, installPhoneClock, installPhoneReset, installPhoneStory},
- {createPhoneDrilldown}, {siteFrom}] = await Promise.all([
+ {createPhoneDrilldown}, {siteFrom}, {mapLayers}] = await Promise.all([
  import('./manifest.js'), import('./farm-shell.js'), import('./panels/farm-data.js'),
  import('./panels/scenario.js'), import('./panels/patrol-panel.js'), import('./panels/pest-panel.js'),
  import('./panels/patrol-calendar.js'), import('./panels/selection.js'), import('./farm-bottom-sheet.js'),
- import('./phone-drilldown.js'), import('./site.js'),
+ import('./phone-drilldown.js'), import('./site.js'), import('./panels/map-layers.js'),
 ]);
 const site = siteFrom();
 document.documentElement.dataset.farmSite = site.site_id;
@@ -120,6 +120,7 @@ if (bootstrapError) {
  manifest.mapUrl = refused.href;
 }
 window.app=createApp(container,manifest);
+mapLayers.attach(window.app.map);
 if (sheet.isPhone() && !bootstrapError) {
  phoneDrilldown = createPhoneDrilldown(window.app, {restoreOverview: () => restorePhoneOverview(container)});
  sheet.onSelectionActions({
@@ -153,7 +154,7 @@ if('serviceWorker' in navigator){
  navigator.serviceWorker.register(new URL('./sw.js',import.meta.url),{scope:'./'}).then(reg=>{
   function offer(worker){
    if(!worker||!navigator.serviceWorker.controller)return;
-   const button=document.createElement('button');button.className='update-button';button.textContent='Update available · Reload';
+   const button=document.createElement('button');button.className='update-button';button.textContent='有新版本 · 重新載入';
    button.onclick=()=>{window.app.save();updateRequested=true;worker.postMessage({type:'SKIP_WAITING'});};document.body.append(button);
   }
   offer(reg.waiting);reg.addEventListener('updatefound',()=>{const worker=reg.installing;worker?.addEventListener('statechange',()=>{if(worker.state==='installed')offer(reg.waiting);});});

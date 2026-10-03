@@ -29,7 +29,7 @@
       "manifest": {
         "path": "farm-canonical/manifest.json",
         "byte_count": 2723,
-        "sha256": "32fa43ea212ce0a2bbf7bbbccfbc02a15cad0f9f3297093ca97dc3e83b2ba451"
+        "sha256": "6d5609b4155a2ee351069b56a8910aa60571ddfbc035fa1326de739699ef8f4a"
       }
     },
     {
@@ -43,7 +43,7 @@
       "manifest": {
         "path": "farm-canonical-patrol-calendar/manifest.json",
         "byte_count": 4355,
-        "sha256": "c55173b57f61c77ee4b186bc5b2c7596b258fc559531f66b491bcfafb1f5278f"
+        "sha256": "501b6ad6511bf376bb35b88b3ab20958b36ed6d8adde366c9490844be458727f"
       }
     },
     {
@@ -57,7 +57,7 @@
       "manifest": {
         "path": "farm-canonical-pest/manifest.json",
         "byte_count": 7188,
-        "sha256": "fb9a6fb8b9a0a923215cfc6b02eab420a76e427f4d40f4373fae8734f608cb79"
+        "sha256": "1aa03043a8d620d256a5b296b23544db5826a37f46489b8855f5f60629d0bad3"
       }
     }
   ],

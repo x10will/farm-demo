@@ -1,7 +1,8 @@
 // 田區導覽: drives the map over panel-core.map (flyTo, highlight, setLayers)
 // and relays the map's own selection. It sends commands and repeats what the
 // map reports; it never derives frame state.
-import {SCENARIO, claimHighlight, el, managedFaces, noticeBar, phoneCopy} from './farm-data.js';
+import {claimHighlight, el, managedFaces, noticeBar, phoneCopy} from './farm-data.js';
+import {mapLayers} from './map-layers.js';
 
 export const fieldNavigationPanel = {
   id: 'field-navigation', title: '田區導覽', icon: '⌖', defaultSize: {w: 4, h: 7},
@@ -61,30 +62,25 @@ export const fieldNavigationPanel = {
       if (send('highlight', {ids: []}, '已送出：清除標示')) { highlighted = null; markRows(); claimHighlight('field-navigation'); }
     };
 
-    // The viewer announces layers once at ready and echoes nothing per
-    // command, so the intended visible set is kept here and sent in full.
-    let visible = new Set();
-    ctx.map.subscribe('ready', info => {
-      const list = Array.isArray(info?.layers) ? info.layers : [];
-      visible = new Set(list.filter(l => l.visible !== false).map(l => l.id));
+    // Layer visibility belongs to the shared map-layers store; this list is one view of it.
+    const renderLayers = () => {
       layers.replaceChildren();
-      for (const layer of list) {
-        // Patrol hides these through its map extension. Omit the ineffective
-        // control, but retain the saved choice for the other scenarios.
-        if (SCENARIO?.useCaseId === 'patrol' && layer.id === 'root-supported-labels') continue;
+      for (const layer of mapLayers.list()) {
         const label = el('label', null, 'farm-toggle'), box = el('input');
         box.type = 'checkbox';
-        box.checked = visible.has(layer.id);
+        box.checked = layer.visible;
         box.dataset.layerId = layer.id;
         box.onchange = () => {
-          const next = new Set(visible);
-          if (box.checked) next.add(layer.id); else next.delete(layer.id);
-          if (send('setLayers', {layers: [...next]}, `已送出：${layer.label || layer.id}${box.checked ? '顯示' : '隱藏'}`)) visible = next;
-          else box.checked = !box.checked;
+          if (mapLayers.set(layer.id, box.checked)) status.textContent = `已送出：${layer.label}${box.checked ? '顯示' : '隱藏'}`;
+          else { box.checked = !box.checked; status.textContent = '地圖不接受此指令，未送出'; }
         };
-        label.append(box, el('span', layer.label || layer.id));
+        label.append(box, el('span', layer.label));
         layers.append(label);
       }
+    };
+    const stopLayers = mapLayers.subscribe(renderLayers);
+    renderLayers();
+    ctx.map.subscribe('ready', () => {
       highlighted = null; markRows();
       status.textContent = '地圖已就緒';
     });
@@ -96,7 +92,7 @@ export const fieldNavigationPanel = {
       selection.title = entity?.id || '';
       selection.dataset.entityId = entity?.id || '';
     });
-    return {root};
+    return {root, stopLayers};
   },
 
   update() {},
@@ -104,5 +100,5 @@ export const fieldNavigationPanel = {
     return {schemaVersion: 1, kind: 'farm-field-navigation', visibleFields: ['fields', 'layers', 'selection'],
       summary: '模擬田區清單與地圖圖層控制；只轉述地圖回報的選取，無即時資料，非操作建議。'};
   },
-  dispose(view) { view.root.remove(); },
+  dispose(view) { view.stopLayers?.(); view.root.remove(); },
 };
